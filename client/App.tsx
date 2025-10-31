@@ -12,6 +12,7 @@ import Projecten from "./pages/Projecten";
 import Documenten from "./pages/Documenten";
 import Berichten from "./pages/Berichten";
 import Instellingen from "./pages/Instellingen";
+import CustomerPortal from "./pages/CustomerPortal";
 
 const queryClient = new QueryClient();
 
