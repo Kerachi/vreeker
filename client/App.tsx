@@ -13,6 +13,7 @@ import Documenten from "./pages/Documenten";
 import Berichten from "./pages/Berichten";
 import Instellingen from "./pages/Instellingen";
 import CustomerPortal from "./pages/CustomerPortal";
+import Feedback from "./pages/Feedback";
 
 const queryClient = new QueryClient();
 
