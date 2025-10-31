@@ -15,6 +15,10 @@ import Instellingen from "./pages/Instellingen";
 import CustomerPortal from "./pages/CustomerPortal";
 import Feedback from "./pages/Feedback";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminProjecten from "./pages/AdminProjecten";
+import AdminMedewerkers from "./pages/AdminMedewerkers";
+import AdminFeedback from "./pages/AdminFeedback";
+import AdminInstellingen from "./pages/AdminInstellingen";
 
 const queryClient = new QueryClient();
 
