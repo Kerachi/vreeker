@@ -29,6 +29,7 @@ export const App = () => (
           <Route path="/documenten" element={<Documenten />} />
           <Route path="/berichten" element={<Berichten />} />
           <Route path="/instellingen" element={<Instellingen />} />
+          <Route path="/customer" element={<CustomerPortal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
