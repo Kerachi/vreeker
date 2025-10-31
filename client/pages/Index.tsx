@@ -1,62 +1,74 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import DashboardLayout from "@/components/DashboardLayout";
+import ProjectCard from "@/components/ProjectCard";
+import WeeklyPlanner from "@/components/WeeklyPlanner";
+import NotesPanel from "@/components/NotesPanel";
+
+const projects = [
+  {
+    id: "1",
+    name: "Achtertuin Renovatie",
+    client: "Fam. de Boer",
+    status: "in-progress" as const,
+    responsible: "Peter van Dijk",
+    progress: 65,
+  },
+  {
+    id: "2",
+    name: "Gazon Aanleg",
+    client: "Hotel de Ambiance",
+    status: "in-progress" as const,
+    responsible: "Maria Garcia",
+    progress: 45,
+  },
+  {
+    id: "3",
+    name: "Boomverzorging",
+    client: "Gemeente Utrecht",
+    status: "pending" as const,
+    responsible: "Jan Pieterse",
+    progress: 0,
+  },
+  {
+    id: "4",
+    name: "Terras Aanleg",
+    client: "Restaurant de Tuin",
+    status: "completed" as const,
+    responsible: "Anna Kowalski",
+    progress: 100,
+  },
+];
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
-
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
+    <DashboardLayout>
+      <div className="p-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <p className="text-gray-600 mt-2">Welkom terug! Hier is uw overzicht van actieve projecten.</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-8">
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Actieve Projecten</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {projects.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    {...project}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <WeeklyPlanner />
+          </div>
+
+          <div className="lg:col-span-1">
+            <NotesPanel />
+          </div>
+        </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 }
