@@ -14,6 +14,7 @@ import Berichten from "./pages/Berichten";
 import Instellingen from "./pages/Instellingen";
 import CustomerPortal from "./pages/CustomerPortal";
 import Feedback from "./pages/Feedback";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
