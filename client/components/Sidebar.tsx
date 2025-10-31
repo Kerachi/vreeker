@@ -1,5 +1,5 @@
 import { LayoutDashboard, Calendar, Briefcase, FileText, MessageSquare, Settings } from "lucide-react";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavItem {
   id: string;
@@ -18,24 +18,31 @@ const navItems: NavItem[] = [
 ];
 
 export default function Sidebar() {
-  const [activeId, setActiveId] = useState("dashboard");
+  const location = useLocation();
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(href);
+  };
 
   return (
     <aside className="w-64 bg-white border-r border-gray-200 h-screen overflow-y-auto pt-6">
       <nav className="px-3 space-y-2">
         {navItems.map((item) => (
-          <button
+          <Link
             key={item.id}
-            onClick={() => setActiveId(item.id)}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-              activeId === item.id
+            to={item.href}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+              isActive(item.href)
                 ? "bg-green-50 text-green-600 font-medium"
                 : "text-gray-700 hover:bg-gray-50"
             }`}
           >
             {item.icon}
             <span>{item.label}</span>
-          </button>
+          </Link>
         ))}
       </nav>
     </aside>
