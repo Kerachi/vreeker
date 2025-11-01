@@ -69,6 +69,10 @@ export default function Index() {
             <NotesPanel />
           </div>
         </div>
+
+        <div className="mt-8">
+          <ProdistIntegration />
+        </div>
       </div>
     </DashboardLayout>
   );
