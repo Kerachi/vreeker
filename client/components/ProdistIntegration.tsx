@@ -18,13 +18,13 @@ const sampleArticles: Article[] = [
   {
     id: "2",
     name: "Meststof NPK 10-10-10",
-    price: 28.50,
+    price: 28.5,
     stock: 85,
   },
   {
     id: "3",
     name: "Tuinschaar RVS 45cm",
-    price: 62.00,
+    price: 62.0,
     stock: 15,
   },
   {
@@ -42,7 +42,7 @@ const sampleArticles: Article[] = [
   {
     id: "6",
     name: "Irrigatiesysteem drip",
-    price: 95.00,
+    price: 95.0,
     stock: 32,
   },
 ];

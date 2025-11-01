@@ -105,7 +105,7 @@ export default function SettingsPersonal() {
                   }
                   onChange={() =>
                     handleSectionToggle(
-                      item.key as keyof typeof preferences.sections
+                      item.key as keyof typeof preferences.sections,
                     )
                   }
                   className="w-4 h-4 cursor-pointer accent-green-600 rounded"

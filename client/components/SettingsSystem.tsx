@@ -23,7 +23,9 @@ export default function SettingsSystem() {
     }));
   };
 
-  const handleContactInfoChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleContactInfoChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
     setSystemSettings((prev) => ({
       ...prev,
       contactInfo: e.target.value,

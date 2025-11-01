@@ -137,7 +137,9 @@ export default function ProjectsTable() {
                           .map((word) => word.charAt(0))
                           .join("")}
                       </div>
-                      <span className="text-gray-700">{project.responsible}</span>
+                      <span className="text-gray-700">
+                        {project.responsible}
+                      </span>
                     </div>
                   </td>
                   <td className="py-4 px-4 text-gray-600 text-xs sm:text-sm">
@@ -152,15 +154,21 @@ export default function ProjectsTable() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
         <div className="bg-green-50 rounded-lg p-4 border border-green-100">
-          <p className="text-xs text-gray-600 font-medium mb-1">In uitvoering</p>
-          <p className="text-2xl font-bold text-green-700">{stats.inProgress}</p>
+          <p className="text-xs text-gray-600 font-medium mb-1">
+            In uitvoering
+          </p>
+          <p className="text-2xl font-bold text-green-700">
+            {stats.inProgress}
+          </p>
         </div>
         <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-100">
           <p className="text-xs text-gray-600 font-medium mb-1">Bezig</p>
           <p className="text-2xl font-bold text-yellow-700">{stats.busy}</p>
         </div>
         <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
-          <p className="text-xs text-gray-600 font-medium mb-1">Nog te starten</p>
+          <p className="text-xs text-gray-600 font-medium mb-1">
+            Nog te starten
+          </p>
           <p className="text-2xl font-bold text-blue-700">{stats.pending}</p>
         </div>
       </div>

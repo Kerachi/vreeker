@@ -1,4 +1,11 @@
-import { Download, Upload, Folder, FileText, FileImage, File } from "lucide-react";
+import {
+  Download,
+  Upload,
+  Folder,
+  FileText,
+  FileImage,
+  File,
+} from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -73,11 +80,7 @@ function getFileIcon(type: string) {
   }
 }
 
-function DocumentFile({
-  file,
-}: {
-  file: DocumentFile;
-}) {
+function DocumentFile({ file }: { file: DocumentFile }) {
   return (
     <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-green-300 transition-colors">
       <div className="flex items-center gap-3 flex-1 min-w-0">
@@ -96,11 +99,7 @@ function DocumentFile({
   );
 }
 
-function ProjectSection({
-  project,
-}: {
-  project: ProjectFolder;
-}) {
+function ProjectSection({ project }: { project: ProjectFolder }) {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -137,7 +136,8 @@ export default function DocumentCenter() {
           📂 Documenten – Centrale opslag
         </h1>
         <p className="text-gray-600 mt-2">
-          Alle bedrijfsdocumenten, projectbestanden en administratieve gegevens op één plek.
+          Alle bedrijfsdocumenten, projectbestanden en administratieve gegevens
+          op één plek.
         </p>
       </div>
 
@@ -182,12 +182,10 @@ export default function DocumentCenter() {
             Nieuw document uploaden
           </h3>
           <div className="border-2 border-dashed border-green-300 rounded-lg p-8 text-center mb-4">
-            <p className="text-gray-600 mb-2">Sleep een bestand hiernaartoe of klik om te selecteren</p>
-            <input
-              type="file"
-              className="hidden"
-              id="fileInput"
-            />
+            <p className="text-gray-600 mb-2">
+              Sleep een bestand hiernaartoe of klik om te selecteren
+            </p>
+            <input type="file" className="hidden" id="fileInput" />
             <label
               htmlFor="fileInput"
               className="inline-block px-4 py-2 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-colors"

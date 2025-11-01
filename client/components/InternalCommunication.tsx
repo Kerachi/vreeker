@@ -45,7 +45,9 @@ export default function InternalCommunication() {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-gray-900">Interne Communicatie</h2>
+        <h2 className="text-xl font-semibold text-gray-900">
+          Interne Communicatie
+        </h2>
         <MessageCircle className="w-5 h-5 text-green-600" />
       </div>
 
@@ -62,7 +64,9 @@ export default function InternalCommunication() {
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800">
                     {update.department}
                   </span>
-                  <span className="text-xs text-gray-500">{update.timestamp}</span>
+                  <span className="text-xs text-gray-500">
+                    {update.timestamp}
+                  </span>
                 </div>
                 <p className="text-sm text-gray-900">{update.message}</p>
               </div>

@@ -14,9 +14,7 @@ export default function SettingsSecurity() {
     <div className="bg-white rounded-lg border border-gray-200 p-6">
       <div className="flex items-center gap-2 mb-6">
         <Lock className="w-6 h-6 text-green-600" />
-        <h2 className="text-xl font-semibold text-gray-900">
-          🔒 Beveiliging
-        </h2>
+        <h2 className="text-xl font-semibold text-gray-900">🔒 Beveiliging</h2>
       </div>
 
       <div className="space-y-6">

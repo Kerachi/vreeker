@@ -15,7 +15,8 @@ export default function Instellingen() {
             ⚙️ Instellingen – Beheer en Voorkeuren
           </h1>
           <p className="text-gray-600 mt-2">
-            Configureer uw persoonlijke instellingen, beveiliging en systeemparameters.
+            Configureer uw persoonlijke instellingen, beveiliging en
+            systeemparameters.
           </p>
         </div>
 

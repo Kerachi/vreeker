@@ -195,7 +195,10 @@ export default function WeeklySchedule() {
         <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-100">
           <p className="text-xs text-gray-600 font-medium mb-1">Bezig</p>
           <p className="text-2xl font-bold text-yellow-700">
-            {scheduleData.filter((item) => item.status === "in-progress").length}
+            {
+              scheduleData.filter((item) => item.status === "in-progress")
+                .length
+            }
           </p>
         </div>
         <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">

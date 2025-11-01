@@ -14,7 +14,7 @@ const departmentColors = {
   Verkoop: "bg-blue-50 border-blue-200",
   Administratie: "bg-purple-50 border-purple-200",
   Uitvoering: "bg-green-50 border-green-200",
-  "Werkvoorbereiding": "bg-amber-50 border-amber-200",
+  Werkvoorbereiding: "bg-amber-50 border-amber-200",
   HR: "bg-red-50 border-red-200",
 };
 
@@ -22,7 +22,7 @@ const departmentBadgeColors = {
   Verkoop: "bg-blue-100 text-blue-800",
   Administratie: "bg-purple-100 text-purple-800",
   Uitvoering: "bg-green-100 text-green-800",
-  "Werkvoorbereiding": "bg-amber-100 text-amber-800",
+  Werkvoorbereiding: "bg-amber-100 text-amber-800",
   HR: "bg-red-100 text-red-800",
 };
 
@@ -112,7 +112,7 @@ export default function UpdatesFeed() {
                   <div className="flex items-center gap-2 flex-wrap">
                     <span
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${getDepartmentColor(
-                        msg.department
+                        msg.department,
                       )}`}
                     >
                       {msg.department}
