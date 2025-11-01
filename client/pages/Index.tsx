@@ -2,6 +2,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 import ProjectCard from "@/components/ProjectCard";
 import WeeklyPlanner from "@/components/WeeklyPlanner";
 import NotesPanel from "@/components/NotesPanel";
+import ProdistIntegration from "@/components/ProdistIntegration";
 
 const projects = [
   {
