@@ -38,7 +38,10 @@ export const App = () => (
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/customer" element={<CustomerPortal />} />
           <Route path="/admin" element={<AdminDashboard />} />
-          {/* Admin subroutes - import them first */}
+          <Route path="/admin/projecten" element={<AdminProjecten />} />
+          <Route path="/admin/medewerkers" element={<AdminMedewerkers />} />
+          <Route path="/admin/feedback" element={<AdminFeedback />} />
+          <Route path="/admin/instellingen" element={<AdminInstellingen />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
