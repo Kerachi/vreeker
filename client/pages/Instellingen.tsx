@@ -1,21 +1,38 @@
 import DashboardLayout from "@/components/DashboardLayout";
+import SettingsUserAccess from "@/components/SettingsUserAccess";
+import SettingsNotifications from "@/components/SettingsNotifications";
+import SettingsDocuments from "@/components/SettingsDocuments";
+import SettingsPersonal from "@/components/SettingsPersonal";
+import SettingsSecurity from "@/components/SettingsSecurity";
+import SettingsSystem from "@/components/SettingsSystem";
 
 export default function Instellingen() {
   return (
     <DashboardLayout>
       <div className="p-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Instellingen</h1>
-          <p className="text-gray-600 mt-2">Beheer uw instellingen en voorkeuren.</p>
+          <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+            ⚙️ Instellingen – Beheer en Voorkeuren
+          </h1>
+          <p className="text-gray-600 mt-2">
+            Configureer uw persoonlijke instellingen, beveiliging en systeemparameters.
+          </p>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
-          <div className="max-w-md mx-auto">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Instellingen pagina</h2>
-            <p className="text-gray-600 mb-4">
-              Deze pagina is nog in ontwikkeling. Voer een prompt in om deze inhoud aan te passen.
-            </p>
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <SettingsPersonal />
+            <SettingsNotifications />
           </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <SettingsDocuments />
+            <SettingsSecurity />
+          </div>
+
+          <SettingsUserAccess />
+
+          <SettingsSystem />
         </div>
       </div>
     </DashboardLayout>
