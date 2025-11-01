@@ -7,7 +7,7 @@ export default function AdminInstellingen() {
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Instellingen</h1>
           <p className="text-gray-600 mt-2">
-            Beheer systeeminstellingen en configuraties.
+            Beheer systeeminstellingen en gebruikersrollen.
           </p>
         </div>
 
