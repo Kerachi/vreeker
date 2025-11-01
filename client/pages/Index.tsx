@@ -64,6 +64,8 @@ export default function Index() {
             </div>
 
             <WeeklyPlanner />
+
+            <InternalCommunication />
           </div>
 
           <div className="lg:col-span-1">
