@@ -39,6 +39,10 @@ export default function DashboardMetrics() {
     navigate("/projecten?filter=pending");
   };
 
+  const handleHoursClick = () => {
+    navigate("/personeel?tab=hours");
+  };
+
   const metrics: MetricCard[] = [
     {
       id: "active",
@@ -70,6 +74,7 @@ export default function DashboardMetrics() {
       value: "42.5h",
       icon: <Clock className="w-6 h-6" />,
       color: "orange",
+      clickable: true,
     },
   ];
 
@@ -80,6 +85,8 @@ export default function DashboardMetrics() {
       handleCompletedClick();
     } else if (id === "tasks") {
       handleTasksClick();
+    } else if (id === "hours") {
+      handleHoursClick();
     }
   };
 
