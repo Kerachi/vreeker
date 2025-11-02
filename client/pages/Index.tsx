@@ -1,6 +1,7 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import DashboardMetrics from "@/components/DashboardMetrics";
 import ProjectCard from "@/components/ProjectCard";
+import ProdistAlerts from "@/components/ProdistAlerts";
 import TodayPlanner from "@/components/TodayPlanner";
 import TeamUpdates from "@/components/TeamUpdates";
 import ProdistIntegration from "@/components/ProdistIntegration";
@@ -65,6 +66,8 @@ export default function Index() {
                 ))}
               </div>
             </div>
+
+            <ProdistAlerts />
 
             <TodayPlanner />
           </div>
