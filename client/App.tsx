@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import Planning from "./pages/Planning";
 import Projecten from "./pages/Projecten";
 import Documenten from "./pages/Documenten";
+import Personeel from "./pages/Personeel";
 import Berichten from "./pages/Berichten";
 import Instellingen from "./pages/Instellingen";
 import CustomerPortal from "./pages/CustomerPortal";
@@ -33,6 +34,7 @@ export const App = () => (
           <Route path="/planning" element={<Planning />} />
           <Route path="/projecten" element={<Projecten />} />
           <Route path="/documenten" element={<Documenten />} />
+          <Route path="/personeel" element={<Personeel />} />
           <Route path="/berichten" element={<Berichten />} />
           <Route path="/instellingen" element={<Instellingen />} />
           <Route path="/feedback" element={<Feedback />} />
