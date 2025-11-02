@@ -40,7 +40,7 @@ export default function DashboardMetrics() {
   };
 
   const handleHoursClick = () => {
-    navigate("/personeel?tab=hours");
+    navigate("/personeel#urenoverzicht");
   };
 
   const metrics: MetricCard[] = [

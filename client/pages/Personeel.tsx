@@ -1,15 +1,23 @@
 import { ArrowLeft } from "lucide-react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
 import HoursRegistration from "@/components/HoursRegistration";
 import AttendanceStatus from "@/components/AttendanceStatus";
 import HoursBreakdown from "@/components/HoursBreakdown";
 
 export default function Personeel() {
-  const [searchParams] = useSearchParams();
-  const tab = searchParams.get("tab");
-
-  const showHoursBreakdown = tab === "hours";
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash === "urenoverzicht") {
+      const element = document.getElementById("urenoverzicht");
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+  }, []);
 
   return (
     <DashboardLayout>
@@ -24,20 +32,20 @@ export default function Personeel() {
           </Link>
           <h1 className="text-3xl font-bold text-gray-900">Personeel</h1>
           <p className="text-gray-600 mt-2">
-            {showHoursBreakdown
-              ? "Detailweergave van deze week's urenregistratie"
-              : "Beheer urenregistratie en aanwezigheid van uw team"}
+            Beheer urenregistratie en aanwezigheid van uw team
           </p>
         </div>
 
-        {showHoursBreakdown ? (
-          <HoursBreakdown />
-        ) : (
+        <div className="space-y-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <HoursRegistration />
             <AttendanceStatus />
           </div>
-        )}
+
+          <div id="urenoverzicht">
+            <HoursBreakdown />
+          </div>
+        </div>
       </div>
     </DashboardLayout>
   );
