@@ -4,7 +4,6 @@ import WeeklyPlanner from "@/components/WeeklyPlanner";
 import NotesPanel from "@/components/NotesPanel";
 import ProdistIntegration from "@/components/ProdistIntegration";
 import InternalCommunication from "@/components/InternalCommunication";
-import HoursAndAttendance from "@/components/HoursAndAttendance";
 
 const projects = [
   {
@@ -75,9 +74,8 @@ export default function Index() {
           </div>
         </div>
 
-        <div className="mt-8 space-y-8">
+        <div className="mt-8">
           <ProdistIntegration />
-          <HoursAndAttendance />
         </div>
       </div>
     </DashboardLayout>
