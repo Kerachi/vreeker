@@ -67,7 +67,8 @@ export default function Projecten() {
                 key={option.id}
                 onClick={() => handleFilterClick(option.value)}
                 className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
-                  filter === option.value || (filter === null && option.value === null)
+                  filter === option.value ||
+                  (filter === null && option.value === null)
                     ? "bg-green-600 text-white shadow-md"
                     : "bg-white text-gray-700 border border-gray-300 hover:border-green-300 hover:text-green-700"
                 }`}

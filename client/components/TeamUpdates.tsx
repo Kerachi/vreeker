@@ -4,7 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
 type ItemType = "update" | "note";
-type Category = "Verkoop" | "Werkvoorbereiding" | "HR" | "Administratie" | "Techniek";
+type Category =
+  | "Verkoop"
+  | "Werkvoorbereiding"
+  | "HR"
+  | "Administratie"
+  | "Techniek";
 
 interface TeamUpdate {
   id: string;
@@ -16,12 +21,35 @@ interface TeamUpdate {
   icon?: string;
 }
 
-const categoryColors: Record<Category, { bg: string; text: string; border: string }> = {
-  Verkoop: { bg: "bg-blue-100", text: "text-blue-800", border: "border-blue-200" },
-  Werkvoorbereiding: { bg: "bg-green-100", text: "text-green-800", border: "border-green-200" },
-  HR: { bg: "bg-purple-100", text: "text-purple-800", border: "border-purple-200" },
-  Administratie: { bg: "bg-yellow-100", text: "text-yellow-800", border: "border-yellow-200" },
-  Techniek: { bg: "bg-red-100", text: "text-red-800", border: "border-red-200" },
+const categoryColors: Record<
+  Category,
+  { bg: string; text: string; border: string }
+> = {
+  Verkoop: {
+    bg: "bg-blue-100",
+    text: "text-blue-800",
+    border: "border-blue-200",
+  },
+  Werkvoorbereiding: {
+    bg: "bg-green-100",
+    text: "text-green-800",
+    border: "border-green-200",
+  },
+  HR: {
+    bg: "bg-purple-100",
+    text: "text-purple-800",
+    border: "border-purple-200",
+  },
+  Administratie: {
+    bg: "bg-yellow-100",
+    text: "text-yellow-800",
+    border: "border-yellow-200",
+  },
+  Techniek: {
+    bg: "bg-red-100",
+    text: "text-red-800",
+    border: "border-red-200",
+  },
 };
 
 const priorityIcons = {
@@ -76,7 +104,8 @@ const initialUpdates: TeamUpdate[] = [
 export default function TeamUpdates() {
   const [updates, setUpdates] = useState<TeamUpdate[]>(initialUpdates);
   const [newMessage, setNewMessage] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<Category>("Werkvoorbereiding");
+  const [selectedCategory, setSelectedCategory] =
+    useState<Category>("Werkvoorbereiding");
   const [showForm, setShowForm] = useState(false);
 
   const handleAddUpdate = () => {
@@ -99,7 +128,13 @@ export default function TeamUpdates() {
     setUpdates(updates.filter((update) => update.id !== id));
   };
 
-  const categories: Category[] = ["Verkoop", "Werkvoorbereiding", "HR", "Administratie", "Techniek"];
+  const categories: Category[] = [
+    "Verkoop",
+    "Werkvoorbereiding",
+    "HR",
+    "Administratie",
+    "Techniek",
+  ];
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col h-full">
@@ -140,7 +175,9 @@ export default function TeamUpdates() {
         ) : (
           updates.map((update) => {
             const colors = categoryColors[update.category];
-            const priorityIcon = update.priority ? priorityIcons[update.priority] : null;
+            const priorityIcon = update.priority
+              ? priorityIcons[update.priority]
+              : null;
 
             return (
               <div
@@ -148,18 +185,27 @@ export default function TeamUpdates() {
                 className={`rounded-lg p-4 border ${colors.border} bg-gradient-to-r from-white to-gray-50 hover:shadow-sm transition-all`}
               >
                 <div className="flex items-start gap-3">
-                  {update.icon && <span className="text-lg flex-shrink-0">{update.icon}</span>}
+                  {update.icon && (
+                    <span className="text-lg flex-shrink-0">{update.icon}</span>
+                  )}
                   {priorityIcon && (
-                    <span className="text-lg flex-shrink-0" title={update.priority}>
+                    <span
+                      className="text-lg flex-shrink-0"
+                      title={update.priority}
+                    >
                       {priorityIcon}
                     </span>
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}>
+                      <span
+                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}
+                      >
                         {update.category}
                       </span>
-                      <span className="text-xs text-gray-500">{update.timestamp}</span>
+                      <span className="text-xs text-gray-500">
+                        {update.timestamp}
+                      </span>
                     </div>
                     <p className="text-sm text-gray-900">{update.message}</p>
                   </div>

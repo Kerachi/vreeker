@@ -95,7 +95,9 @@ export default function DashboardMetrics() {
       {metrics.map((metric) => (
         <div
           key={metric.id}
-          onClick={metric.clickable ? () => handleMetricClick(metric.id) : undefined}
+          onClick={
+            metric.clickable ? () => handleMetricClick(metric.id) : undefined
+          }
           className={`bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-all ${
             metric.clickable ? "cursor-pointer hover:border-green-300" : ""
           }`}
@@ -105,7 +107,9 @@ export default function DashboardMetrics() {
               <p className="text-xs font-medium text-gray-600 uppercase tracking-wide">
                 {metric.label}
               </p>
-              <p className={`text-3xl font-bold mt-2 ${metricTextColors[metric.color]}`}>
+              <p
+                className={`text-3xl font-bold mt-2 ${metricTextColors[metric.color]}`}
+              >
                 {metric.value}
               </p>
             </div>

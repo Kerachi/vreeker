@@ -58,7 +58,10 @@ const hoursData: HourEntry[] = [
   },
 ];
 
-const totalHours = hoursData.reduce((sum, entry) => sum + entry.gewerkte_uren, 0);
+const totalHours = hoursData.reduce(
+  (sum, entry) => sum + entry.gewerkte_uren,
+  0,
+);
 
 export default function HoursBreakdown() {
   return (

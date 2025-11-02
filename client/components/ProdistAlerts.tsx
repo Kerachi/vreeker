@@ -23,10 +23,10 @@ const lowStockItems: StockItem[] = [
 ];
 
 const criticalStockItems: StockItem[] = lowStockItems.filter(
-  (item) => item.stock <= 10
+  (item) => item.stock <= 10,
 );
 const warningStockItems: StockItem[] = lowStockItems.filter(
-  (item) => item.stock > 10 && item.stock <= 20
+  (item) => item.stock > 10 && item.stock <= 20,
 );
 
 export default function ProdistAlerts() {

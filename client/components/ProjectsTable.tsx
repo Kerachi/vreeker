@@ -204,13 +204,17 @@ export default function ProjectsTable({ filter }: ProjectsTableProps) {
                     <td className="py-4 px-4 text-gray-900 font-medium">
                       {project.name}
                     </td>
-                    <td className="py-4 px-4 text-gray-700">{project.client}</td>
+                    <td className="py-4 px-4 text-gray-700">
+                      {project.client}
+                    </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-xs font-semibold text-green-700">
                           {project.responsible.charAt(0)}
                         </div>
-                        <span className="text-gray-700">{project.responsible}</span>
+                        <span className="text-gray-700">
+                          {project.responsible}
+                        </span>
                       </div>
                     </td>
                     <td className="py-4 px-4">
@@ -284,7 +288,9 @@ export default function ProjectsTable({ filter }: ProjectsTableProps) {
                       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-xs font-semibold text-blue-700">
                         {project.responsible.charAt(0)}
                       </div>
-                      <span className="text-gray-700">{project.responsible}</span>
+                      <span className="text-gray-700">
+                        {project.responsible}
+                      </span>
                     </div>
                   </td>
                   <td className="py-4 px-4 text-gray-700">{project.endDate}</td>
@@ -343,7 +349,9 @@ export default function ProjectsTable({ filter }: ProjectsTableProps) {
                         <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-xs font-semibold text-purple-700">
                           {task.responsible.charAt(0)}
                         </div>
-                        <span className="text-gray-700">{task.responsible}</span>
+                        <span className="text-gray-700">
+                          {task.responsible}
+                        </span>
                       </div>
                     </td>
                     <td className="py-4 px-4 text-gray-700">{task.deadline}</td>

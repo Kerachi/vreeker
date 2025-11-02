@@ -67,9 +67,15 @@ export default function HoursRegistration() {
                 <td className="text-sm text-gray-900 py-3 px-3 font-medium">
                   {entry.name}
                 </td>
-                <td className="text-sm text-gray-700 py-3 px-3">{entry.project}</td>
-                <td className="text-sm text-gray-700 py-3 px-3">{entry.hours} uur</td>
-                <td className="text-sm text-gray-700 py-3 px-3">{entry.date}</td>
+                <td className="text-sm text-gray-700 py-3 px-3">
+                  {entry.project}
+                </td>
+                <td className="text-sm text-gray-700 py-3 px-3">
+                  {entry.hours} uur
+                </td>
+                <td className="text-sm text-gray-700 py-3 px-3">
+                  {entry.date}
+                </td>
               </tr>
             ))}
           </tbody>

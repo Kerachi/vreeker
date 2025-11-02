@@ -66,7 +66,9 @@ export default function TodayPlanner() {
                     {task.time}
                   </span>
                 </div>
-                <p className="text-sm font-medium text-gray-900">{task.title}</p>
+                <p className="text-sm font-medium text-gray-900">
+                  {task.title}
+                </p>
                 {task.location && (
                   <p className="text-xs text-gray-600 flex items-center gap-1 mt-1">
                     <MapPin className="w-3 h-3" />

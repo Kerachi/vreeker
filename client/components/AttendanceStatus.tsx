@@ -66,11 +66,15 @@ export default function AttendanceStatus() {
             >
               <span className="text-lg">{config.icon}</span>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-gray-900">{staff.name}</p>
+                <p className="text-sm font-semibold text-gray-900">
+                  {staff.name}
+                </p>
                 <p className="text-xs text-gray-600">{staff.role}</p>
               </div>
               <div className="text-right flex-shrink-0">
-                <p className="text-xs font-medium text-gray-700">{config.label}</p>
+                <p className="text-xs font-medium text-gray-700">
+                  {config.label}
+                </p>
                 {staff.note && (
                   <p className="text-xs text-gray-500">({staff.note})</p>
                 )}

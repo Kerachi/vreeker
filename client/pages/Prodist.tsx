@@ -56,9 +56,9 @@ export default function Prodist() {
   const [apiKey, setApiKey] = useState("");
   const [showApiKey, setShowApiKey] = useState(false);
   const [testingConnection, setTestingConnection] = useState(false);
-  const [connectionStatus, setConnectionStatus] = useState<"idle" | "success" | "failed">(
-    "idle"
-  );
+  const [connectionStatus, setConnectionStatus] = useState<
+    "idle" | "success" | "failed"
+  >("idle");
 
   const handleImport = () => {
     console.log("Importeren uit Prodist...");
@@ -100,7 +100,9 @@ export default function Prodist() {
         {/* Main Articles Table */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">📦 Artikelen en voorraad</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              📦 Artikelen en voorraad
+            </h2>
 
             <div className="overflow-x-auto mb-6">
               <table className="w-full text-sm">
@@ -123,12 +125,16 @@ export default function Prodist() {
                       key={article.id}
                       className="border-b border-gray-100 hover:bg-green-50 transition-colors"
                     >
-                      <td className="py-4 px-4 text-gray-900 font-medium">{article.name}</td>
+                      <td className="py-4 px-4 text-gray-900 font-medium">
+                        {article.name}
+                      </td>
                       <td className="py-4 px-4 text-right text-gray-700">
                         €{article.price.toFixed(2)}
                       </td>
                       <td className="py-4 px-4 text-right">
-                        <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getStockColor(article.stock)}`}>
+                        <span
+                          className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getStockColor(article.stock)}`}
+                        >
                           {article.stock}
                         </span>
                       </td>
@@ -187,7 +193,8 @@ export default function Prodist() {
                   </button>
                 </div>
                 <p className="text-xs text-gray-500 mt-2">
-                  Uw API-sleutel is versleuteld opgeslagen en nooit zichtbaar in logboeken.
+                  Uw API-sleutel is versleuteld opgeslagen en nooit zichtbaar in
+                  logboeken.
                 </p>
               </div>
 
@@ -231,7 +238,9 @@ export default function Prodist() {
 
           {/* Synchronization Log */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">📋 Synchronisatielogboek</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              📋 Synchronisatielogboek
+            </h2>
 
             <div className="space-y-3">
               {syncLogs.map((log) => (
@@ -248,7 +257,9 @@ export default function Prodist() {
                       <span className="text-xs font-semibold px-2 py-1 rounded-full bg-white">
                         {log.action === "import" ? "📥 Import" : "📤 Export"}
                       </span>
-                      <span className="text-xs font-medium text-gray-600">{log.date}</span>
+                      <span className="text-xs font-medium text-gray-600">
+                        {log.date}
+                      </span>
                     </div>
                     <span
                       className={`text-xs font-bold px-2 py-1 rounded ${
