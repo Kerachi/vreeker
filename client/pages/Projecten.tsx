@@ -1,9 +1,23 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
 import ProjectsTable from "@/components/ProjectsTable";
 
+interface FilterOption {
+  id: string;
+  label: string;
+  value: string | null;
+}
+
+const filterOptions: FilterOption[] = [
+  { id: "all", label: "Alle projecten", value: null },
+  { id: "active", label: "Actieve projecten", value: "active" },
+  { id: "completed", label: "Afgeronde projecten", value: "completed" },
+  { id: "pending", label: "Openstaande taken", value: "pending" },
+];
+
 export default function Projecten() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const filter = searchParams.get("filter");
 
   const getTitle = () => {
@@ -32,16 +46,11 @@ export default function Projecten() {
     }
   };
 
-  const getFilterBadgeColor = () => {
-    switch (filter) {
-      case "active":
-        return "bg-green-50 border-green-200 text-green-900";
-      case "completed":
-        return "bg-blue-50 border-blue-200 text-blue-900";
-      case "pending":
-        return "bg-purple-50 border-purple-200 text-purple-900";
-      default:
-        return "";
+  const handleFilterClick = (filterValue: string | null) => {
+    if (filterValue) {
+      navigate(`/projecten?filter=${filterValue}`);
+    } else {
+      navigate("/projecten");
     }
   };
 
@@ -51,19 +60,22 @@ export default function Projecten() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">{getTitle()}</h1>
           <p className="text-gray-600 mt-2">{getSubtitle()}</p>
-          {filter && (
-            <div className={`mt-4 inline-flex items-center gap-2 px-3 py-2 border rounded-lg ${getFilterBadgeColor()}`}>
-              <span className="text-sm font-medium">
-                Filter: {getTitle()}
-              </span>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {filterOptions.map((option) => (
               <button
-                onClick={() => window.history.back()}
-                className="font-semibold ml-2 hover:opacity-70"
+                key={option.id}
+                onClick={() => handleFilterClick(option.value)}
+                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
+                  filter === option.value || (filter === null && option.value === null)
+                    ? "bg-green-600 text-white shadow-md"
+                    : "bg-white text-gray-700 border border-gray-300 hover:border-green-300 hover:text-green-700"
+                }`}
               >
-                ✕
+                {option.label}
               </button>
-            </div>
-          )}
+            ))}
+          </div>
         </div>
 
         <ProjectsTable filter={filter} />
