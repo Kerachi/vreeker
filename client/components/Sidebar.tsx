@@ -1,4 +1,4 @@
-import { LayoutDashboard, Calendar, Briefcase, FileText, Users, MessageSquare, Settings } from "lucide-react";
+import { LayoutDashboard, Calendar, Briefcase, FileText, Users, MessageSquare, Package, Settings } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 interface NavItem {
@@ -15,6 +15,7 @@ const navItems: NavItem[] = [
   { id: "documenten", label: "Documenten", icon: <FileText className="w-5 h-5" />, href: "/documenten" },
   { id: "personeel", label: "Personeel", icon: <Users className="w-5 h-5" />, href: "/personeel" },
   { id: "berichten", label: "Berichten", icon: <MessageSquare className="w-5 h-5" />, href: "/berichten" },
+  { id: "prodist", label: "Prodist", icon: <Package className="w-5 h-5" />, href: "/prodist" },
   { id: "instellingen", label: "Instellingen", icon: <Settings className="w-5 h-5" />, href: "/instellingen" },
 ];
 
