@@ -1,4 +1,5 @@
 import DashboardLayout from "@/components/DashboardLayout";
+import DashboardMetrics from "@/components/DashboardMetrics";
 import ProjectCard from "@/components/ProjectCard";
 import TodayPlanner from "@/components/TodayPlanner";
 import TeamUpdates from "@/components/TeamUpdates";
@@ -49,6 +50,8 @@ export default function Index() {
             Welkom terug! Hier is uw overzicht van actieve projecten.
           </p>
         </div>
+
+        <DashboardMetrics />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
