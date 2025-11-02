@@ -1,6 +1,6 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import ProjectCard from "@/components/ProjectCard";
-import WeeklyPlanner from "@/components/WeeklyPlanner";
+import TodayPlanner from "@/components/TodayPlanner";
 import NotesPanel from "@/components/NotesPanel";
 import ProdistIntegration from "@/components/ProdistIntegration";
 import InternalCommunication from "@/components/InternalCommunication";
@@ -64,7 +64,7 @@ export default function Index() {
               </div>
             </div>
 
-            <WeeklyPlanner />
+            <TodayPlanner />
 
             <InternalCommunication />
           </div>
