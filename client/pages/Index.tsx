@@ -1,9 +1,8 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import ProjectCard from "@/components/ProjectCard";
 import TodayPlanner from "@/components/TodayPlanner";
-import NotesPanel from "@/components/NotesPanel";
+import TeamUpdates from "@/components/TeamUpdates";
 import ProdistIntegration from "@/components/ProdistIntegration";
-import InternalCommunication from "@/components/InternalCommunication";
 
 const projects = [
   {
@@ -65,12 +64,10 @@ export default function Index() {
             </div>
 
             <TodayPlanner />
-
-            <InternalCommunication />
           </div>
 
           <div className="lg:col-span-1">
-            <NotesPanel />
+            <TeamUpdates />
           </div>
         </div>
 
