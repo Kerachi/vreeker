@@ -4,7 +4,6 @@ import ProjectCard from "@/components/ProjectCard";
 import ProdistAlerts from "@/components/ProdistAlerts";
 import TodayPlanner from "@/components/TodayPlanner";
 import TeamUpdates from "@/components/TeamUpdates";
-import ProdistIntegration from "@/components/ProdistIntegration";
 
 const projects = [
   {
@@ -75,10 +74,6 @@ export default function Index() {
           <div className="lg:col-span-1">
             <TeamUpdates />
           </div>
-        </div>
-
-        <div className="mt-8">
-          <ProdistIntegration />
         </div>
       </div>
     </DashboardLayout>
