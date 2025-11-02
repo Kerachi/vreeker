@@ -27,6 +27,14 @@ const metricTextColors = {
 export default function DashboardMetrics() {
   const navigate = useNavigate();
 
+  const handleActiveClick = () => {
+    navigate("/projecten?filter=active");
+  };
+
+  const handleCompletedClick = () => {
+    navigate("/projecten?filter=completed");
+  };
+
   const handleTasksClick = () => {
     navigate("/projecten?filter=pending");
   };
@@ -38,6 +46,7 @@ export default function DashboardMetrics() {
       value: 2,
       icon: <Briefcase className="w-6 h-6" />,
       color: "green",
+      clickable: true,
     },
     {
       id: "completed",
@@ -45,6 +54,7 @@ export default function DashboardMetrics() {
       value: 1,
       icon: <CheckCircle className="w-6 h-6" />,
       color: "blue",
+      clickable: true,
     },
     {
       id: "tasks",
@@ -63,14 +73,24 @@ export default function DashboardMetrics() {
     },
   ];
 
+  const handleMetricClick = (id: string) => {
+    if (id === "active") {
+      handleActiveClick();
+    } else if (id === "completed") {
+      handleCompletedClick();
+    } else if (id === "tasks") {
+      handleTasksClick();
+    }
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
       {metrics.map((metric) => (
         <div
           key={metric.id}
-          onClick={metric.id === "tasks" ? handleTasksClick : undefined}
+          onClick={metric.clickable ? () => handleMetricClick(metric.id) : undefined}
           className={`bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-all ${
-            metric.clickable ? "cursor-pointer hover:border-purple-300" : ""
+            metric.clickable ? "cursor-pointer hover:border-green-300" : ""
           }`}
         >
           <div className="flex items-start justify-between">
