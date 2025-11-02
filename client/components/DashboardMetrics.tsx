@@ -1,4 +1,5 @@
 import { Briefcase, CheckCircle, ClipboardList, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface MetricCard {
   id: string;
@@ -6,6 +7,7 @@ interface MetricCard {
   value: string | number;
   icon: React.ReactNode;
   color: "green" | "blue" | "purple" | "orange";
+  clickable?: boolean;
 }
 
 const metricIcons = {
@@ -23,6 +25,12 @@ const metricTextColors = {
 };
 
 export default function DashboardMetrics() {
+  const navigate = useNavigate();
+
+  const handleTasksClick = () => {
+    navigate("/projecten?filter=pending");
+  };
+
   const metrics: MetricCard[] = [
     {
       id: "active",
@@ -44,6 +52,7 @@ export default function DashboardMetrics() {
       value: 12,
       icon: <ClipboardList className="w-6 h-6" />,
       color: "purple",
+      clickable: true,
     },
     {
       id: "hours",
@@ -59,7 +68,10 @@ export default function DashboardMetrics() {
       {metrics.map((metric) => (
         <div
           key={metric.id}
-          className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow"
+          onClick={metric.id === "tasks" ? handleTasksClick : undefined}
+          className={`bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-all ${
+            metric.clickable ? "cursor-pointer hover:border-purple-300" : ""
+          }`}
         >
           <div className="flex items-start justify-between">
             <div className="flex-1">

@@ -9,6 +9,10 @@ interface Project {
   lastUpdate: string;
 }
 
+interface ProjectsTableProps {
+  filter?: string | null;
+}
+
 const statusConfig = {
   "in-progress": {
     label: "🟢 In uitvoering",
@@ -65,16 +69,27 @@ const projectsData: Project[] = [
   },
 ];
 
-export default function ProjectsTable() {
-  const getStatusStats = () => {
+export default function ProjectsTable({ filter }: ProjectsTableProps) {
+  const getFilteredProjects = () => {
+    if (filter === "pending") {
+      return projectsData.filter(
+        (p) => p.status === "in-progress" || p.status === "busy" || p.status === "pending"
+      );
+    }
+    return projectsData;
+  };
+
+  const filteredProjects = getFilteredProjects();
+
+  const getStatusStats = (data: Project[]) => {
     return {
-      inProgress: projectsData.filter((p) => p.status === "in-progress").length,
-      busy: projectsData.filter((p) => p.status === "busy").length,
-      pending: projectsData.filter((p) => p.status === "pending").length,
+      inProgress: data.filter((p) => p.status === "in-progress").length,
+      busy: data.filter((p) => p.status === "busy").length,
+      pending: data.filter((p) => p.status === "pending").length,
     };
   };
 
-  const stats = getStatusStats();
+  const stats = getStatusStats(filteredProjects);
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
@@ -109,45 +124,53 @@ export default function ProjectsTable() {
             </tr>
           </thead>
           <tbody>
-            {projectsData.map((project, index) => {
-              const config = statusConfig[project.status];
-              return (
-                <tr
-                  key={project.id}
-                  className={`border-b border-gray-100 hover:bg-green-50 transition-colors ${
-                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                  }`}
-                >
-                  <td className="py-4 px-4 text-gray-900 font-medium">
-                    {project.name}
-                  </td>
-                  <td className="py-4 px-4 text-gray-700">{project.client}</td>
-                  <td className="py-4 px-4">
-                    <div
-                      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${config.bgColor} ${config.textColor} w-fit`}
-                    >
-                      {config.label}
-                    </div>
-                  </td>
-                  <td className="py-4 px-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-xs font-semibold text-green-700">
-                        {project.responsible
-                          .split(" ")
-                          .map((word) => word.charAt(0))
-                          .join("")}
+            {filteredProjects.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="py-8 px-4 text-center text-gray-500">
+                  Geen projecten gevonden met de huidige filter.
+                </td>
+              </tr>
+            ) : (
+              filteredProjects.map((project, index) => {
+                const config = statusConfig[project.status];
+                return (
+                  <tr
+                    key={project.id}
+                    className={`border-b border-gray-100 hover:bg-green-50 transition-colors ${
+                      index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    }`}
+                  >
+                    <td className="py-4 px-4 text-gray-900 font-medium">
+                      {project.name}
+                    </td>
+                    <td className="py-4 px-4 text-gray-700">{project.client}</td>
+                    <td className="py-4 px-4">
+                      <div
+                        className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${config.bgColor} ${config.textColor} w-fit`}
+                      >
+                        {config.label}
                       </div>
-                      <span className="text-gray-700">
-                        {project.responsible}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4 text-gray-600 text-xs sm:text-sm">
-                    {project.lastUpdate}
-                  </td>
-                </tr>
-              );
-            })}
+                    </td>
+                    <td className="py-4 px-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-xs font-semibold text-green-700">
+                          {project.responsible
+                            .split(" ")
+                            .map((word) => word.charAt(0))
+                            .join("")}
+                        </div>
+                        <span className="text-gray-700">
+                          {project.responsible}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-4 text-gray-600 text-xs sm:text-sm">
+                      {project.lastUpdate}
+                    </td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>
