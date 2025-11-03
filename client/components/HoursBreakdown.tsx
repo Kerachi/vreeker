@@ -111,7 +111,9 @@ const totalHours = hoursData.reduce(
   0,
 );
 
-export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBreakdownProps) {
+export default function HoursBreakdown({
+  currentRole = "medewerker",
+}: HoursBreakdownProps) {
   const [statuses, setStatuses] = useState<Record<string, StatusType>>(() => {
     const saved = localStorage.getItem("hours_statuses");
     if (saved) {
@@ -143,21 +145,23 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
   // Extract unique values for filters
   const uniqueMedewerkers = useMemo(
     () => Array.from(new Set(hoursData.map((h) => h.medewerker))).sort(),
-    []
+    [],
   );
   const uniqueProjects = useMemo(
     () => Array.from(new Set(hoursData.map((h) => h.project))).sort(),
-    []
+    [],
   );
   const uniqueWeeks = useMemo(
-    () => Array.from(new Set(hoursData.map((h) => h.week))).sort((a, b) => b - a),
-    []
+    () =>
+      Array.from(new Set(hoursData.map((h) => h.week))).sort((a, b) => b - a),
+    [],
   );
 
   // Filter data based on selections
   const filteredHoursData = useMemo(() => {
     return hoursData.filter((entry) => {
-      const matchesMedewerker = !filterMedewerker || entry.medewerker === filterMedewerker;
+      const matchesMedewerker =
+        !filterMedewerker || entry.medewerker === filterMedewerker;
       const matchesProject = !filterProject || entry.project === filterProject;
       const matchesWeek = !filterWeek || entry.week.toString() === filterWeek;
 
@@ -166,12 +170,12 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
   }, [filterMedewerker, filterProject, filterWeek]);
 
   const filteredTotalHours = useMemo(
-    () => filteredHoursData.reduce((sum, entry) => sum + entry.gewerkte_uren, 0),
-    [filteredHoursData]
+    () =>
+      filteredHoursData.reduce((sum, entry) => sum + entry.gewerkte_uren, 0),
+    [filteredHoursData],
   );
 
-  const hasActiveFilters =
-    filterMedewerker || filterProject || filterWeek;
+  const hasActiveFilters = filterMedewerker || filterProject || filterWeek;
 
   useEffect(() => {
     localStorage.setItem("hours_statuses", JSON.stringify(statuses));
@@ -219,16 +223,19 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
-        🕓 Urenoverzicht – detail van deze week ({filteredTotalHours.toFixed(1)} uur)
+        🕓 Urenoverzicht – detail van deze week ({filteredTotalHours.toFixed(1)}{" "}
+        uur)
       </h2>
 
       {canEditStatus ? (
         <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
-          <span className="font-semibold">Manager view:</span> Klik op statussen om deze aan te passen.
+          <span className="font-semibold">Manager view:</span> Klik op statussen
+          om deze aan te passen.
         </div>
       ) : (
         <div className="mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700">
-          <span className="font-semibold">Medewerker view:</span> Statussen kunnen alleen door manager gewijzigd worden.
+          <span className="font-semibold">Medewerker view:</span> Statussen
+          kunnen alleen door manager gewijzigd worden.
         </div>
       )}
 
@@ -339,91 +346,91 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
                 const status = statuses[entry.id];
                 const statusInfo = statusConfig[status];
                 return (
-                <tr
-                  key={entry.id}
-                  className={`border-b border-gray-100 hover:bg-green-50 transition-colors ${
-                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                  }`}
-                >
-                  <td className="py-4 px-4 text-gray-900 font-medium">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-xs font-semibold text-green-700">
-                        {entry.medewerker.charAt(0)}
+                  <tr
+                    key={entry.id}
+                    className={`border-b border-gray-100 hover:bg-green-50 transition-colors ${
+                      index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    }`}
+                  >
+                    <td className="py-4 px-4 text-gray-900 font-medium">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-xs font-semibold text-green-700">
+                          {entry.medewerker.charAt(0)}
+                        </div>
+                        <span>{entry.medewerker}</span>
                       </div>
-                      <span>{entry.medewerker}</span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4 text-gray-700">{entry.project}</td>
-                  <td className="py-4 px-4 text-gray-700">{entry.datum}</td>
-                  <td className="py-4 px-4 text-right">
-                    <span className="inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800 min-w-24">
-                      {entry.gewerkte_uren.toFixed(1)} uur
-                    </span>
-                  </td>
-                  <td className="py-4 px-4 text-gray-700 text-xs sm:text-sm">
-                    {entry.omschrijving}
-                  </td>
-                  <td className="py-4 px-4 text-center">
-                    <div
-                      className="relative inline-block"
-                      onMouseEnter={() => !canEditStatus && setHoveredRow(entry.id)}
-                      onMouseLeave={() => setHoveredRow(null)}
-                    >
-                      <button
-                        onClick={() => {
-                          if (canEditStatus) {
-                            setOpenDropdown(
-                              openDropdown === entry.id ? null : entry.id
-                            );
-                          }
-                        }}
-                        disabled={!canEditStatus}
-                        className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold transition-all ${statusInfo.bgColor} ${statusInfo.textColor} ${
-                          canEditStatus
-                            ? "cursor-pointer hover:shadow-md"
-                            : "cursor-not-allowed opacity-75"
-                        }`}
+                    </td>
+                    <td className="py-4 px-4 text-gray-700">{entry.project}</td>
+                    <td className="py-4 px-4 text-gray-700">{entry.datum}</td>
+                    <td className="py-4 px-4 text-right">
+                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800 min-w-24">
+                        {entry.gewerkte_uren.toFixed(1)} uur
+                      </span>
+                    </td>
+                    <td className="py-4 px-4 text-gray-700 text-xs sm:text-sm">
+                      {entry.omschrijving}
+                    </td>
+                    <td className="py-4 px-4 text-center">
+                      <div
+                        className="relative inline-block"
+                        onMouseEnter={() =>
+                          !canEditStatus && setHoveredRow(entry.id)
+                        }
+                        onMouseLeave={() => setHoveredRow(null)}
                       >
-                        {statusInfo.label}
-                        {canEditStatus && (
-                          <ChevronDown className="w-3 h-3" />
+                        <button
+                          onClick={() => {
+                            if (canEditStatus) {
+                              setOpenDropdown(
+                                openDropdown === entry.id ? null : entry.id,
+                              );
+                            }
+                          }}
+                          disabled={!canEditStatus}
+                          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold transition-all ${statusInfo.bgColor} ${statusInfo.textColor} ${
+                            canEditStatus
+                              ? "cursor-pointer hover:shadow-md"
+                              : "cursor-not-allowed opacity-75"
+                          }`}
+                        >
+                          {statusInfo.label}
+                          {canEditStatus && <ChevronDown className="w-3 h-3" />}
+                        </button>
+
+                        {!canEditStatus && hoveredRow === entry.id && (
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap z-20 pointer-events-none">
+                            Alleen manager kan status wijzigen
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
+                          </div>
                         )}
-                      </button>
 
-                      {!canEditStatus && hoveredRow === entry.id && (
-                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap z-20 pointer-events-none">
-                          Alleen manager kan status wijzigen
-                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
-                        </div>
-                      )}
-
-                      {canEditStatus && openDropdown === entry.id && (
-                        <div className="absolute right-0 mt-1 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-                          {statusCycle.map((statusOption) => {
-                            const optionInfo = statusConfig[statusOption];
-                            const isSelected = status === statusOption;
-                            return (
-                              <button
-                                key={statusOption}
-                                onClick={() =>
-                                  handleStatusChange(entry.id, statusOption)
-                                }
-                                className={`w-full text-left px-4 py-2 text-sm font-medium transition-colors ${
-                                  isSelected
-                                    ? `${optionInfo.bgColor} ${optionInfo.textColor}`
-                                    : "hover:bg-gray-50 text-gray-700"
-                                } ${statusOption !== "goedgekeurd" ? "border-t border-gray-100" : ""}`}
-                              >
-                                {optionInfo.label}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              );
+                        {canEditStatus && openDropdown === entry.id && (
+                          <div className="absolute right-0 mt-1 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                            {statusCycle.map((statusOption) => {
+                              const optionInfo = statusConfig[statusOption];
+                              const isSelected = status === statusOption;
+                              return (
+                                <button
+                                  key={statusOption}
+                                  onClick={() =>
+                                    handleStatusChange(entry.id, statusOption)
+                                  }
+                                  className={`w-full text-left px-4 py-2 text-sm font-medium transition-colors ${
+                                    isSelected
+                                      ? `${optionInfo.bgColor} ${optionInfo.textColor}`
+                                      : "hover:bg-gray-50 text-gray-700"
+                                  } ${statusOption !== "goedgekeurd" ? "border-t border-gray-100" : ""}`}
+                                >
+                                  {optionInfo.label}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                );
               })
             )}
           </tbody>
@@ -471,18 +478,16 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
                   <span className="font-semibold text-gray-900">
                     {log.medewerker}
                   </span>{" "}
-                  –{" "}
-                  <span className="text-gray-600">
-                    {log.project}
-                  </span>{" "}
-                  naar{" "}
-                  <span className={`font-semibold ${
-                    log.newStatus === "goedgekeurd"
-                      ? "text-green-700"
-                      : log.newStatus === "in-afwachting"
-                        ? "text-yellow-700"
-                        : "text-red-700"
-                  }`}>
+                  – <span className="text-gray-600">{log.project}</span> naar{" "}
+                  <span
+                    className={`font-semibold ${
+                      log.newStatus === "goedgekeurd"
+                        ? "text-green-700"
+                        : log.newStatus === "in-afwachting"
+                          ? "text-yellow-700"
+                          : "text-red-700"
+                    }`}
+                  >
                     {statusConfig[log.newStatus].label}
                   </span>
                 </span>

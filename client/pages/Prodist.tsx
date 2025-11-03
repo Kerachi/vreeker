@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Download, Upload, Lock, Check, AlertCircle, CheckCircle } from "lucide-react";
+import {
+  Download,
+  Upload,
+  Lock,
+  Check,
+  AlertCircle,
+  CheckCircle,
+} from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,31 +51,66 @@ const projectUsageData: ProjectUsage[] = [
     articleId: "1",
     articleName: "Gras zaad Premium Mix",
     projects: [
-      { name: "Hoflaan Renovatie", status: "in-progress", quantity: 5, unit: "kg" },
-      { name: "Aanleg Herdenkingstuin", status: "in-progress", quantity: 8, unit: "kg" },
+      {
+        name: "Hoflaan Renovatie",
+        status: "in-progress",
+        quantity: 5,
+        unit: "kg",
+      },
+      {
+        name: "Aanleg Herdenkingstuin",
+        status: "in-progress",
+        quantity: 8,
+        unit: "kg",
+      },
     ],
   },
   {
     articleId: "2",
     articleName: "Meststof NPK 10-10-10",
     projects: [
-      { name: "Tuinonderhoud Crematorium West", status: "in-progress", quantity: 12, unit: "kg" },
-      { name: "Gazon aanleg De Jong", status: "completed", quantity: 6, unit: "kg" },
+      {
+        name: "Tuinonderhoud Crematorium West",
+        status: "in-progress",
+        quantity: 12,
+        unit: "kg",
+      },
+      {
+        name: "Gazon aanleg De Jong",
+        status: "completed",
+        quantity: 6,
+        unit: "kg",
+      },
     ],
   },
   {
     articleId: "4",
     articleName: "Grindstenen grijs 20x20",
     projects: [
-      { name: "Oprit Bestrating", status: "in-progress", quantity: 150, unit: "stuks" },
+      {
+        name: "Oprit Bestrating",
+        status: "in-progress",
+        quantity: 150,
+        unit: "stuks",
+      },
     ],
   },
   {
     articleId: "6",
     articleName: "Irrigatiesysteem drip",
     projects: [
-      { name: "Hoflaan Renovatie", status: "in-progress", quantity: 1, unit: "set" },
-      { name: "Aanleg Herdenkingstuin", status: "in-progress", quantity: 2, unit: "set" },
+      {
+        name: "Hoflaan Renovatie",
+        status: "in-progress",
+        quantity: 1,
+        unit: "set",
+      },
+      {
+        name: "Aanleg Herdenkingstuin",
+        status: "in-progress",
+        quantity: 2,
+        unit: "set",
+      },
     ],
   },
 ];
@@ -231,7 +273,9 @@ export default function Prodist() {
                 key={usage.articleId}
                 className="border border-gray-200 rounded-lg p-4 hover:border-green-300 transition-colors"
               >
-                <h3 className="font-semibold text-gray-900 mb-3">{usage.articleName}</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  {usage.articleName}
+                </h3>
                 <div className="flex flex-col gap-2">
                   {usage.projects.map((project, idx) => (
                     <div
@@ -256,7 +300,9 @@ export default function Prodist() {
                             : "bg-gray-100 text-gray-800"
                         }`}
                       >
-                        {project.status === "in-progress" ? "🟢 Actief" : "✅ Voltooid"}
+                        {project.status === "in-progress"
+                          ? "🟢 Actief"
+                          : "✅ Voltooid"}
                       </span>
                     </div>
                   ))}
@@ -267,12 +313,18 @@ export default function Prodist() {
 
           <div className="mt-6 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-600">
-              <span className="font-medium text-gray-900">{projectUsageData.length}</span> artikelen
-              worden gebruikt in{" "}
               <span className="font-medium text-gray-900">
-                {new Set(
-                  projectUsageData.flatMap((u) => u.projects.map((p) => p.name))
-                ).size}
+                {projectUsageData.length}
+              </span>{" "}
+              artikelen worden gebruikt in{" "}
+              <span className="font-medium text-gray-900">
+                {
+                  new Set(
+                    projectUsageData.flatMap((u) =>
+                      u.projects.map((p) => p.name),
+                    ),
+                  ).size
+                }
               </span>{" "}
               actieve projecten.
             </p>

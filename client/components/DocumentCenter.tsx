@@ -35,12 +35,32 @@ const folders: DocumentFolder[] = [
     icon: <Folder className="w-8 h-8 text-blue-500" />,
     fileCount: 12,
     files: [
-      { id: "1", name: "Offerte_Hoflaan_Renovatie.pdf", type: "pdf", size: "2.4 MB" },
+      {
+        id: "1",
+        name: "Offerte_Hoflaan_Renovatie.pdf",
+        type: "pdf",
+        size: "2.4 MB",
+      },
       { id: "2", name: "Planning_Week_45.xlsx", type: "excel", size: "1.8 MB" },
-      { id: "3", name: "Foto_Voortgang_Project.jpg", type: "image", size: "3.2 MB" },
-      { id: "4", name: "Bestek_Begraafplaats.pdf", type: "pdf", size: "1.6 MB" },
+      {
+        id: "3",
+        name: "Foto_Voortgang_Project.jpg",
+        type: "image",
+        size: "3.2 MB",
+      },
+      {
+        id: "4",
+        name: "Bestek_Begraafplaats.pdf",
+        type: "pdf",
+        size: "1.6 MB",
+      },
       { id: "5", name: "Tekening_Grondplan.pdf", type: "pdf", size: "2.1 MB" },
-      { id: "6", name: "Eindrapport_Tuinonderhoud.docx", type: "word", size: "0.9 MB" },
+      {
+        id: "6",
+        name: "Eindrapport_Tuinonderhoud.docx",
+        type: "word",
+        size: "0.9 MB",
+      },
     ],
   },
   {
@@ -50,10 +70,30 @@ const folders: DocumentFolder[] = [
     icon: <FileText className="w-8 h-8 text-green-500" />,
     fileCount: 8,
     files: [
-      { id: "7", name: "Arbeidscontract_Mark.pdf", type: "pdf", size: "1.2 MB" },
-      { id: "8", name: "Handleiding_Dashboard.pdf", type: "pdf", size: "3.5 MB" },
-      { id: "9", name: "Personeelsgegevens.xlsx", type: "excel", size: "0.8 MB" },
-      { id: "10", name: "Competentiematrix_2024.pdf", type: "pdf", size: "1.1 MB" },
+      {
+        id: "7",
+        name: "Arbeidscontract_Mark.pdf",
+        type: "pdf",
+        size: "1.2 MB",
+      },
+      {
+        id: "8",
+        name: "Handleiding_Dashboard.pdf",
+        type: "pdf",
+        size: "3.5 MB",
+      },
+      {
+        id: "9",
+        name: "Personeelsgegevens.xlsx",
+        type: "excel",
+        size: "0.8 MB",
+      },
+      {
+        id: "10",
+        name: "Competentiematrix_2024.pdf",
+        type: "pdf",
+        size: "1.1 MB",
+      },
       { id: "11", name: "Trainingsplan_Q4.docx", type: "word", size: "0.7 MB" },
     ],
   },
@@ -64,12 +104,42 @@ const folders: DocumentFolder[] = [
     icon: <FileText className="w-8 h-8 text-purple-500" />,
     fileCount: 15,
     files: [
-      { id: "12", name: "Offerte_De_Jong_Familie.pdf", type: "pdf", size: "1.8 MB" },
-      { id: "13", name: "Contract_Gemeente_Hoorn.pdf", type: "pdf", size: "2.3 MB" },
-      { id: "14", name: "Offerte_Restaurant_Tuin.pdf", type: "pdf", size: "1.5 MB" },
-      { id: "15", name: "Offertes_Overzicht_2024.xlsx", type: "excel", size: "0.9 MB" },
-      { id: "16", name: "Serviceovereenkomst_Crematorium.pdf", type: "pdf", size: "1.7 MB" },
-      { id: "17", name: "Contract_Template_NL.docx", type: "word", size: "0.6 MB" },
+      {
+        id: "12",
+        name: "Offerte_De_Jong_Familie.pdf",
+        type: "pdf",
+        size: "1.8 MB",
+      },
+      {
+        id: "13",
+        name: "Contract_Gemeente_Hoorn.pdf",
+        type: "pdf",
+        size: "2.3 MB",
+      },
+      {
+        id: "14",
+        name: "Offerte_Restaurant_Tuin.pdf",
+        type: "pdf",
+        size: "1.5 MB",
+      },
+      {
+        id: "15",
+        name: "Offertes_Overzicht_2024.xlsx",
+        type: "excel",
+        size: "0.9 MB",
+      },
+      {
+        id: "16",
+        name: "Serviceovereenkomst_Crematorium.pdf",
+        type: "pdf",
+        size: "1.7 MB",
+      },
+      {
+        id: "17",
+        name: "Contract_Template_NL.docx",
+        type: "word",
+        size: "0.6 MB",
+      },
     ],
   },
   {
@@ -79,12 +149,42 @@ const folders: DocumentFolder[] = [
     icon: <FileText className="w-8 h-8 text-orange-500" />,
     fileCount: 9,
     files: [
-      { id: "18", name: "Veiligheid_Voorschriften.pdf", type: "pdf", size: "2.6 MB" },
-      { id: "19", name: "Bedrijfsbeleid_2024.pdf", type: "pdf", size: "1.4 MB" },
-      { id: "20", name: "Checklist_Projectvoorbereiding.pdf", type: "pdf", size: "0.8 MB" },
-      { id: "21", name: "Instructie_Tuinschaar.pdf", type: "pdf", size: "1.2 MB" },
-      { id: "22", name: "Richtlijnen_Klantenservice.docx", type: "word", size: "0.7 MB" },
-      { id: "23", name: "Noodprotocol_en_EHBO.pdf", type: "pdf", size: "1.9 MB" },
+      {
+        id: "18",
+        name: "Veiligheid_Voorschriften.pdf",
+        type: "pdf",
+        size: "2.6 MB",
+      },
+      {
+        id: "19",
+        name: "Bedrijfsbeleid_2024.pdf",
+        type: "pdf",
+        size: "1.4 MB",
+      },
+      {
+        id: "20",
+        name: "Checklist_Projectvoorbereiding.pdf",
+        type: "pdf",
+        size: "0.8 MB",
+      },
+      {
+        id: "21",
+        name: "Instructie_Tuinschaar.pdf",
+        type: "pdf",
+        size: "1.2 MB",
+      },
+      {
+        id: "22",
+        name: "Richtlijnen_Klantenservice.docx",
+        type: "word",
+        size: "0.7 MB",
+      },
+      {
+        id: "23",
+        name: "Noodprotocol_en_EHBO.pdf",
+        type: "pdf",
+        size: "1.9 MB",
+      },
     ],
   },
 ];
@@ -110,7 +210,9 @@ function DocumentFile({ file }: { file: DocumentFile }) {
       <div className="flex items-center gap-3 flex-1 min-w-0">
         {getFileIcon(file.type)}
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-gray-900 truncate">{file.name}</p>
+          <p className="text-sm font-medium text-gray-900 truncate">
+            {file.name}
+          </p>
           <p className="text-xs text-gray-600">{file.size}</p>
         </div>
       </div>
@@ -150,9 +252,7 @@ function FolderCard({
         <span className="text-xs text-gray-500">
           {folder.fileCount} bestand{folder.fileCount !== 1 ? "en" : ""}
         </span>
-        <span className="text-green-600 font-medium text-sm">
-          Open →
-        </span>
+        <span className="text-green-600 font-medium text-sm">Open →</span>
       </div>
     </button>
   );

@@ -52,7 +52,9 @@ export default function Personeel() {
                 onClick={toggleRole}
                 className="text-green-600 hover:text-green-700 font-semibold transition-colors"
               >
-                {currentRole === "medewerker" ? "Medewerker" : "Manager (Antoon)"}
+                {currentRole === "medewerker"
+                  ? "Medewerker"
+                  : "Manager (Antoon)"}
               </button>
             </div>
           </div>
