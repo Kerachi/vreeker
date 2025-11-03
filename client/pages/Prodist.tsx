@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Download, Upload, Lock, Check, AlertCircle } from "lucide-react";
+import { Download, Upload, Lock, Check, AlertCircle, CheckCircle } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +19,17 @@ interface SyncLog {
   message: string;
 }
 
+interface ProjectUsage {
+  articleId: string;
+  articleName: string;
+  projects: Array<{
+    name: string;
+    status: "in-progress" | "completed";
+    quantity: number;
+    unit: string;
+  }>;
+}
+
 const sampleArticles: Article[] = [
   { id: "1", name: "Gras zaad Premium Mix", price: 45.99, stock: 120 },
   { id: "2", name: "Meststof NPK 10-10-10", price: 28.5, stock: 85 },
@@ -26,6 +37,40 @@ const sampleArticles: Article[] = [
   { id: "4", name: "Grindstenen grijs 20x20", price: 3.25, stock: 450 },
   { id: "5", name: "Heggeschaar elektrisch", price: 129.99, stock: 8 },
   { id: "6", name: "Irrigatiesysteem drip", price: 95.0, stock: 32 },
+];
+
+const projectUsageData: ProjectUsage[] = [
+  {
+    articleId: "1",
+    articleName: "Gras zaad Premium Mix",
+    projects: [
+      { name: "Hoflaan Renovatie", status: "in-progress", quantity: 5, unit: "kg" },
+      { name: "Aanleg Herdenkingstuin", status: "in-progress", quantity: 8, unit: "kg" },
+    ],
+  },
+  {
+    articleId: "2",
+    articleName: "Meststof NPK 10-10-10",
+    projects: [
+      { name: "Tuinonderhoud Crematorium West", status: "in-progress", quantity: 12, unit: "kg" },
+      { name: "Gazon aanleg De Jong", status: "completed", quantity: 6, unit: "kg" },
+    ],
+  },
+  {
+    articleId: "4",
+    articleName: "Grindstenen grijs 20x20",
+    projects: [
+      { name: "Oprit Bestrating", status: "in-progress", quantity: 150, unit: "stuks" },
+    ],
+  },
+  {
+    articleId: "6",
+    articleName: "Irrigatiesysteem drip",
+    projects: [
+      { name: "Hoflaan Renovatie", status: "in-progress", quantity: 1, unit: "set" },
+      { name: "Aanleg Herdenkingstuin", status: "in-progress", quantity: 2, unit: "set" },
+    ],
+  },
 ];
 
 const syncLogs: SyncLog[] = [
@@ -91,10 +136,20 @@ export default function Prodist() {
     <DashboardLayout>
       <div className="p-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Prodist</h1>
-          <p className="text-gray-600 mt-2">
-            Beheer uw Prodist-integratie en synchroniseer artikelen
-          </p>
+          <div className="flex items-start justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Prodist</h1>
+              <p className="text-gray-600 mt-2">
+                Beheer uw Prodist-integratie en synchroniseer artikelen
+              </p>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-lg">
+              <CheckCircle className="w-5 h-5 text-green-600" />
+              <span className="text-sm font-semibold text-green-800">
+                Synchronisatie actief met Prodist (ERP)
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Main Articles Table */}
@@ -161,6 +216,66 @@ export default function Prodist() {
                 Exporteren naar Prodist
               </Button>
             </div>
+          </div>
+        </div>
+
+        {/* Gebruik in projecten Section */}
+        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            🏗️ Gebruik in projecten
+          </h2>
+
+          <div className="space-y-4">
+            {projectUsageData.map((usage) => (
+              <div
+                key={usage.articleId}
+                className="border border-gray-200 rounded-lg p-4 hover:border-green-300 transition-colors"
+              >
+                <h3 className="font-semibold text-gray-900 mb-3">{usage.articleName}</h3>
+                <div className="flex flex-col gap-2">
+                  {usage.projects.map((project, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                    >
+                      <div className="flex items-center gap-3 flex-1">
+                        <div className="w-2 h-2 rounded-full bg-green-500" />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-gray-900">
+                            {project.name}
+                          </p>
+                          <p className="text-xs text-gray-600">
+                            {project.quantity} {project.unit}
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${
+                          project.status === "in-progress"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-gray-100 text-gray-800"
+                        }`}
+                      >
+                        {project.status === "in-progress" ? "🟢 Actief" : "✅ Voltooid"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <p className="text-sm text-gray-600">
+              <span className="font-medium text-gray-900">{projectUsageData.length}</span> artikelen
+              worden gebruikt in{" "}
+              <span className="font-medium text-gray-900">
+                {new Set(
+                  projectUsageData.flatMap((u) => u.projects.map((p) => p.name))
+                ).size}
+              </span>{" "}
+              actieve projecten.
+            </p>
           </div>
         </div>
 
