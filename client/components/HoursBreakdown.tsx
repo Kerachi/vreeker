@@ -178,9 +178,13 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
         🕓 Urenoverzicht – detail van deze week ({totalHours.toFixed(1)} uur)
       </h2>
 
-      {canEditStatus && (
+      {canEditStatus ? (
         <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
           <span className="font-semibold">Manager view:</span> Klik op statussen om deze aan te passen.
+        </div>
+      ) : (
+        <div className="mb-4 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700">
+          <span className="font-semibold">Medewerker view:</span> Statussen kunnen alleen door manager gewijzigd worden.
         </div>
       )}
 
@@ -238,21 +242,24 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
                     {entry.omschrijving}
                   </td>
                   <td className="py-4 px-4 text-center">
-                    <div className="relative inline-block">
+                    <div
+                      className="relative inline-block"
+                      onMouseEnter={() => !canEditStatus && setHoveredRow(entry.id)}
+                      onMouseLeave={() => setHoveredRow(null)}
+                    >
                       <button
                         onClick={() => {
                           if (canEditStatus) {
                             setOpenDropdown(
                               openDropdown === entry.id ? null : entry.id
                             );
-                          } else {
-                            toggleStatus(entry.id);
                           }
                         }}
+                        disabled={!canEditStatus}
                         className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold transition-all ${statusInfo.bgColor} ${statusInfo.textColor} ${
                           canEditStatus
                             ? "cursor-pointer hover:shadow-md"
-                            : "cursor-default"
+                            : "cursor-not-allowed opacity-75"
                         }`}
                       >
                         {statusInfo.label}
@@ -260,6 +267,13 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
                           <ChevronDown className="w-3 h-3" />
                         )}
                       </button>
+
+                      {!canEditStatus && hoveredRow === entry.id && (
+                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap z-20 pointer-events-none">
+                          Alleen manager kan status wijzigen
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
+                        </div>
+                      )}
 
                       {canEditStatus && openDropdown === entry.id && (
                         <div className="absolute right-0 mt-1 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
@@ -303,6 +317,50 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
           </span>
         </div>
       </div>
+
+      {/* Change Log Section */}
+      {logs.length > 0 && (
+        <div className="mt-8 bg-white rounded-lg border border-gray-200 p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            📋 Wijzigingslog
+          </h3>
+          <div className="space-y-2 max-h-48 overflow-y-auto">
+            {logs.map((log, idx) => (
+              <div
+                key={idx}
+                className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 text-sm text-gray-700"
+              >
+                <span className="font-mono text-xs text-gray-500 min-w-fit">
+                  {log.timestamp}
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="font-semibold text-gray-900">
+                    {log.manager}
+                  </span>{" "}
+                  wijzigde status van{" "}
+                  <span className="font-semibold text-gray-900">
+                    {log.medewerker}
+                  </span>{" "}
+                  –{" "}
+                  <span className="text-gray-600">
+                    {log.project}
+                  </span>{" "}
+                  naar{" "}
+                  <span className={`font-semibold ${
+                    log.newStatus === "goedgekeurd"
+                      ? "text-green-700"
+                      : log.newStatus === "in-afwachting"
+                        ? "text-yellow-700"
+                        : "text-red-700"
+                  }`}>
+                    {statusConfig[log.newStatus].label}
+                  </span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
