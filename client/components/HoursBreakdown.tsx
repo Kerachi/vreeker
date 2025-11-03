@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { ChevronDown, X } from "lucide-react";
 
 interface HourEntry {
   id: string;
@@ -8,6 +8,7 @@ interface HourEntry {
   datum: string;
   gewerkte_uren: number;
   omschrijving: string;
+  week: number;
 }
 
 interface LogEntry {
@@ -56,6 +57,7 @@ const hoursData: HourEntry[] = [
     datum: "28 okt 2025",
     gewerkte_uren: 6.5,
     omschrijving: "Werkvoorbereiding + overleg klant",
+    week: 44,
   },
   {
     id: "2",
@@ -64,6 +66,7 @@ const hoursData: HourEntry[] = [
     datum: "29 okt 2025",
     gewerkte_uren: 7.0,
     omschrijving: "Grondwerk + materiaalcontrole",
+    week: 44,
   },
   {
     id: "3",
@@ -72,6 +75,7 @@ const hoursData: HourEntry[] = [
     datum: "30 okt 2025",
     gewerkte_uren: 8.0,
     omschrijving: "Snoeiwerk + rapportage",
+    week: 44,
   },
   {
     id: "4",
@@ -80,6 +84,7 @@ const hoursData: HourEntry[] = [
     datum: "30 okt 2025",
     gewerkte_uren: 6.0,
     omschrijving: "Steenvervanging en afronding",
+    week: 44,
   },
   {
     id: "5",
@@ -88,6 +93,7 @@ const hoursData: HourEntry[] = [
     datum: "31 okt 2025",
     gewerkte_uren: 7.0,
     omschrijving: "Documentbeheer + personeelsplanning",
+    week: 44,
   },
   {
     id: "6",
@@ -96,6 +102,7 @@ const hoursData: HourEntry[] = [
     datum: "31 okt 2025",
     gewerkte_uren: 8.0,
     omschrijving: "Eindcontrole + evaluatie klant",
+    week: 44,
   },
 ];
 
@@ -127,7 +134,44 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [hoveredRow, setHoveredRow] = useState<string | null>(null);
+  const [filterMedewerker, setFilterMedewerker] = useState<string>("");
+  const [filterProject, setFilterProject] = useState<string>("");
+  const [filterWeek, setFilterWeek] = useState<string>("");
+
   const canEditStatus = currentRole === "manager";
+
+  // Extract unique values for filters
+  const uniqueMedewerkers = useMemo(
+    () => Array.from(new Set(hoursData.map((h) => h.medewerker))).sort(),
+    []
+  );
+  const uniqueProjects = useMemo(
+    () => Array.from(new Set(hoursData.map((h) => h.project))).sort(),
+    []
+  );
+  const uniqueWeeks = useMemo(
+    () => Array.from(new Set(hoursData.map((h) => h.week))).sort((a, b) => b - a),
+    []
+  );
+
+  // Filter data based on selections
+  const filteredHoursData = useMemo(() => {
+    return hoursData.filter((entry) => {
+      const matchesMedewerker = !filterMedewerker || entry.medewerker === filterMedewerker;
+      const matchesProject = !filterProject || entry.project === filterProject;
+      const matchesWeek = !filterWeek || entry.week.toString() === filterWeek;
+
+      return matchesMedewerker && matchesProject && matchesWeek;
+    });
+  }, [filterMedewerker, filterProject, filterWeek]);
+
+  const filteredTotalHours = useMemo(
+    () => filteredHoursData.reduce((sum, entry) => sum + entry.gewerkte_uren, 0),
+    [filteredHoursData]
+  );
+
+  const hasActiveFilters =
+    filterMedewerker || filterProject || filterWeek;
 
   useEffect(() => {
     localStorage.setItem("hours_statuses", JSON.stringify(statuses));
@@ -175,7 +219,7 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
-        🕓 Urenoverzicht – detail van deze week ({totalHours.toFixed(1)} uur)
+        🕓 Urenoverzicht – detail van deze week ({filteredTotalHours.toFixed(1)} uur)
       </h2>
 
       {canEditStatus ? (
@@ -187,6 +231,77 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
           <span className="font-semibold">Medewerker view:</span> Statussen kunnen alleen door manager gewijzigd worden.
         </div>
       )}
+
+      {/* Filter Dropdowns */}
+      <div className="mb-6 flex flex-wrap gap-3 items-end">
+        <div className="flex-1 min-w-[200px]">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Medewerker
+          </label>
+          <select
+            value={filterMedewerker}
+            onChange={(e) => setFilterMedewerker(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white hover:border-green-300 focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors"
+          >
+            <option value="">Alle medewerkers</option>
+            {uniqueMedewerkers.map((m) => (
+              <option key={m} value={m}>
+                {m}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex-1 min-w-[200px]">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Project
+          </label>
+          <select
+            value={filterProject}
+            onChange={(e) => setFilterProject(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white hover:border-green-300 focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors"
+          >
+            <option value="">Alle projecten</option>
+            {uniqueProjects.map((p) => (
+              <option key={p} value={p}>
+                {p}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex-1 min-w-[200px]">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Week
+          </label>
+          <select
+            value={filterWeek}
+            onChange={(e) => setFilterWeek(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white hover:border-green-300 focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors"
+          >
+            <option value="">Alle weken</option>
+            {uniqueWeeks.map((w) => (
+              <option key={w} value={w}>
+                Week {w}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {hasActiveFilters && (
+          <button
+            onClick={() => {
+              setFilterMedewerker("");
+              setFilterProject("");
+              setFilterWeek("");
+            }}
+            className="px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors flex items-center gap-2"
+          >
+            <X className="w-4 h-4" />
+            Wissen
+          </button>
+        )}
+      </div>
 
       <div className="overflow-x-auto mb-6">
         <table className="w-full text-sm">
@@ -310,12 +425,19 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
       <div className="pt-6 border-t border-gray-200 bg-green-50 rounded-lg p-4">
         <div className="flex items-center justify-between">
           <span className="text-lg font-semibold text-gray-900">
-            Totaal gewerkte uren deze week:
+            {hasActiveFilters ? "Gefilterde" : "Totaal"} gewerkte uren:
           </span>
           <span className="text-2xl font-bold text-green-700">
-            {totalHours.toFixed(1)} uur
+            {filteredTotalHours.toFixed(1)} uur
           </span>
         </div>
+        {hasActiveFilters && (
+          <p className="text-sm text-gray-600 mt-2">
+            Weergeven voor: {filterMedewerker && `${filterMedewerker}, `}
+            {filterProject && `${filterProject}, `}
+            {filterWeek && `Week ${filterWeek}`}
+          </p>
+        )}
       </div>
 
       {/* Change Log Section */}
