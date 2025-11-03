@@ -328,10 +328,17 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
             </tr>
           </thead>
           <tbody>
-            {hoursData.map((entry, index) => {
-              const status = statuses[entry.id];
-              const statusInfo = statusConfig[status];
-              return (
+            {filteredHoursData.length === 0 ? (
+              <tr>
+                <td colSpan={6} className="py-8 px-4 text-center text-gray-500">
+                  Geen resultaten gevonden voor deze filters
+                </td>
+              </tr>
+            ) : (
+              filteredHoursData.map((entry, index) => {
+                const status = statuses[entry.id];
+                const statusInfo = statusConfig[status];
+                return (
                 <tr
                   key={entry.id}
                   className={`border-b border-gray-100 hover:bg-green-50 transition-colors ${
@@ -417,7 +424,8 @@ export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBrea
                   </td>
                 </tr>
               );
-            })}
+              })
+            )}
           </tbody>
         </table>
       </div>
