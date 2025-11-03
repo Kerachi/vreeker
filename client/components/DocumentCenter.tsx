@@ -5,6 +5,8 @@ import {
   FileText,
   FileImage,
   File,
+  ArrowLeft,
+  FolderOpen,
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -12,59 +14,79 @@ import { Button } from "@/components/ui/button";
 interface DocumentFile {
   id: string;
   name: string;
-  type: "pdf" | "excel" | "image" | "other";
+  type: "pdf" | "excel" | "image" | "word" | "other";
+  size: string;
 }
 
-interface ProjectFolder {
+interface DocumentFolder {
   id: string;
   name: string;
-  icon: string;
+  description: string;
+  icon: React.ReactNode;
+  fileCount: number;
   files: DocumentFile[];
 }
 
-interface FolderCategory {
-  id: string;
-  title: string;
-  projects: ProjectFolder[];
-}
-
-const documentData: FolderCategory[] = [
+const folders: DocumentFolder[] = [
   {
-    id: "projecten",
-    title: "Projecten",
-    projects: [
-      {
-        id: "hoflaan",
-        name: "🌳 Hoflaan Renovatie",
-        icon: "🌳",
-        files: [
-          { id: "1", name: "Offerte_Hoflaan.pdf", type: "pdf" },
-          { id: "2", name: "Planning_Hoflaan.xlsx", type: "excel" },
-          { id: "3", name: "Foto_voor_en_na.jpg", type: "image" },
-        ],
-      },
-      {
-        id: "begraafplaats",
-        name: "🏡 Begraafplaats Hoorn",
-        icon: "🏡",
-        files: [
-          { id: "4", name: "Offerte_Hoorn.pdf", type: "pdf" },
-          { id: "5", name: "Plattegrond_Hoorn.png", type: "image" },
-          { id: "6", name: "Factuur_Hoorn.pdf", type: "pdf" },
-        ],
-      },
+    id: "projectdocumenten",
+    name: "Projectdocumenten",
+    description: "Alle project-gerelateerde documenten",
+    icon: <Folder className="w-8 h-8 text-blue-500" />,
+    fileCount: 12,
+    files: [
+      { id: "1", name: "Offerte_Hoflaan_Renovatie.pdf", type: "pdf", size: "2.4 MB" },
+      { id: "2", name: "Planning_Week_45.xlsx", type: "excel", size: "1.8 MB" },
+      { id: "3", name: "Foto_Voortgang_Project.jpg", type: "image", size: "3.2 MB" },
+      { id: "4", name: "Bestek_Begraafplaats.pdf", type: "pdf", size: "1.6 MB" },
+      { id: "5", name: "Tekening_Grondplan.pdf", type: "pdf", size: "2.1 MB" },
+      { id: "6", name: "Eindrapport_Tuinonderhoud.docx", type: "word", size: "0.9 MB" },
     ],
   },
-];
-
-const hrDocuments: DocumentFile[] = [
-  { id: "7", name: "Contracten_Medewerkers.pdf", type: "pdf" },
-  { id: "8", name: "Handleiding_Dashboard.pdf", type: "pdf" },
-];
-
-const generalDocuments: DocumentFile[] = [
-  { id: "9", name: "Bedrijfsbeleid_2024.pdf", type: "pdf" },
-  { id: "10", name: "Veiligheid_Voorschriften.pdf", type: "pdf" },
+  {
+    id: "hr",
+    name: "HR",
+    description: "Personeelsbestanden en contracten",
+    icon: <FileText className="w-8 h-8 text-green-500" />,
+    fileCount: 8,
+    files: [
+      { id: "7", name: "Arbeidscontract_Mark.pdf", type: "pdf", size: "1.2 MB" },
+      { id: "8", name: "Handleiding_Dashboard.pdf", type: "pdf", size: "3.5 MB" },
+      { id: "9", name: "Personeelsgegevens.xlsx", type: "excel", size: "0.8 MB" },
+      { id: "10", name: "Competentiematrix_2024.pdf", type: "pdf", size: "1.1 MB" },
+      { id: "11", name: "Trainingsplan_Q4.docx", type: "word", size: "0.7 MB" },
+    ],
+  },
+  {
+    id: "offertes-contracten",
+    name: "Offertes & Contracten",
+    description: "Klantoffertes en contractuele documenten",
+    icon: <FileText className="w-8 h-8 text-purple-500" />,
+    fileCount: 15,
+    files: [
+      { id: "12", name: "Offerte_De_Jong_Familie.pdf", type: "pdf", size: "1.8 MB" },
+      { id: "13", name: "Contract_Gemeente_Hoorn.pdf", type: "pdf", size: "2.3 MB" },
+      { id: "14", name: "Offerte_Restaurant_Tuin.pdf", type: "pdf", size: "1.5 MB" },
+      { id: "15", name: "Offertes_Overzicht_2024.xlsx", type: "excel", size: "0.9 MB" },
+      { id: "16", name: "Serviceovereenkomst_Crematorium.pdf", type: "pdf", size: "1.7 MB" },
+      { id: "17", name: "Contract_Template_NL.docx", type: "word", size: "0.6 MB" },
+    ],
+  },
+  {
+    id: "werkinstructies",
+    name: "Werkinstructies",
+    description: "Richtlijnen en procedures",
+    icon: <FileText className="w-8 h-8 text-orange-500" />,
+    fileCount: 9,
+    files: [
+      { id: "18", name: "Veiligheid_Voorschriften.pdf", type: "pdf", size: "2.6 MB" },
+      { id: "19", name: "Bedrijfsbeleid_2024.pdf", type: "pdf", size: "1.4 MB" },
+      { id: "20", name: "Checklist_Projectvoorbereiding.pdf", type: "pdf", size: "0.8 MB" },
+      { id: "21", name: "Instructie_Tuinschaar.pdf", type: "pdf", size: "1.2 MB" },
+      { id: "22", name: "Richtlijnen_Klantenservice.docx", type: "word", size: "0.7 MB" },
+      { id: "23", name: "Noodprotocol_en_EHBO.pdf", type: "pdf", size: "1.9 MB" },
+    ],
+  },
 ];
 
 function getFileIcon(type: string) {
@@ -73,6 +95,8 @@ function getFileIcon(type: string) {
       return <FileText className="w-4 h-4 text-red-500" />;
     case "excel":
       return <FileText className="w-4 h-4 text-green-600" />;
+    case "word":
+      return <FileText className="w-4 h-4 text-blue-600" />;
     case "image":
       return <FileImage className="w-4 h-4 text-blue-500" />;
     default:
@@ -82,52 +106,128 @@ function getFileIcon(type: string) {
 
 function DocumentFile({ file }: { file: DocumentFile }) {
   return (
-    <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-green-300 transition-colors">
+    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-white transition-all">
       <div className="flex items-center gap-3 flex-1 min-w-0">
         {getFileIcon(file.type)}
-        <span className="text-sm text-gray-900 truncate">{file.name}</span>
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium text-gray-900 truncate">{file.name}</p>
+          <p className="text-xs text-gray-600">{file.size}</p>
+        </div>
       </div>
       <Button
         size="sm"
         variant="ghost"
         className="text-green-600 hover:text-green-700 hover:bg-green-50 flex-shrink-0 ml-2"
       >
-        <Download className="w-4 h-4 mr-1" />
-        <span className="hidden sm:inline">Download</span>
+        <Download className="w-4 h-4" />
       </Button>
     </div>
   );
 }
 
-function ProjectSection({ project }: { project: ProjectFolder }) {
-  const [isOpen, setIsOpen] = useState(true);
-
+function FolderCard({
+  folder,
+  onOpen,
+}: {
+  folder: DocumentFolder;
+  onOpen: (folderId: string) => void;
+}) {
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center gap-3 p-4 bg-green-50 hover:bg-green-100 transition-colors"
-      >
-        <Folder className="w-5 h-5 text-green-600" />
-        <span className="font-medium text-gray-900">{project.name}</span>
-        <span className="ml-auto text-xs text-gray-600">
-          {project.files.length} bestand{project.files.length !== 1 ? "en" : ""}
-        </span>
-      </button>
-
-      {isOpen && (
-        <div className="p-4 bg-white space-y-2">
-          {project.files.map((file) => (
-            <DocumentFile key={file.id} file={file} />
-          ))}
+    <button
+      onClick={() => onOpen(folder.id)}
+      className="p-6 bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all text-left group"
+    >
+      <div className="flex items-start justify-between mb-4">
+        <div className="p-3 bg-gray-100 group-hover:bg-green-50 rounded-lg transition-colors">
+          {folder.icon}
         </div>
-      )}
-    </div>
+      </div>
+      <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors">
+        {folder.name}
+      </h3>
+      <p className="text-sm text-gray-600 mb-3">{folder.description}</p>
+      <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+        <span className="text-xs text-gray-500">
+          {folder.fileCount} bestand{folder.fileCount !== 1 ? "en" : ""}
+        </span>
+        <span className="text-green-600 font-medium text-sm">
+          Open →
+        </span>
+      </div>
+    </button>
   );
 }
 
 export default function DocumentCenter() {
+  const [openFolderId, setOpenFolderId] = useState<string | null>(null);
   const [showUploadForm, setShowUploadForm] = useState(false);
+
+  const openFolder = folders.find((f) => f.id === openFolderId);
+
+  if (openFolder) {
+    return (
+      <div className="space-y-6">
+        <button
+          onClick={() => setOpenFolderId(null)}
+          className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 mb-4 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="text-sm font-medium">Terug naar mappen</span>
+        </button>
+
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2 mb-2">
+            <FolderOpen className="w-8 h-8 text-blue-500" />
+            {openFolder.name}
+          </h1>
+          <p className="text-gray-600">{openFolder.description}</p>
+        </div>
+
+        <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="space-y-3">
+            {openFolder.files.map((file) => (
+              <DocumentFile key={file.id} file={file} />
+            ))}
+          </div>
+        </div>
+
+        <Button
+          onClick={() => setShowUploadForm(!showUploadForm)}
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg flex items-center justify-center gap-2"
+        >
+          <Upload className="w-5 h-5" />
+          📤 Bestand uploaden naar {openFolder.name}
+        </Button>
+
+        {showUploadForm && (
+          <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Nieuw document uploaden
+            </h3>
+            <div className="border-2 border-dashed border-green-300 rounded-lg p-8 text-center mb-4">
+              <p className="text-gray-600 mb-2">
+                Sleep een bestand hiernaartoe of klik om te selecteren
+              </p>
+              <input type="file" className="hidden" id="fileInput" />
+              <label
+                htmlFor="fileInput"
+                className="inline-block px-4 py-2 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-colors"
+              >
+                Bestand selecteren
+              </label>
+            </div>
+            <Button
+              variant="outline"
+              onClick={() => setShowUploadForm(false)}
+              className="w-full"
+            >
+              Annuleren
+            </Button>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
@@ -141,40 +241,23 @@ export default function DocumentCenter() {
         </p>
       </div>
 
-      {documentData.map((category) => (
-        <div key={category.id}>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            {category.title}
-          </h2>
-          <div className="space-y-4">
-            {category.projects.map((project) => (
-              <ProjectSection key={project.id} project={project} />
-            ))}
-          </div>
-        </div>
-      ))}
-
-      <div>
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          HR & Administratie
-        </h2>
-        <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-2">
-          {hrDocuments.map((file) => (
-            <DocumentFile key={file.id} file={file} />
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {folders.map((folder) => (
+          <FolderCard
+            key={folder.id}
+            folder={folder}
+            onOpen={() => setOpenFolderId(folder.id)}
+          />
+        ))}
       </div>
 
-      <div>
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          Algemene documenten
-        </h2>
-        <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-2">
-          {generalDocuments.map((file) => (
-            <DocumentFile key={file.id} file={file} />
-          ))}
-        </div>
-      </div>
+      <Button
+        onClick={() => setShowUploadForm(!showUploadForm)}
+        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg flex items-center justify-center gap-2"
+      >
+        <Upload className="w-5 h-5" />
+        📤 Nieuw document uploaden
+      </Button>
 
       {showUploadForm && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-6">
@@ -203,14 +286,6 @@ export default function DocumentCenter() {
           </div>
         </div>
       )}
-
-      <Button
-        onClick={() => setShowUploadForm(!showUploadForm)}
-        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg flex items-center justify-center gap-2"
-      >
-        <Upload className="w-5 h-5" />
-        📤 Nieuw document uploaden
-      </Button>
     </div>
   );
 }
