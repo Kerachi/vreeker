@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
 interface HourEntry {
@@ -10,7 +10,20 @@ interface HourEntry {
   omschrijving: string;
 }
 
+interface LogEntry {
+  timestamp: string;
+  manager: string;
+  medewerker: string;
+  project: string;
+  newStatus: StatusType;
+}
+
 type StatusType = "goedgekeurd" | "in-afwachting" | "afgekeurd";
+type Role = "medewerker" | "manager";
+
+interface HoursBreakdownProps {
+  currentRole?: Role;
+}
 
 const statusConfig = {
   goedgekeurd: {
@@ -91,37 +104,64 @@ const totalHours = hoursData.reduce(
   0,
 );
 
-// Mock current user - in a real app, this would come from auth/context
-const getCurrentUser = () => {
-  // Simulate Antoon as the logged-in user for this session
-  return {
-    name: "Antoon",
-    role: "manager",
-  };
-};
+export default function HoursBreakdown({ currentRole = "medewerker" }: HoursBreakdownProps) {
+  const [statuses, setStatuses] = useState<Record<string, StatusType>>(() => {
+    const saved = localStorage.getItem("hours_statuses");
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return {
+      "1": "goedgekeurd",
+      "2": "goedgekeurd",
+      "3": "in-afwachting",
+      "4": "in-afwachting",
+      "5": "afgekeurd",
+      "6": "goedgekeurd",
+    };
+  });
 
-const isManagerRole = (role: string) => role === "manager";
-
-export default function HoursBreakdown() {
-  const [statuses, setStatuses] = useState<Record<string, StatusType>>({
-    "1": "goedgekeurd",
-    "2": "goedgekeurd",
-    "3": "in-afwachting",
-    "4": "in-afwachting",
-    "5": "afgekeurd",
-    "6": "goedgekeurd",
+  const [logs, setLogs] = useState<LogEntry[]>(() => {
+    const saved = localStorage.getItem("hours_logs");
+    return saved ? JSON.parse(saved) : [];
   });
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const currentUser = getCurrentUser();
-  const canEditStatus = isManagerRole(currentUser.role);
+  const [hoveredRow, setHoveredRow] = useState<string | null>(null);
+  const canEditStatus = currentRole === "manager";
+
+  useEffect(() => {
+    localStorage.setItem("hours_statuses", JSON.stringify(statuses));
+  }, [statuses]);
+
+  useEffect(() => {
+    localStorage.setItem("hours_logs", JSON.stringify(logs));
+  }, [logs]);
 
   const handleStatusChange = (entryId: string, newStatus: StatusType) => {
-    setStatuses((prev) => ({
-      ...prev,
-      [entryId]: newStatus,
-    }));
-    setOpenDropdown(null);
+    const entry = hoursData.find((e) => e.id === entryId);
+    if (entry && canEditStatus) {
+      setStatuses((prev) => ({
+        ...prev,
+        [entryId]: newStatus,
+      }));
+
+      const now = new Date();
+      const timestamp = now.toLocaleTimeString("nl-NL", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      const logEntry: LogEntry = {
+        timestamp,
+        manager: "Antoon",
+        medewerker: entry.medewerker,
+        project: entry.project,
+        newStatus,
+      };
+
+      setLogs((prev) => [logEntry, ...prev]);
+      setOpenDropdown(null);
+    }
   };
 
   const toggleStatus = (entryId: string) => {
