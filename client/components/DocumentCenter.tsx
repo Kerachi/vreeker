@@ -409,6 +409,11 @@ export default function DocumentCenter() {
       </div>
 
       <div className="space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Snelle toegang</h2>
+        <OneDriveCard />
+      </div>
+
+      <div className="space-y-4">
         <h2 className="text-2xl font-bold text-gray-900">
           Automatische bestandsverwerking (Zapier AI)
         </h2>
