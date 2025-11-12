@@ -230,6 +230,48 @@ function DocumentFile({ file }: { file: DocumentFile }) {
   );
 }
 
+interface AutomationCard {
+  id: string;
+  title: string;
+  description?: string;
+  status?: string;
+  detail?: string;
+  icon: React.ReactNode;
+}
+
+function AutomationCardComponent({ automation }: { automation: AutomationCard }) {
+  return (
+    <div className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow">
+      <div className="flex items-start gap-4 mb-4">
+        <div className="p-3 bg-green-50 rounded-lg">
+          {automation.icon}
+        </div>
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-gray-900">
+            {automation.title}
+          </h3>
+          {automation.description && (
+            <p className="text-sm text-gray-600 mt-1">{automation.description}</p>
+          )}
+        </div>
+      </div>
+
+      {automation.status && (
+        <div className="flex items-center gap-2 text-sm text-green-600 font-medium mb-3">
+          <CheckCircle className="w-4 h-4" />
+          {automation.status}
+        </div>
+      )}
+
+      {automation.detail && (
+        <p className="text-sm text-gray-600 bg-gray-50 rounded-lg p-3">
+          {automation.detail}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function FolderCard({
   folder,
   onOpen,
