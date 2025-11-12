@@ -400,12 +400,8 @@ export default function DocumentCenter() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-          📂 Documenten – Centrale opslag
+          📂 Documenten
         </h1>
-        <p className="text-gray-600 mt-2">
-          Alle bedrijfsdocumenten, projectbestanden en administratieve gegevens
-          op één plek.
-        </p>
       </div>
 
       <div className="space-y-4">
@@ -413,22 +409,6 @@ export default function DocumentCenter() {
         <OneDriveCard />
       </div>
 
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-900">
-          Automatische bestandsverwerking (Zapier AI)
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {automations.map((automation) => (
-            <AutomationCardComponent key={automation.id} automation={automation} />
-          ))}
-        </div>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-gray-700">
-          <p>
-            <strong>ℹ️ Opmerking:</strong> Deze processen worden automatisch
-            uitgevoerd via Zapier AI – beheerd door GoForIT.
-          </p>
-        </div>
-      </div>
 
       <div className="space-y-4">
         <h2 className="text-2xl font-bold text-gray-900">Documentmappen</h2>
