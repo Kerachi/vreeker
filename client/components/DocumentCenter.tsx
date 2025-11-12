@@ -29,6 +29,7 @@ interface DocumentFolder {
   icon: React.ReactNode;
   fileCount: number;
   files: DocumentFile[];
+  url?: string;
 }
 
 const folders: DocumentFolder[] = [
