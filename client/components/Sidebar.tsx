@@ -7,6 +7,7 @@ import {
   MessageSquare,
   Package,
   Settings,
+  Zap,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -59,6 +60,12 @@ const navItems: NavItem[] = [
     label: "Prodist",
     icon: <Package className="w-5 h-5" />,
     href: "/prodist",
+  },
+  {
+    id: "automatiseringen",
+    label: "Automatiseringen (Zapier AI)",
+    icon: <Zap className="w-5 h-5" />,
+    href: "/automatiseringen",
   },
   {
     id: "instellingen",
