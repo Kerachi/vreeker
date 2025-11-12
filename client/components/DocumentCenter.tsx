@@ -192,6 +192,15 @@ const folders: DocumentFolder[] = [
       },
     ],
   },
+  {
+    id: "onedrive",
+    name: "OneDrive",
+    description: "Gedeelde bestanden en mappen",
+    icon: <Folder className="w-8 h-8 text-[#0078D4]" />,
+    fileCount: 0,
+    files: [],
+    url: "https://onedrive.live.com/?view=0",
+  },
 ];
 
 function getFileIcon(type: string) {
