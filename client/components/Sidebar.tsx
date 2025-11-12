@@ -83,6 +83,10 @@ const navItems: NavItem[] = [
 
 export default function Sidebar() {
   const location = useLocation();
+  const [badgeVisible, setBadgeVisible] = useState<boolean>(() => {
+    const savedState = localStorage.getItem("zapier-badge-seen");
+    return !savedState;
+  });
 
   const isActive = (href: string) => {
     if (href === "/") {
@@ -91,23 +95,52 @@ export default function Sidebar() {
     return location.pathname.startsWith(href);
   };
 
+  const handleZapierClick = () => {
+    if (badgeVisible) {
+      setBadgeVisible(false);
+      localStorage.setItem("zapier-badge-seen", "true");
+    }
+  };
+
   return (
     <aside className="w-64 bg-white border-r border-gray-200 h-screen overflow-y-auto pt-6">
       <nav className="px-3 space-y-2">
-        {navItems.map((item) => (
-          <Link
-            key={item.id}
-            to={item.href}
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-              isActive(item.href)
-                ? "bg-green-50 text-green-600 font-medium"
-                : "text-gray-700 hover:bg-gray-50"
-            }`}
-          >
-            {item.icon}
-            <span>{item.label}</span>
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          const showBadge =
+            badgeVisible && item.id === "automatiseringen";
+
+          return (
+            <Link
+              key={item.id}
+              to={item.href}
+              onClick={handleZapierClick}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                isActive(item.href)
+                  ? "bg-green-50 text-green-600 font-medium"
+                  : "text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              {item.icon}
+              <span className="flex items-center gap-2">
+                {item.label}
+                {showBadge && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="badge-new">NEW</span>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="right"
+                      className="bg-orange-900 text-white border-orange-800"
+                    >
+                      Nieuwe AI-functie beschikbaar — automatisering met Zapier
+                      AI!
+                    </TooltipContent>
+                  </Tooltip>
+                )}
+              </span>
+            </Link>
+          );
+        })}
       </nav>
     </aside>
   );
