@@ -303,6 +303,27 @@ function FolderCard({
   );
 }
 
+const automations: AutomationCard[] = [
+  {
+    id: "1",
+    title: "N-schijf → OneDrive (Sync actief)",
+    detail: "Laatste update: 14 nov 2025, 10:22",
+    icon: <Cloud className="w-6 h-6 text-blue-600" />,
+  },
+  {
+    id: "2",
+    title: "Nieuwe documenten verplaatsen naar projectmappen",
+    status: "Status: Actief ✅",
+    icon: <Folder className="w-6 h-6 text-green-600" />,
+  },
+  {
+    id: "3",
+    title: "Dashboardmelding bij nieuw bestand",
+    detail: "Voorbeeld: Offerte_VanDerMeer.pdf toegevoegd aan Project Tuin Noord",
+    icon: <Bell className="w-6 h-6 text-orange-600" />,
+  },
+];
+
 export default function DocumentCenter() {
   const [openFolderId, setOpenFolderId] = useState<string | null>(null);
   const [showUploadForm, setShowUploadForm] = useState(false);
