@@ -407,14 +407,34 @@ export default function DocumentCenter() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {folders.map((folder) => (
-          <FolderCard
-            key={folder.id}
-            folder={folder}
-            onOpen={() => setOpenFolderId(folder.id)}
-          />
-        ))}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">
+          Automatische bestandsverwerking (Zapier AI)
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {automations.map((automation) => (
+            <AutomationCardComponent key={automation.id} automation={automation} />
+          ))}
+        </div>
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-gray-700">
+          <p>
+            <strong>ℹ️ Opmerking:</strong> Deze processen worden automatisch
+            uitgevoerd via Zapier AI – beheerd door GoForIT.
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Documentmappen</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {folders.map((folder) => (
+            <FolderCard
+              key={folder.id}
+              folder={folder}
+              onOpen={() => setOpenFolderId(folder.id)}
+            />
+          ))}
+        </div>
       </div>
 
       <Button
