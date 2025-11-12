@@ -7,7 +7,7 @@ interface OneDriveCardProps {
 }
 
 export default function OneDriveCard({
-  title = "OneDrive – Roosters & Documenten",
+  title = "OneDrive – Roosters",
   subtitle = "Klik om de gedeelde OneDrive-map te openen.",
   link = "https://onedrive.live.com/?id=%2Fpersonal%2Fb8f7e8256a931a93%2FDocuments%2FRoosters&viewid=f4dd0e38%2D4fa8%2D452c%2D8a08%2Dd620f6f84613&view=0",
 }: OneDriveCardProps) {
