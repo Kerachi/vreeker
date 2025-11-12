@@ -290,11 +290,8 @@ function FolderCard({
   folder: DocumentFolder;
   onOpen: (folderId: string) => void;
 }) {
-  return (
-    <button
-      onClick={() => onOpen(folder.id)}
-      className="p-6 bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all text-left group"
-    >
+  const cardContent = (
+    <>
       <div className="flex items-start justify-between mb-4">
         <div className="p-3 bg-gray-100 group-hover:bg-green-50 rounded-lg transition-colors">
           {folder.icon}
@@ -310,6 +307,28 @@ function FolderCard({
         </span>
         <span className="text-green-600 font-medium text-sm">Open →</span>
       </div>
+    </>
+  );
+
+  if (folder.url) {
+    return (
+      <a
+        href={folder.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="p-6 bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all text-left group block"
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      onClick={() => onOpen(folder.id)}
+      className="p-6 bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all text-left group"
+    >
+      {cardContent}
     </button>
   );
 }
