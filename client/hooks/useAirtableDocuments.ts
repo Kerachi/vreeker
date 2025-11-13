@@ -1,5 +1,20 @@
 import { useState, useEffect } from "react";
 
+/**
+ * Hook to fetch documents from Airtable API
+ *
+ * Environment Variables (set in DevServerControl or .env):
+ * - VITE_AIRTABLE_BASE_ID: Your Airtable Base ID (e.g., appXXXXXXX)
+ * - VITE_AIRTABLE_API_KEY: Your Airtable Personal Access Token (pat...)
+ *
+ * To update credentials:
+ * 1. Go to https://airtable.com/account/developer/tokens
+ * 2. Copy your personal access token
+ * 3. Update VITE_AIRTABLE_API_KEY in DevServerControl settings or .env.local
+ *
+ * The API automatically fetches from the "Documenten" table with "Grid view"
+ */
+
 export interface AirtableDocument {
   id: string;
   fields: {
