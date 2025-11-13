@@ -15,6 +15,7 @@ import Berichten from "./pages/Berichten";
 import Prodist from "./pages/Prodist";
 import Instellingen from "./pages/Instellingen";
 import Automatiseringen from "./pages/Automatiseringen";
+import Innovatie from "./pages/Innovatie";
 import CustomerPortal from "./pages/CustomerPortal";
 import Feedback from "./pages/Feedback";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -40,6 +41,7 @@ export const App = () => (
           <Route path="/berichten" element={<Berichten />} />
           <Route path="/prodist" element={<Prodist />} />
           <Route path="/automatiseringen" element={<Automatiseringen />} />
+          <Route path="/innovatie" element={<Innovatie />} />
           <Route path="/instellingen" element={<Instellingen />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/customer" element={<CustomerPortal />} />
