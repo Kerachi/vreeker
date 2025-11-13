@@ -24,9 +24,7 @@ export default function OneDriveCard({
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="text-[17px] font-bold text-gray-900 mb-1">
-            {title}
-          </h3>
+          <h3 className="text-[17px] font-bold text-gray-900 mb-1">{title}</h3>
           <p className="text-[13px] text-gray-600">{subtitle}</p>
         </div>
 
