@@ -33,7 +33,7 @@ interface AirtableResponse {
 
 export function useAirtableDocuments() {
   const [documents, setDocuments] = useState<AirtableDocument[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
