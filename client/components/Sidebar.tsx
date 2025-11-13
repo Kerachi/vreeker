@@ -67,10 +67,10 @@ const navItems: NavItem[] = [
     href: "/prodist",
   },
   {
-    id: "automatiseringen",
-    label: "Automatiseringen (Zapier AI)",
+    id: "innovatie",
+    label: "Innovatie",
     icon: <Zap className="w-5 h-5" />,
-    href: "/automatiseringen",
+    href: "/innovatie",
   },
   {
     id: "instellingen",
