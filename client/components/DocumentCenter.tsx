@@ -451,6 +451,21 @@ export default function DocumentCenter() {
         <OneDriveCard />
       </div>
 
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold text-gray-900">Automatisch ingelezen bestanden (OneDrive → Airtable)</h2>
+        <iframe
+          className="airtable-embed"
+          src="https://airtable.com/embed/appHSB36SlsZqJkAi/shrLMiWPAicxPzSdM"
+          frameBorder="0"
+          width="100%"
+          height={700}
+          style={{
+            background: "transparent",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+          }}
+        />
+      </div>
 
       <div className="space-y-4">
         <h2 className="text-2xl font-bold text-gray-900">Documentmappen</h2>
