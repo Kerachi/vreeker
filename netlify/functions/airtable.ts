@@ -30,7 +30,7 @@ const handler: Handler = async (event) => {
           Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     const data = await response.json();

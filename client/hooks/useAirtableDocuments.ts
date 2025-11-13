@@ -42,12 +42,14 @@ export function useAirtableDocuments() {
         setIsLoading(true);
 
         // Call the Netlify Function proxy instead of Airtable directly
-        const response = await fetch("/.netlify/functions/airtable?table=Table%202");
+        const response = await fetch(
+          "/.netlify/functions/airtable?table=Table%202",
+        );
 
         if (!response.ok) {
           const errorData = await response.json();
           throw new Error(
-            `Airtable API error: ${errorData.error || response.statusText}`
+            `Airtable API error: ${errorData.error || response.statusText}`,
           );
         }
 
@@ -55,7 +57,9 @@ export function useAirtableDocuments() {
         setDocuments(data.records);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to fetch documents");
+        setError(
+          err instanceof Error ? err.message : "Failed to fetch documents",
+        );
         setDocuments([]);
       } finally {
         setIsLoading(false);
