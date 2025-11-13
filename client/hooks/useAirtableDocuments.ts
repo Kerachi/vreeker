@@ -39,7 +39,7 @@ export function useAirtableDocuments() {
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
-        setLoading(true);
+        setIsLoading(true);
         const baseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
         const apiKey = import.meta.env.VITE_AIRTABLE_API_KEY;
 
@@ -60,7 +60,8 @@ export function useAirtableDocuments() {
         );
 
         if (!response.ok) {
-          throw new Error(`Airtable API error: ${response.statusText}`);
+          const errorData = await response.json();
+          throw new Error(`Airtable API error: ${errorData.error?.message || response.statusText}`);
         }
 
         const data: AirtableResponse = await response.json();
@@ -70,7 +71,7 @@ export function useAirtableDocuments() {
         setError(err instanceof Error ? err.message : "Failed to fetch documents");
         setDocuments([]);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
