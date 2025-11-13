@@ -78,5 +78,5 @@ export function useAirtableDocuments() {
     fetchDocuments();
   }, []);
 
-  return { documents, loading, error };
+  return { documents, isLoading, error };
 }
