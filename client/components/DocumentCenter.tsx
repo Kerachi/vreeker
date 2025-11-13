@@ -455,6 +455,29 @@ export default function DocumentCenter() {
         </div>
       </div>
 
+      {airtableDocuments.length > 0 && (
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900">Bestanden uit Airtable</h2>
+          {airtableError && (
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-sm text-red-700">
+              Fout bij laden van Airtable-bestanden: {airtableError}
+            </div>
+          )}
+          {airtableLoading && (
+            <div className="text-center py-8 text-gray-600">
+              Bestanden laden...
+            </div>
+          )}
+          {!airtableLoading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {airtableDocuments.map((doc) => (
+                <AirtableDocumentCard key={doc.id} document={doc} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       <Button
         onClick={() => setShowUploadForm(!showUploadForm)}
         className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg flex items-center justify-center gap-2"
