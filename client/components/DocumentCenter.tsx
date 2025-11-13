@@ -438,9 +438,11 @@ export default function DocumentCenter() {
 
       {process.env.NODE_ENV === "development" && (
         <pre style={{ padding: 10, background: "#f5f5f5", borderRadius: 6, fontSize: "12px", overflow: "auto", maxHeight: "200px" }}>
-          {airtableLoading && "Loading Airtable…"}
-          {airtableError && "Error: " + airtableError}
-          {!airtableLoading && !airtableError && JSON.stringify(airtableDocuments, null, 2)}
+          {airtableLoading
+            ? "Loading Airtable…"
+            : airtableError
+            ? "Error: " + airtableError
+            : JSON.stringify(airtableDocuments, null, 2)}
         </pre>
       )}
 
