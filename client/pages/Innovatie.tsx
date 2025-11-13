@@ -18,16 +18,7 @@ function InnovatieCard({
   return (
     <Link
       to={href}
-      className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg transition-all duration-200 p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
-      style={{
-        transform: "translateZ(0)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "scale(1.03)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "scale(1)";
-      }}
+      className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center group cursor-pointer"
     >
       <div
         className={`w-20 h-20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200 ${iconColor}`}
