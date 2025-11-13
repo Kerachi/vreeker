@@ -61,7 +61,10 @@ export function useAirtableDocuments() {
 
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(`Airtable API error: ${errorData.error?.message || response.statusText}`);
+          const url = `https://api.airtable.com/v0/${baseId}/Documenten`;
+          throw new Error(
+            `Airtable API error: ${errorData.error?.message || response.statusText}\n\nURL: ${url}\n\nBase ID: ${baseId}`
+          );
         }
 
         const data: AirtableResponse = await response.json();
