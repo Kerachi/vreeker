@@ -45,7 +45,7 @@ export function useAirtableDocuments() {
 
         if (!baseId || !apiKey) {
           throw new Error(
-            "Airtable credentials not configured. Set VITE_AIRTABLE_BASE_ID and VITE_AIRTABLE_API_KEY environment variables."
+            "Airtable credentials not configured. Set VITE_AIRTABLE_BASE_ID and VITE_AIRTABLE_API_KEY environment variables.",
           );
         }
 
@@ -56,14 +56,14 @@ export function useAirtableDocuments() {
               Authorization: `Bearer ${apiKey}`,
               "Content-Type": "application/json",
             },
-          }
+          },
         );
 
         if (!response.ok) {
           const errorData = await response.json();
           const url = `https://api.airtable.com/v0/${baseId}/Documenten`;
           throw new Error(
-            `Airtable API error: ${errorData.error?.message || response.statusText}\n\nURL: ${url}\n\nBase ID: ${baseId}`
+            `Airtable API error: ${errorData.error?.message || response.statusText}\n\nURL: ${url}\n\nBase ID: ${baseId}`,
           );
         }
 
@@ -71,7 +71,9 @@ export function useAirtableDocuments() {
         setDocuments(data.records);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to fetch documents");
+        setError(
+          err instanceof Error ? err.message : "Failed to fetch documents",
+        );
         setDocuments([]);
       } finally {
         setIsLoading(false);

@@ -120,7 +120,8 @@
 }
 
 @keyframes pulse-badge {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -138,7 +139,7 @@
   letter-spacing: 0.5px;
   padding: 3px 7px;
   border-radius: 12px;
-  background-color: #FF9800;
+  background-color: #ff9800;
   color: white;
   box-shadow: 0 0 6px rgba(255, 152, 0, 0.6);
   animation: pulse-badge 2s ease-in-out infinite;

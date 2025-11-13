@@ -252,19 +252,23 @@ interface AutomationCard {
   icon: React.ReactNode;
 }
 
-function AutomationCardComponent({ automation }: { automation: AutomationCard }) {
+function AutomationCardComponent({
+  automation,
+}: {
+  automation: AutomationCard;
+}) {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow">
       <div className="flex items-start gap-4 mb-4">
-        <div className="p-3 bg-green-50 rounded-lg">
-          {automation.icon}
-        </div>
+        <div className="p-3 bg-green-50 rounded-lg">{automation.icon}</div>
         <div className="flex-1">
           <h3 className="text-lg font-semibold text-gray-900">
             {automation.title}
           </h3>
           {automation.description && (
-            <p className="text-sm text-gray-600 mt-1">{automation.description}</p>
+            <p className="text-sm text-gray-600 mt-1">
+              {automation.description}
+            </p>
           )}
         </div>
       </div>
@@ -351,7 +355,8 @@ const automations: AutomationCard[] = [
   {
     id: "3",
     title: "Dashboardmelding bij nieuw bestand",
-    detail: "Voorbeeld: Offerte_VanDerMeer.pdf toegevoegd aan Project Tuin Noord",
+    detail:
+      "Voorbeeld: Offerte_VanDerMeer.pdf toegevoegd aan Project Tuin Noord",
     icon: <Bell className="w-6 h-6 text-orange-600" />,
   },
 ];
@@ -359,7 +364,11 @@ const automations: AutomationCard[] = [
 export default function DocumentCenter() {
   const [openFolderId, setOpenFolderId] = useState<string | null>(null);
   const [showUploadForm, setShowUploadForm] = useState(false);
-  const { documents: airtableDocuments, isLoading: airtableLoading, error: airtableError } = useAirtableDocuments();
+  const {
+    documents: airtableDocuments,
+    isLoading: airtableLoading,
+    error: airtableError,
+  } = useAirtableDocuments();
 
   const openFolder = folders.find((f) => f.id === openFolderId);
 
@@ -437,12 +446,21 @@ export default function DocumentCenter() {
       </div>
 
       {process.env.NODE_ENV === "development" && (
-        <pre style={{ padding: 10, background: "#f5f5f5", borderRadius: 6, fontSize: "12px", overflow: "auto", maxHeight: "200px" }}>
+        <pre
+          style={{
+            padding: 10,
+            background: "#f5f5f5",
+            borderRadius: 6,
+            fontSize: "12px",
+            overflow: "auto",
+            maxHeight: "200px",
+          }}
+        >
           {airtableLoading
             ? "Loading Airtable…"
             : airtableError
-            ? "Error: " + airtableError
-            : JSON.stringify(airtableDocuments, null, 2)}
+              ? "Error: " + airtableError
+              : JSON.stringify(airtableDocuments, null, 2)}
         </pre>
       )}
 
@@ -450,7 +468,6 @@ export default function DocumentCenter() {
         <h2 className="text-2xl font-bold text-gray-900">Snelle toegang</h2>
         <OneDriveCard />
       </div>
-
 
       <div className="space-y-4">
         <h2 className="text-2xl font-bold text-gray-900">Documentmappen</h2>
@@ -466,7 +483,9 @@ export default function DocumentCenter() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-900">Automatisch ingelezen bestanden (OneDrive → Airtable)</h2>
+        <h2 className="text-2xl font-bold text-gray-900">
+          Automatisch ingelezen bestanden (OneDrive → Airtable)
+        </h2>
         <div className="bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all p-6">
           <iframe
             className="airtable-embed"
@@ -474,14 +493,20 @@ export default function DocumentCenter() {
             frameBorder="0"
             width="100%"
             height="533"
-            style={{ background: "white", borderRadius: "12px", border: "1px solid #eee" }}
+            style={{
+              background: "white",
+              borderRadius: "12px",
+              border: "1px solid #eee",
+            }}
           />
         </div>
       </div>
 
       {airtableDocuments.length > 0 && (
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900">Bestanden uit Airtable</h2>
+          <h2 className="text-2xl font-bold text-gray-900">
+            Bestanden uit Airtable
+          </h2>
           {airtableError && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-sm text-red-700">
               Fout bij laden van Airtable-bestanden: {airtableError}
