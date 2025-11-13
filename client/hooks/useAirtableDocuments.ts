@@ -50,7 +50,7 @@ export function useAirtableDocuments() {
         }
 
         const response = await fetch(
-          `https://api.airtable.com/v0/${baseId}/Table%202`,
+          `https://api.airtable.com/v0/${baseId}/Documenten`,
           {
             headers: {
               Authorization: `Bearer ${apiKey}`,
