@@ -1,6 +1,6 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import { Link } from "react-router-dom";
-import { Zap, Database } from "lucide-react";
+import { Zap, Database, Box } from "lucide-react";
 
 function InnovatieCard({
   title,
@@ -47,22 +47,78 @@ export default function Innovatie() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-8 justify-center md:justify-start">
-          <InnovatieCard
-            title="Zapier Automatiseringen"
-            subtitle="Bekijk alle workflows die het dashboard ondersteunen"
-            icon={<Zap className="w-10 h-10 text-white" />}
-            iconColor="bg-orange-500"
-            href="/automatiseringen"
-          />
+        <div className="flex flex-col gap-8">
+          {/* Minor 2025 Labels */}
+          <div className="flex flex-wrap gap-8 justify-center md:justify-start">
+            <div className="w-[280px]">
+              <div className="bg-[#FAD1E8] text-[#333] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4">
+                Minor 2025
+              </div>
+            </div>
+            <div className="w-[280px]">
+              <div className="bg-[#FAD1E8] text-[#333] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4">
+                Minor 2025
+              </div>
+            </div>
+          </div>
 
-          <InnovatieCard
-            title="Airtable Databronnen"
-            subtitle="Bekijk de tabellen die voor het dashboard gebruikt worden"
-            icon={<Database className="w-10 h-10 text-white" />}
-            iconColor="bg-blue-600"
-            href="/documenten"
-          />
+          {/* Existing Cards */}
+          <div className="flex flex-wrap gap-8 justify-center md:justify-start">
+            <InnovatieCard
+              title="Zapier Automatiseringen"
+              subtitle="Bekijk alle workflows die het dashboard ondersteunen"
+              icon={<Zap className="w-10 h-10 text-white" />}
+              iconColor="bg-orange-500"
+              href="/automatiseringen"
+            />
+
+            <InnovatieCard
+              title="Airtable Databronnen"
+              subtitle="Bekijk de tabellen die voor het dashboard gebruikt worden"
+              icon={<Database className="w-10 h-10 text-white" />}
+              iconColor="bg-blue-600"
+              href="/documenten"
+            />
+          </div>
+
+          {/* Coming Soon Cards */}
+          <div className="flex flex-wrap gap-8 justify-center md:justify-start">
+            <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
+              <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
+                <Box className="w-10 h-10 text-gray-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Coming Soon
+              </h3>
+              <p className="text-sm text-[#777]">
+                Nieuwe functies worden hier toegevoegd
+              </p>
+            </div>
+
+            <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
+              <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
+                <Box className="w-10 h-10 text-gray-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Coming Soon
+              </h3>
+              <p className="text-sm text-[#777]">
+                Nieuwe functies worden hier toegevoegd
+              </p>
+            </div>
+
+            <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
+              <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
+                <Box className="w-10 h-10 text-gray-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Coming Soon
+              </h3>
+              <p className="text-sm text-[#777]">
+                Nieuwe functies worden hier toegevoegd
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </DashboardLayout>
