@@ -8,6 +8,7 @@ import {
   Package,
   Settings,
   Zap,
+  FlaskConical,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -69,7 +70,7 @@ const navItems: NavItem[] = [
   {
     id: "innovatie",
     label: "Innovatie",
-    icon: <Zap className="w-5 h-5" />,
+    icon: <FlaskConical className="w-5 h-5" />,
     href: "/innovatie",
   },
   {
