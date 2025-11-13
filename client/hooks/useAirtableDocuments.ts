@@ -40,28 +40,15 @@ export function useAirtableDocuments() {
     const fetchDocuments = async () => {
       try {
         setIsLoading(true);
-        const baseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
-        const apiKey = import.meta.env.VITE_AIRTABLE_API_KEY;
 
-        if (!baseId || !apiKey) {
-          throw new Error(
-            "Airtable credentials not configured. Set VITE_AIRTABLE_BASE_ID and VITE_AIRTABLE_API_KEY environment variables."
-          );
-        }
-
-        const response = await fetch(
-          `https://api.airtable.com/v0/${baseId}/Table%202`,
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        // Call the Netlify Function proxy instead of Airtable directly
+        const response = await fetch("/.netlify/functions/airtable?table=Table%202");
 
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(`Airtable API error: ${errorData.error?.message || response.statusText}`);
+          throw new Error(
+            `Airtable API error: ${errorData.error || response.statusText}`
+          );
         }
 
         const data: AirtableResponse = await response.json();
