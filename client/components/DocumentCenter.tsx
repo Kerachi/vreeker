@@ -359,7 +359,7 @@ const automations: AutomationCard[] = [
 export default function DocumentCenter() {
   const [openFolderId, setOpenFolderId] = useState<string | null>(null);
   const [showUploadForm, setShowUploadForm] = useState(false);
-  const { documents: airtableDocuments, loading: airtableLoading, error: airtableError } = useAirtableDocuments();
+  const { documents: airtableDocuments, isLoading: airtableLoading, error: airtableError } = useAirtableDocuments();
 
   const openFolder = folders.find((f) => f.id === openFolderId);
 
