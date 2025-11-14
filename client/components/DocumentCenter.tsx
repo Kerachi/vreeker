@@ -439,12 +439,6 @@ export default function DocumentCenter() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-          📂 Documenten
-        </h1>
-      </div>
-
       <div className="space-y-4">
         <h2 className="text-2xl font-bold text-gray-900">Snelle toegang</h2>
         <OneDriveCard />
