@@ -445,25 +445,6 @@ export default function DocumentCenter() {
         </h1>
       </div>
 
-      {process.env.NODE_ENV === "development" && (
-        <pre
-          style={{
-            padding: 10,
-            background: "#f5f5f5",
-            borderRadius: 6,
-            fontSize: "12px",
-            overflow: "auto",
-            maxHeight: "200px",
-          }}
-        >
-          {airtableLoading
-            ? "Loading Airtable…"
-            : airtableError
-              ? "Error: " + airtableError
-              : JSON.stringify(airtableDocuments, null, 2)}
-        </pre>
-      )}
-
       <div className="space-y-4">
         <h2 className="text-2xl font-bold text-gray-900">Snelle toegang</h2>
         <OneDriveCard />
