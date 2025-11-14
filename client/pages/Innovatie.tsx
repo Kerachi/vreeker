@@ -39,7 +39,7 @@ export default function Innovatie() {
       <div className="p-8">
         <div className="mb-12">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Innovatie – Automatisering & Data Integratie
+            Innovatie
           </h1>
           <p className="text-gray-600 text-lg">
             Hier zie je welke technologieën het Vreeker dashboard slim en
