@@ -71,7 +71,7 @@ export default function Innovatie() {
               </div>
               <InnovatieCard
                 title="Airtable Databronnen"
-                subtitle="Bekijk de tabellen die voor het dashboard gebruikt worden"
+                subtitle="Bekijk de tabellen."
                 icon={<Database className="w-10 h-10 text-white" />}
                 iconColor="bg-blue-600"
                 href="/documenten"
