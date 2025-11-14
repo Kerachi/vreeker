@@ -42,7 +42,7 @@ export default function Automatiseringen() {
           </p>
         </div>
 
-        <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="mb-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
           <AutomationCard
             href="https://zapier.com/editor/333185153/draft/_GEN_1763126233202/sample"
             imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Fddd9cd674d96448a806ab35993f7233a?format=webp&width=800"
@@ -56,6 +56,13 @@ export default function Automatiseringen() {
             imageAlt="OneDrive naar Airtable Automatisering Flow"
             title="OneDrive → Airtable Automatisering"
             subtitle="Nieuw bestand in OneDrive → Automatische sync naar Airtable voorraad"
+          />
+          <AutomationCard
+            href="https://zapier.com/editor/00000000-0000-c000-8000-000333663790/published"
+            imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F246951a4d35f4a14bcb89ea8834d628d?format=webp&width=800"
+            imageAlt="Excel naar Airtable Automatisering Flow"
+            title="Excel → Airtable Automatisering"
+            subtitle="Excel-documenten in OneDrive → Automatisch synchroniseren naar Airtable"
           />
         </div>
       </div>
