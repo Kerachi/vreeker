@@ -55,14 +55,12 @@ export default function Automatiseringen() {
             imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F409e09b6177b457baaa53910d7b2042b?format=webp&width=800"
             imageAlt="OneDrive naar Airtable Automatisering Flow"
             title="OneDrive → Airtable Automatisering"
-            subtitle="Nieuw bestand in OneDrive → Automatische sync naar Airtable voorraad"
           />
           <AutomationCard
             href="https://zapier.com/editor/00000000-0000-c000-8000-000333663790/published"
             imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F246951a4d35f4a14bcb89ea8834d628d?format=webp&width=800"
             imageAlt="Excel naar Airtable Automatisering Flow"
             title="Excel → Airtable Automatisering"
-            subtitle="Excel-documenten in OneDrive → Automatisch synchroniseren naar Airtable"
           />
         </div>
       </div>
