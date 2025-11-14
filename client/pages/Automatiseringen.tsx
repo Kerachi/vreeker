@@ -1,24 +1,32 @@
 import DashboardLayout from "@/components/DashboardLayout";
 
-function FeaturedAutomationCard() {
+function AutomationCard({
+  href,
+  imageSrc,
+  imageAlt,
+  title,
+  subtitle,
+}: {
+  href: string;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  subtitle: string;
+}) {
   return (
     <a
-      href="https://zapier.com/editor/333185153/draft/_GEN_1763126233202/sample"
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block w-full max-w-[700px] h-[300px] bg-white rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
+      className="block w-full h-[300px] bg-white rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
     >
       <img
-        src="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Fddd9cd674d96448a806ab35993f7233a?format=webp&width=800"
-        alt="OneDrive naar Email en WhatsApp Automatisering Flow"
+        src={imageSrc}
+        alt={imageAlt}
         className="w-[80%] max-w-[300px] mb-4"
       />
-      <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">
-        OneDrive Automatisering
-      </h2>
-      <p className="text-gray-600 text-sm">
-        Nieuw bestand in OneDrive → Emailmelding + WhatsApp notificatie
-      </p>
+      <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">{title}</h2>
+      <p className="text-gray-600 text-sm">{subtitle}</p>
     </a>
   );
 }
@@ -34,8 +42,21 @@ export default function Automatiseringen() {
           </p>
         </div>
 
-        <div className="mb-8">
-          <FeaturedAutomationCard />
+        <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <AutomationCard
+            href="https://zapier.com/editor/333185153/draft/_GEN_1763126233202/sample"
+            imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Fddd9cd674d96448a806ab35993f7233a?format=webp&width=800"
+            imageAlt="OneDrive naar Email en WhatsApp Automatisering Flow"
+            title="OneDrive Automatisering"
+            subtitle="Nieuw bestand in OneDrive → Emailmelding + WhatsApp notificatie"
+          />
+          <AutomationCard
+            href="https://zapier.com/editor/333453784/draft/_GEN_1763063772959/filter"
+            imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F409e09b6177b457baaa53910d7b2042b?format=webp&width=800"
+            imageAlt="OneDrive naar Airtable Automatisering Flow"
+            title="OneDrive → Airtable Automatisering"
+            subtitle="Nieuw bestand in OneDrive → Automatische sync naar Airtable voorraad"
+          />
         </div>
       </div>
     </DashboardLayout>
