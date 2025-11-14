@@ -45,7 +45,7 @@ const navItems: NavItem[] = [
   },
   {
     id: "documenten",
-    label: "Documenten",
+    label: "Documenten + Voorraad",
     icon: <FileText className="w-5 h-5" />,
     href: "/documenten",
   },
