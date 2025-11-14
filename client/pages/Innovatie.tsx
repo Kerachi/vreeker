@@ -118,6 +118,53 @@ export default function Innovatie() {
                 Nieuwe functies worden hier toegevoegd
               </p>
             </div>
+
+            {/* New Coming Soon Cards with Labels */}
+            <div>
+              <div className="bg-[#FAD1E8] text-[#333] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4 w-[280px]">
+                Minor 2025
+              </div>
+              <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
+                <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
+                  <Box className="w-10 h-10 text-gray-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Coming Soon
+                </h3>
+                <p className="text-sm text-[#777]">
+                  Nieuwe functies worden hier toegevoegd
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <div className="bg-[#FAD1E8] text-[#333] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4 w-[280px]">
+                Minor 2025
+              </div>
+              <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
+                <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
+                  <Box className="w-10 h-10 text-gray-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Coming Soon
+                </h3>
+                <p className="text-sm text-[#777]">
+                  Nieuwe functies worden hier toegevoegd
+                </p>
+              </div>
+            </div>
+
+            <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
+              <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
+                <Box className="w-10 h-10 text-gray-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Coming Soon
+              </h3>
+              <p className="text-sm text-[#777]">
+                Nieuwe functies worden hier toegevoegd
+              </p>
+            </div>
           </div>
         </div>
       </div>
