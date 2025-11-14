@@ -10,7 +10,7 @@ function AutomationCard({
   href: string;
   imageSrc: string;
   imageAlt: string;
-  title: string;
+  title?: string;
   subtitle?: string;
 }) {
   return (
@@ -25,7 +25,7 @@ function AutomationCard({
         alt={imageAlt}
         className="w-[80%] max-w-[300px] mb-4"
       />
-      <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">{title}</h2>
+      {title && <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">{title}</h2>}
       {subtitle && <p className="text-gray-600 text-sm">{subtitle}</p>}
     </a>
   );
@@ -54,13 +54,11 @@ export default function Automatiseringen() {
             href="https://zapier.com/editor/333453784/draft/_GEN_1763063772959/filter"
             imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F409e09b6177b457baaa53910d7b2042b?format=webp&width=800"
             imageAlt="OneDrive naar Airtable Automatisering Flow"
-            title="OneDrive → Airtable Automatisering"
           />
           <AutomationCard
             href="https://zapier.com/editor/00000000-0000-c000-8000-000333663790/published"
             imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F246951a4d35f4a14bcb89ea8834d628d?format=webp&width=800"
             imageAlt="Excel naar Airtable Automatisering Flow"
-            title="Excel → Airtable Automatisering"
           />
         </div>
       </div>
