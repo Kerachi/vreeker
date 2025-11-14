@@ -57,7 +57,7 @@ export default function Innovatie() {
               </div>
               <InnovatieCard
                 title="Zapier Automatiseringen"
-                subtitle="Bekijk alle workflows die het dashboard ondersteunen"
+                subtitle="Bekijk alle workflows."
                 icon={<Zap className="w-10 h-10 text-white" />}
                 iconColor="bg-orange-500"
                 href="/automatiseringen"
