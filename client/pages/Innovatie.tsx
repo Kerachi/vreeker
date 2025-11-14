@@ -42,8 +42,7 @@ export default function Innovatie() {
             Innovatie
           </h1>
           <p className="text-gray-600 text-lg">
-            Hier zie je welke technologieën het Vreeker dashboard slim en
-            actueel houden.
+            Hier zie je welke technologieën Vreeker slim en actueel houden.
           </p>
         </div>
 
