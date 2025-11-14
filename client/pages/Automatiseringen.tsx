@@ -11,7 +11,7 @@ function AutomationCard({
   imageSrc: string;
   imageAlt: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
 }) {
   return (
     <a
@@ -26,7 +26,7 @@ function AutomationCard({
         className="w-[80%] max-w-[300px] mb-4"
       />
       <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">{title}</h2>
-      <p className="text-gray-600 text-sm">{subtitle}</p>
+      {subtitle && <p className="text-gray-600 text-sm">{subtitle}</p>}
     </a>
   );
 }
