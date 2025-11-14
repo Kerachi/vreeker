@@ -445,40 +445,7 @@ export default function DocumentCenter() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-900">
-          Automatisch ingelezen bestanden (OneDrive → Airtable)
-        </h2>
-        <iframe
-          className="airtable-embed"
-          src="https://airtable.com/embed/appHSB36SlsZqJkAi/shrLMiWPAicxPzSdM"
-          frameBorder="0"
-          width="100%"
-          height={700}
-          style={{
-            background: "transparent",
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-          }}
-        />
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-900">Documentmappen</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {folders.map((folder) => (
-            <FolderCard
-              key={folder.id}
-              folder={folder}
-              onOpen={() => setOpenFolderId(folder.id)}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-900">
-          Automatisch ingelezen bestanden (OneDrive → Airtable)
-        </h2>
+        <h2 className="text-2xl font-bold text-gray-900">Airtable</h2>
         <div className="bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all p-6">
           <iframe
             className="airtable-embed"
