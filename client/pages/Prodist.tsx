@@ -176,7 +176,7 @@ export default function Prodist() {
 
   return (
     <DashboardLayout>
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8 w-full max-w-full">
         <div className="mb-8">
           <div className="flex items-start justify-between">
             <div>
