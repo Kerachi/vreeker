@@ -75,6 +75,25 @@ export default function Index() {
             <TeamUpdates />
           </div>
         </div>
+
+        {/* Watermark */}
+        <div
+          className="fixed bottom-[30px] right-[30px] pointer-events-none"
+          style={{
+            zIndex: 9999,
+            animation: "floatWave 4s ease-in-out infinite",
+          }}
+        >
+          <span
+            className="text-lg font-semibold"
+            style={{
+              color: "#ff69b4",
+              opacity: 0.3,
+            }}
+          >
+            Prototype 1 – Visueel
+          </span>
+        </div>
       </div>
     </DashboardLayout>
   );
