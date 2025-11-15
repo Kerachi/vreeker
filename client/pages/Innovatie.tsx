@@ -78,7 +78,7 @@ export default function Innovatie() {
             {/* Coming Soon with label 1 */}
             <div>
               <div className="bg-[#FAD1E8] text-[#333] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4 w-[280px]">
-                Minor 2025
+                Q4 2025
               </div>
               <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
                 <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
