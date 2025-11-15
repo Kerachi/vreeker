@@ -483,8 +483,18 @@ export default function DocumentCenter() {
       )}
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-900">Snelle toegang</h2>
-        <OneDriveCard />
+        <a
+          href="https://airtable.com/appHSB36SlsZqJkAi/wflIMJDRve8FhzRNE?editorMode=configuration"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full h-[300px] bg-white rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
+        >
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Fcae7148ac31c40a08c5c728211650ce4?format=webp&width=800"
+            alt="Airtable naar Email Automatisering Flow"
+            className="w-[80%] max-w-[300px]"
+          />
+        </a>
       </div>
     </div>
   );
