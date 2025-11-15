@@ -61,6 +61,26 @@ export default function Automatiseringen() {
             imageAlt="Excel naar Airtable Automatisering Flow"
           />
         </div>
+
+        {/* Watermark */}
+        <div
+          className="fixed bottom-[30px] right-[30px] pointer-events-none"
+          style={{
+            zIndex: 9999,
+            animation: "floatWave 4s ease-in-out infinite",
+          }}
+        >
+          <span
+            className="font-semibold"
+            style={{
+              color: "#ff69b4",
+              opacity: 0.3,
+              fontSize: "96px",
+            }}
+          >
+            Prototype 2 – Functioneel
+          </span>
+        </div>
       </div>
     </DashboardLayout>
   );
