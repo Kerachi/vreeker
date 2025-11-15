@@ -481,7 +481,7 @@ export default function DocumentCenter() {
         </div>
       )}
 
-      <div className="space-y-4 flex justify-center">
+      <div className="space-y-4 flex justify-start items-start">
         <a
           href="https://airtable.com/appHSB36SlsZqJkAi/wflIMJDRve8FhzRNE?editorMode=configuration"
           target="_blank"
