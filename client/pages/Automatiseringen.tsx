@@ -18,17 +18,17 @@ function AutomationCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block w-full h-[300px] bg-white rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
+      className="block w-full h-[250px] sm:h-[300px] bg-white rounded-lg sm:rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-4 sm:p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
     >
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="w-[80%] max-w-[300px] mb-4"
+        className="w-[80%] max-w-[200px] sm:max-w-[300px] mb-2 sm:mb-4 object-contain"
       />
       {title && (
-        <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">{title}</h2>
+        <h2 className="text-lg sm:text-2xl font-bold text-[#1a1a1a] mb-1 sm:mb-2 line-clamp-2">{title}</h2>
       )}
-      {subtitle && <p className="text-gray-600 text-sm">{subtitle}</p>}
+      {subtitle && <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">{subtitle}</p>}
     </a>
   );
 }
