@@ -18,17 +18,23 @@ function AutomationCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block w-full h-[300px] bg-white rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
+      className="block w-full h-[250px] sm:h-[300px] bg-white rounded-lg sm:rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-4 sm:p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
     >
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="w-[80%] max-w-[300px] mb-4"
+        className="w-[80%] max-w-[200px] sm:max-w-[300px] mb-2 sm:mb-4 object-contain"
       />
       {title && (
-        <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">{title}</h2>
+        <h2 className="text-lg sm:text-2xl font-bold text-[#1a1a1a] mb-1 sm:mb-2 line-clamp-2">
+          {title}
+        </h2>
       )}
-      {subtitle && <p className="text-gray-600 text-sm">{subtitle}</p>}
+      {subtitle && (
+        <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">
+          {subtitle}
+        </p>
+      )}
     </a>
   );
 }
@@ -36,7 +42,7 @@ function AutomationCard({
 export default function Automatiseringen() {
   return (
     <DashboardLayout>
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8 w-full max-w-full">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Automatiseringen</h1>
           <p className="text-gray-600 mt-2">
@@ -66,18 +72,17 @@ export default function Automatiseringen() {
 
         {/* Watermark */}
         <div
-          className="fixed bottom-[30px] right-[30px] pointer-events-none"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-[30px] lg:right-[30px] pointer-events-none"
           style={{
             zIndex: 9999,
             animation: "floatWave 4s ease-in-out infinite",
           }}
         >
           <span
-            className="font-semibold"
+            className="font-semibold text-2xl sm:text-5xl lg:text-9xl"
             style={{
               color: "#ff69b4",
               opacity: 0.3,
-              fontSize: "96px",
             }}
           >
             Prototype 2 – Functioneel

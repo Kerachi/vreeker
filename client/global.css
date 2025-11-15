@@ -103,8 +103,16 @@
     @apply border-border;
   }
 
+  html,
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body {
+    overflow-y: auto;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
@@ -116,6 +124,31 @@
   code {
     overflow-x: auto;
     white-space: pre;
+  }
+
+  /* Mobile-first responsive typography */
+  h1 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+
+  p,
+  span,
+  a,
+  button {
+    @apply text-sm md:text-base;
+  }
+
+  /* Ensure minimum text size for accessibility */
+  body {
+    font-size: clamp(14px, 2vw, 16px);
   }
 }
 
