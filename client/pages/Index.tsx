@@ -89,7 +89,7 @@ export default function Index() {
             style={{
               color: "#ff69b4",
               opacity: 0.3,
-              fontSize: "32px",
+              fontSize: "56px",
             }}
           >
             Prototype 1 – Visueel
