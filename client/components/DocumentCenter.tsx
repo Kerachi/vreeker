@@ -439,7 +439,6 @@ export default function DocumentCenter() {
   return (
     <div className="space-y-8">
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-900">Airtable</h2>
         <div className="bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all p-6">
           <iframe
             className="airtable-embed"
