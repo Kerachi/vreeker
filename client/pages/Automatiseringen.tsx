@@ -26,9 +26,15 @@ function AutomationCard({
         className="w-[80%] max-w-[200px] sm:max-w-[300px] mb-2 sm:mb-4 object-contain"
       />
       {title && (
-        <h2 className="text-lg sm:text-2xl font-bold text-[#1a1a1a] mb-1 sm:mb-2 line-clamp-2">{title}</h2>
+        <h2 className="text-lg sm:text-2xl font-bold text-[#1a1a1a] mb-1 sm:mb-2 line-clamp-2">
+          {title}
+        </h2>
       )}
-      {subtitle && <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">{subtitle}</p>}
+      {subtitle && (
+        <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">
+          {subtitle}
+        </p>
+      )}
     </a>
   );
 }
