@@ -4,7 +4,7 @@ import WeeklySchedule from "@/components/WeeklySchedule";
 export default function Planning() {
   return (
     <DashboardLayout>
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8 w-full max-w-full">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Planning</h1>
           <p className="text-gray-600 mt-2">
