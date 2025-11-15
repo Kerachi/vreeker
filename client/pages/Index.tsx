@@ -85,10 +85,11 @@ export default function Index() {
           }}
         >
           <span
-            className="text-lg font-semibold"
+            className="font-semibold"
             style={{
               color: "#ff69b4",
               opacity: 0.3,
+              fontSize: "32px",
             }}
           >
             Prototype 1 – Visueel
