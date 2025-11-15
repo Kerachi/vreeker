@@ -38,9 +38,7 @@ export default function Innovatie() {
     <DashboardLayout>
       <div className="p-8">
         <div className="mb-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Innovatie
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Innovatie</h1>
           <p className="text-gray-600 text-lg">
             Hier zie je welke technologieën Vreeker slim en actueel houden.
           </p>
