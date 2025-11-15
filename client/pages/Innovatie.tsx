@@ -96,10 +96,10 @@ export default function Innovatie() {
 
           {/* Bottom Row - Coming Soon cards */}
           <div className="flex flex-wrap gap-8 justify-center md:justify-start">
-            {/* Coming Soon with Minor 2026 label */}
+            {/* Coming Soon with Q1 2026 label */}
             <div>
               <div className="bg-[#C9A0FF] text-[#4B2E83] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4 w-[280px]">
-                Minor 2026
+                Q1 2026
               </div>
               <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
                 <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
@@ -114,10 +114,10 @@ export default function Innovatie() {
               </div>
             </div>
 
-            {/* Coming Soon with Stagiair 2026 label */}
+            {/* Coming Soon with Q2 2026 label */}
             <div>
               <div className="bg-[#A7C7FF] text-[#1E3A8A] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4 w-[280px]">
-                Stagiair 2026
+                Q2 2026
               </div>
               <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
                 <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
@@ -132,10 +132,10 @@ export default function Innovatie() {
               </div>
             </div>
 
-            {/* Coming Soon with Bedrijf X 2027 label */}
+            {/* Coming Soon with Q3 2026 label */}
             <div>
               <div className="bg-[#F2F2F2] text-[#000000] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4 w-[280px]">
-                Bedrijf X 2027
+                Q3 2026
               </div>
               <div className="w-[280px] h-[280px] bg-white rounded-[12px] shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center justify-center text-center cursor-not-allowed opacity-75">
                 <div className="w-20 h-20 rounded-lg flex items-center justify-center mb-4 bg-gray-100">
