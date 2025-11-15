@@ -50,7 +50,7 @@ export default function Innovatie() {
             {/* Zapier with label */}
             <div>
               <div className="bg-[#FAD1E8] text-[#333] font-bold text-sm rounded-lg px-4 py-2 text-center mb-4 w-[280px]">
-                Minor 2025
+                Q4 2025
               </div>
               <InnovatieCard
                 title="Zapier Automatiseringen"
