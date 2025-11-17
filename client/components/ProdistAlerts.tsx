@@ -44,6 +44,12 @@ export default function ProdistAlerts() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
+        {/* Help Badge - Top Right */}
+        <div className="absolute top-3 right-3 z-10">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-100 rounded-full border border-green-300">
+            <span className="text-xs font-medium text-green-800">Hover hier voor de huidige knelpunt oplossing</span>
+          </div>
+        </div>
 
         {/* Main Content */}
         <div className="flex items-start gap-3">
