@@ -42,11 +42,18 @@ const projects = [
 ];
 
 export default function Index() {
+  useEffect(() => {
+    document.title = "Blueprint - Vreeker BV";
+  }, []);
+
   return (
     <DashboardLayout>
       <div className="p-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <div className="flex items-center gap-2">
+            <Layout className="w-8 h-8 text-blue-600" />
+            <h1 className="text-3xl font-bold text-gray-900">Blueprint</h1>
+          </div>
           <p className="text-gray-600 mt-2">
             Welkom terug! Hier is uw overzicht van actieve projecten.
           </p>
