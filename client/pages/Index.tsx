@@ -83,8 +83,9 @@ export default function Index() {
             <TodayPlanner />
           </div>
 
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 space-y-8">
             <TeamUpdates />
+            <DocumentManagementPreview />
           </div>
         </div>
 
