@@ -149,7 +149,7 @@ export default function ProdistAlerts() {
               className="w-full h-80 rounded-lg object-cover mb-4"
             />
             <p className="text-sm text-gray-700 text-center leading-relaxed font-medium">
-              Echte oplossing: automatische e-mail bij 'Geen voorraad ❌'.
+              Bonus: automatische e-mail bij 'Geen voorraad ❌'.
             </p>
           </div>
         </div>
