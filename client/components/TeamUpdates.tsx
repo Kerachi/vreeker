@@ -137,11 +137,11 @@ export default function TeamUpdates() {
   ];
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col h-full">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-white rounded-lg border border-gray-200 p-3 flex flex-col">
+      <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
-          <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-            <MessageCircle className="w-5 h-5 text-green-600" />
+          <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-1">
+            <MessageCircle className="w-4 h-4 text-green-600" />
             Teamupdates
           </h2>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
@@ -151,7 +151,7 @@ export default function TeamUpdates() {
       </div>
 
       {/* Category Filter Tags */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-1.5 mb-2">
         {categories.map((category) => {
           const colors = categoryColors[category];
           const isActive = selectedCategory === category;
@@ -159,7 +159,7 @@ export default function TeamUpdates() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
+              className={`px-2 py-0.5 rounded-full text-xs font-medium transition-all ${
                 isActive
                   ? `${colors.bg} ${colors.text} border-2 border-current`
                   : `border border-gray-300 text-gray-700 hover:border-gray-400`
@@ -172,9 +172,9 @@ export default function TeamUpdates() {
       </div>
 
       {/* Updates List */}
-      <div className="flex-1 overflow-y-auto space-y-3 mb-4">
+      <div className="overflow-y-auto space-y-1 mb-2 max-h-[280px]">
         {updates.length === 0 ? (
-          <p className="text-sm text-gray-500 text-center py-8">
+          <p className="text-xs text-gray-500 text-center py-3">
             Geen updates. Voeg er een toe om te beginnen!
           </p>
         ) : (
@@ -187,24 +187,24 @@ export default function TeamUpdates() {
             return (
               <div
                 key={update.id}
-                className={`rounded-lg p-4 border ${colors.border} bg-gradient-to-r from-white to-gray-50 hover:shadow-sm transition-all`}
+                className={`rounded-lg p-2 border ${colors.border} bg-gradient-to-r from-white to-gray-50 hover:shadow-sm transition-all`}
               >
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2">
                   {update.icon && (
-                    <span className="text-lg flex-shrink-0">{update.icon}</span>
+                    <span className="text-base flex-shrink-0">{update.icon}</span>
                   )}
                   {priorityIcon && (
                     <span
-                      className="text-lg flex-shrink-0"
+                      className="text-base flex-shrink-0"
                       title={update.priority}
                     >
                       {priorityIcon}
                     </span>
                   )}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
                       <span
-                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}
+                        className={`inline-flex items-center px-1.5 py-0 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}
                       >
                         {update.category}
                       </span>
@@ -212,13 +212,13 @@ export default function TeamUpdates() {
                         {update.timestamp}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-900">{update.message}</p>
+                    <p className="text-xs text-gray-900">{update.message}</p>
                   </div>
                   <button
                     onClick={() => handleDeleteUpdate(update.id)}
-                    className="flex-shrink-0 p-1 hover:bg-red-50 rounded transition-colors"
+                    className="flex-shrink-0 p-0.5 hover:bg-red-50 rounded transition-colors"
                   >
-                    <Trash2 className="w-4 h-4 text-gray-500 hover:text-red-500" />
+                    <Trash2 className="w-3 h-3 text-gray-500 hover:text-red-500" />
                   </button>
                 </div>
               </div>
@@ -229,11 +229,11 @@ export default function TeamUpdates() {
 
       {/* Add Update Form */}
       {showForm && (
-        <div className="mb-4 p-4 bg-green-50 rounded-lg border border-green-200 space-y-3">
+        <div className="mb-2 p-2 bg-green-50 rounded-lg border border-green-200 space-y-2">
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value as Category)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white"
+            className="w-full px-2 py-1 border border-gray-300 rounded-lg text-xs bg-white"
           >
             {Object.keys(categoryColors).map((cat) => (
               <option key={cat} value={cat}>
@@ -245,19 +245,19 @@ export default function TeamUpdates() {
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             placeholder="Voeg een update toe..."
-            className="resize-none h-20"
+            className="resize-none h-16 text-xs"
           />
-          <div className="flex gap-2">
+          <div className="flex gap-1.5">
             <Button
               onClick={handleAddUpdate}
-              className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+              className="flex-1 bg-green-600 hover:bg-green-700 text-white text-xs py-1"
             >
               Toevoegen
             </Button>
             <Button
               onClick={() => setShowForm(false)}
               variant="outline"
-              className="flex-1"
+              className="flex-1 text-xs py-1"
             >
               Annuleren
             </Button>
@@ -269,10 +269,10 @@ export default function TeamUpdates() {
       {!showForm && (
         <Button
           onClick={() => setShowForm(true)}
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-medium"
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-medium text-xs py-1"
         >
-          <Plus className="w-4 h-4 mr-2" />
-          Nieuwe update toevoegen
+          <Plus className="w-3 h-3 mr-1" />
+          Nieuwe update
         </Button>
       )}
     </div>
