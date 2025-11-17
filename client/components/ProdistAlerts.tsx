@@ -132,12 +132,11 @@ export default function ProdistAlerts() {
       {isHovered && (
         <div className="hidden md:block absolute top-0 left-full ml-4 z-20">
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 w-64 pointer-events-none">
-            <div className="w-full h-40 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center mb-3">
-              <div className="text-center">
-                <div className="text-sm font-medium text-gray-500">Placeholder afbeelding</div>
-                <div className="text-xs text-gray-400 mt-1">Sleep hier uw screenshot</div>
-              </div>
-            </div>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F3a11e9466e614a07998ccbdeaddedaaa?format=webp&width=800"
+              alt="Voorraadwaarschuwing oplossing preview"
+              className="w-full h-40 rounded-lg object-cover mb-3"
+            />
             <p className="text-xs text-gray-700 text-center leading-relaxed">
               Echte oplossing: automatische e-mail bij 'Geen voorraad ❌'.
             </p>
