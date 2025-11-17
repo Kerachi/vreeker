@@ -44,13 +44,6 @@ export default function ProdistAlerts() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Status Badge - Top Right */}
-        <div className="absolute top-3 right-3 z-10">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-50 rounded-full border border-green-200">
-            <CheckCircle2 className="w-3.5 h-3.5 text-green-600" />
-            <span className="text-xs font-medium text-green-700">Voltooid (Live)</span>
-          </div>
-        </div>
 
         {/* Main Content */}
         <div className="flex items-start gap-3">
