@@ -1,5 +1,5 @@
 import {
-  LayoutDashboard,
+  Layout,
   Calendar,
   Briefcase,
   FileText,
