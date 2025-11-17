@@ -33,6 +33,7 @@ const warningStockItems: StockItem[] = lowStockItems.filter(
 
 export default function ProdistAlerts() {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   if (lowStockItems.length === 0) {
     return null;
