@@ -125,13 +125,13 @@ export default function DocumentManagementPreview() {
         })}
       </div>
 
-      <div className="mt-4 pt-4 border-t border-gray-200">
+      <div className="mt-3 pt-3 border-t border-gray-200">
         <a
           href="/documenten"
-          className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
+          className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
         >
-          <Lock className="w-4 h-4" />
-          Naar Documenten Beheer →
+          <Lock className="w-3 h-3" />
+          Bekijk Documenten details
         </a>
       </div>
     </div>
