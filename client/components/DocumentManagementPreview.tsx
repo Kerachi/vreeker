@@ -116,7 +116,7 @@ export default function DocumentManagementPreview() {
         })}
       </div>
 
-      <div className="mt-3 pt-3 border-t border-gray-200">
+      <div className="mt-3 pt-3 border-t border-gray-200 space-y-2">
         <a
           href="/documenten"
           className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
@@ -124,6 +124,12 @@ export default function DocumentManagementPreview() {
           <Lock className="w-3 h-3" />
           Bekijk Documenten details
         </a>
+        <button
+          onClick={() => navigate('/documenten')}
+          className="w-full inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 bg-green-100 rounded-full border border-green-300 hover:bg-green-200 transition-colors cursor-pointer blink-light"
+        >
+          <span className="text-xs font-medium text-green-800">Klik hier om naar de oplossing te gaan</span>
+        </button>
       </div>
     </div>
   );
