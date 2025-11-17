@@ -44,13 +44,6 @@ export default function ProdistAlerts() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Blueprint Badge - Top Left */}
-        <div className="absolute top-3 left-3 z-10">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
-            <span className="text-xs font-medium text-blue-700">Blueprint – Visueel voorbeeld</span>
-          </div>
-        </div>
-
         {/* Status Badge - Top Right */}
         <div className="absolute top-3 right-3 z-10">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-50 rounded-full border border-green-200">
@@ -65,9 +58,14 @@ export default function ProdistAlerts() {
             <AlertTriangle className="w-5 h-5 text-amber-600" />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-amber-900 mb-3">
-              ⚠️ Voorraadwaarschuwing
-            </h3>
+            <div className="flex items-center gap-2 mb-3">
+              <h3 className="text-sm font-semibold text-amber-900">
+                ⚠️ Voorraadwaarschuwing
+              </h3>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
+                <span className="text-xs font-medium text-blue-700">Blueprint – Visueel voorbeeld</span>
+              </div>
+            </div>
 
             {criticalStockItems.length > 0 && (
               <div className="mb-3">
