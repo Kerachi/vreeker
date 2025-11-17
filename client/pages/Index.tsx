@@ -3,6 +3,8 @@ import ProjectCard from "@/components/ProjectCard";
 import ProdistAlerts from "@/components/ProdistAlerts";
 import TodayPlanner from "@/components/TodayPlanner";
 import TeamUpdates from "@/components/TeamUpdates";
+import { useEffect } from "react";
+import { Layout } from "lucide-react";
 
 const projects = [
   {
