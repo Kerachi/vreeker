@@ -83,7 +83,7 @@ export default function DocumentManagementPreview() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto space-y-2">
+      <div className="space-y-2">
         {sampleDocuments.map((doc) => {
           const config = statusConfig[doc.status];
           return (
