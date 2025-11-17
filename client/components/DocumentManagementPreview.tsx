@@ -62,7 +62,7 @@ export default function DocumentManagementPreview() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col h-full">
+    <div className="bg-white rounded-lg border border-gray-200 p-6">
       <style>{`
         @keyframes blink {
           0%, 49% { opacity: 1; }
