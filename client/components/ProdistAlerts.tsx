@@ -131,13 +131,13 @@ export default function ProdistAlerts() {
       {/* Hover Preview - Desktop Only */}
       {isHovered && (
         <div className="hidden md:block absolute top-0 left-full ml-4 z-20">
-          <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 w-64 pointer-events-none">
+          <div className="bg-white rounded-lg shadow-xl border border-gray-200 p-5 w-96 pointer-events-none">
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F3a11e9466e614a07998ccbdeaddedaaa?format=webp&width=800"
               alt="Voorraadwaarschuwing oplossing preview"
-              className="w-full h-40 rounded-lg object-cover mb-3"
+              className="w-full h-64 rounded-lg object-cover mb-4"
             />
-            <p className="text-xs text-gray-700 text-center leading-relaxed">
+            <p className="text-sm text-gray-700 text-center leading-relaxed font-medium">
               Echte oplossing: automatische e-mail bij 'Geen voorraad ❌'.
             </p>
           </div>
