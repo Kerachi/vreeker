@@ -1,5 +1,4 @@
 import DashboardLayout from "@/components/DashboardLayout";
-import DashboardMetrics from "@/components/DashboardMetrics";
 import ProjectCard from "@/components/ProjectCard";
 import ProdistAlerts from "@/components/ProdistAlerts";
 import TodayPlanner from "@/components/TodayPlanner";
