@@ -62,25 +62,16 @@ export default function DocumentManagementPreview() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col h-full relative">
-      {/* Blinking CTA Button - Top Right */}
-      <div className="absolute top-3 right-3 z-10">
-        <style>{`
-          @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0.3; }
-          }
-          .blink-light {
-            animation: blink 1s infinite;
-          }
-        `}</style>
-        <button
-          onClick={() => navigate('/documenten')}
-          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-100 rounded-full border border-green-300 hover:bg-green-200 transition-colors cursor-pointer blink-light"
-        >
-          <span className="text-xs font-medium text-green-800">Klik hier om naar de oplossing te gaan</span>
-        </button>
-      </div>
+    <div className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col h-full">
+      <style>{`
+        @keyframes blink {
+          0%, 49% { opacity: 1; }
+          50%, 100% { opacity: 0.3; }
+        }
+        .blink-light {
+          animation: blink 1s infinite;
+        }
+      `}</style>
 
       <div className="flex items-center gap-2 mb-4">
         <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
