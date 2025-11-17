@@ -55,8 +55,8 @@ export default function ProdistAlerts() {
               <h3 className="text-sm font-semibold text-amber-900">
                 ⚠️ Voorraadwaarschuwing
               </h3>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
-                <span className="text-xs font-medium text-blue-700">Blueprint – Visueel voorbeeld</span>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-50 rounded-full border border-green-200">
+                <span className="text-xs font-medium text-green-700">Blueprint - Visueel voorbeeld voltooid (live)</span>
               </div>
             </div>
 
