@@ -35,7 +35,12 @@ const todayTasks: TodayTask[] = [
 export default function TodayPlanner() {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
-      <h2 className="text-lg font-semibold text-gray-900 mb-4">📅 Vandaag</h2>
+      <div className="flex items-center gap-2 mb-4">
+        <h2 className="text-lg font-semibold text-gray-900">📅 Vandaag</h2>
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
+          <span className="text-xs font-medium text-blue-700">Blueprint – Visueel voorbeeld</span>
+        </div>
+      </div>
 
       <div className="space-y-3">
         {todayTasks.length === 0 ? (
