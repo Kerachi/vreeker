@@ -47,12 +47,27 @@ export default function ProdistAlerts() {
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Help Badge - Top Right */}
-        <div className="absolute top-3 right-3 z-10">
+        <div className="absolute top-3 right-3 z-10 flex flex-col gap-2">
           <button
             onClick={() => navigate('/documenten')}
             className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-100 rounded-full border border-green-300 hover:bg-green-200 transition-colors cursor-pointer"
           >
             <span className="text-xs font-medium text-green-800">Hover hier voor de huidige knelpunt oplossing</span>
+          </button>
+          <style>{`
+            @keyframes blink {
+              0%, 49% { opacity: 1; }
+              50%, 100% { opacity: 0.3; }
+            }
+            .blink-light {
+              animation: blink 1s infinite;
+            }
+          `}</style>
+          <button
+            onClick={() => navigate('/documenten')}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-100 rounded-full border border-green-300 hover:bg-green-200 transition-colors cursor-pointer blink-light"
+          >
+            <span className="text-xs font-medium text-green-800">Klik hier om naar de oplossing te gaan</span>
           </button>
         </div>
 
