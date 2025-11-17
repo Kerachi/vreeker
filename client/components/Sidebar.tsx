@@ -27,8 +27,8 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     id: "dashboard",
-    label: "Dashboard",
-    icon: <LayoutDashboard className="w-5 h-5" />,
+    label: "Blueprint",
+    icon: <Layout className="w-5 h-5" />,
     href: "/",
   },
   {
