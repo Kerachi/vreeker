@@ -1,4 +1,4 @@
-import { AlertTriangle, TrendingDown, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, TrendingDown } from "lucide-react";
 import { useState } from "react";
 
 interface StockItem {
