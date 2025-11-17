@@ -61,7 +61,7 @@ export default function ProdistAlerts() {
             onClick={() => navigate('/documenten')}
             className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-100 rounded-full border border-green-300 hover:bg-green-200 transition-colors cursor-pointer blink-light"
           >
-            <span className="text-xs font-medium text-green-800">Klik hier om naar de oplossing te gaan</span>
+            <span className="text-xs font-medium text-green-800">Ga naar de oplossing</span>
           </button>
         </div>
 
