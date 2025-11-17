@@ -139,10 +139,15 @@ export default function TeamUpdates() {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col h-full">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-          <MessageCircle className="w-5 h-5 text-green-600" />
-          Teamupdates
-        </h2>
+        <div className="flex items-center gap-2">
+          <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+            <MessageCircle className="w-5 h-5 text-green-600" />
+            Teamupdates
+          </h2>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
+            <span className="text-xs font-medium text-blue-700">Blueprint – Visueel voorbeeld</span>
+          </div>
+        </div>
       </div>
 
       {/* Category Filter Tags */}
