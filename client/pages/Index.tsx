@@ -3,6 +3,7 @@ import ProjectCard from "@/components/ProjectCard";
 import ProdistAlerts from "@/components/ProdistAlerts";
 import TodayPlanner from "@/components/TodayPlanner";
 import TeamUpdates from "@/components/TeamUpdates";
+import DocumentManagementPreview from "@/components/DocumentManagementPreview";
 import { useEffect } from "react";
 import { Layout } from "lucide-react";
 
