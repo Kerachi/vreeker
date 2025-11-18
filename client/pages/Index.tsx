@@ -53,7 +53,10 @@ export default function Index() {
         <div className="mb-8">
           <div className="flex items-center gap-2">
             <Layout className="w-8 h-8 text-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900">Blueprint <span className="text-gray-500 font-normal">(Dashboard)</span></h1>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Blueprint{" "}
+              <span className="text-gray-500 font-normal">(Dashboard)</span>
+            </h1>
           </div>
           <p className="text-gray-600 mt-2">
             Welkom terug! Hier is uw overzicht van actieve projecten.
@@ -68,7 +71,9 @@ export default function Index() {
                   Actieve Projecten
                 </h2>
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
-                  <span className="text-xs font-medium text-blue-700">Blueprint – Visueel voorbeeld</span>
+                  <span className="text-xs font-medium text-blue-700">
+                    Blueprint – Visueel voorbeeld
+                  </span>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
