@@ -150,26 +150,6 @@ export default function TeamUpdates() {
         </div>
       </div>
 
-      {/* Category Filter Tags */}
-      <div className="flex flex-wrap gap-1.5 mb-2">
-        {categories.map((category) => {
-          const colors = categoryColors[category];
-          const isActive = selectedCategory === category;
-          return (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-2 py-0.5 rounded-full text-xs font-medium transition-all ${
-                isActive
-                  ? `${colors.bg} ${colors.text} border-2 border-current`
-                  : `border border-gray-300 text-gray-700 hover:border-gray-400`
-              }`}
-            >
-              {category}
-            </button>
-          );
-        })}
-      </div>
 
       {/* Updates List */}
       <div className="overflow-y-auto space-y-1 mb-2 max-h-[280px]">
