@@ -55,7 +55,6 @@ export default function Automatiseringen() {
             href="https://zapier.com/editor/333185153/draft/_GEN_1763126233202/sample"
             imageSrc="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Fddd9cd674d96448a806ab35993f7233a?format=webp&width=800"
             imageAlt="OneDrive naar Email en WhatsApp Automatisering Flow"
-            subtitle="Nieuw bestand in OneDrive → Emailmelding + WhatsApp notificatie"
           />
           <AutomationCard
             href="https://zapier.com/editor/333453784/draft/_GEN_1763063772959/filter"
