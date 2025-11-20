@@ -480,24 +480,22 @@ export default function DocumentCenter() {
         </div>
       )}
 
-      <div className="space-y-4 flex justify-start items-start w-full overflow-x-hidden">
-        <div className="w-full">
-          <h3 className="text-center text-lg font-semibold text-gray-900 mb-3">
-            Voorraadmelding Automatisering (E-mail)
-          </h3>
-          <a
-            href="https://airtable.com/appHSB36SlsZqJkAi/wflIMJDRve8FhzRNE?editorMode=configuration"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full sm:w-1/2 lg:w-1/3 max-w-[420px] h-[250px] sm:h-[300px] bg-white rounded-lg sm:rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-4 sm:p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
-          >
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Fcae7148ac31c40a08c5c728211650ce4?format=webp&width=800"
-              alt="Airtable naar Email Automatisering Flow"
-              className="w-[80%] max-w-[200px] sm:max-w-[300px] object-contain"
-            />
-          </a>
-        </div>
+      <div className="w-full max-w-[420px]">
+        <h3 className="text-center text-lg font-semibold text-gray-900 mb-3">
+          Voorraadmelding Automatisering (E-mail)
+        </h3>
+        <a
+          href="https://airtable.com/appHSB36SlsZqJkAi/wflIMJDRve8FhzRNE?editorMode=configuration"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full h-[250px] sm:h-[300px] bg-white rounded-lg sm:rounded-[20px] shadow-md hover:shadow-lg transition-shadow p-4 sm:p-[30px] flex flex-col items-center justify-center text-center cursor-pointer"
+        >
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Fcae7148ac31c40a08c5c728211650ce4?format=webp&width=800"
+            alt="Airtable naar Email Automatisering Flow"
+            className="w-[80%] max-w-[200px] sm:max-w-[300px] object-contain"
+          />
+        </a>
       </div>
     </div>
   );
