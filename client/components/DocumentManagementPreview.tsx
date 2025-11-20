@@ -1,4 +1,11 @@
-import { FileText, Download, Lock, Clock, Archive, CheckCircle2 } from "lucide-react";
+import {
+  FileText,
+  Download,
+  Lock,
+  Clock,
+  Archive,
+  CheckCircle2,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface Document {
@@ -79,7 +86,9 @@ export default function DocumentManagementPreview() {
           Documenten Beheer
         </h2>
         <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-50 rounded-full border border-green-200">
-          <span className="text-xs font-medium text-green-700">Blueprint - Visueel voorbeeld voltooid (live)</span>
+          <span className="text-xs font-medium text-green-700">
+            Blueprint - Visueel voorbeeld voltooid (live)
+          </span>
         </div>
       </div>
 
@@ -125,10 +134,12 @@ export default function DocumentManagementPreview() {
           Bekijk Documenten details
         </a>
         <button
-          onClick={() => navigate('/documenten')}
+          onClick={() => navigate("/documenten")}
           className="w-full inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 bg-green-100 rounded-full border border-green-300 hover:bg-green-200 transition-colors cursor-pointer blink-light"
         >
-          <span className="text-xs font-medium text-green-800">Ga naar de oplossing</span>
+          <span className="text-xs font-medium text-green-800">
+            Ga naar de oplossing
+          </span>
         </button>
         <img
           loading="lazy"
