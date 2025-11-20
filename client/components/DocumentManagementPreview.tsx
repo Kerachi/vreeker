@@ -130,6 +130,20 @@ export default function DocumentManagementPreview() {
         >
           <span className="text-xs font-medium text-green-800">Ga naar de oplossing</span>
         </button>
+        <img
+          loading="lazy"
+          srcSet="https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Ffcea7cbdcd44467588318d2bbde1120e?alt=media&token=6f105f99-0251-4a48-99ea-73f334e28fdf&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=100 100w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Ffcea7cbdcd44467588318d2bbde1120e?alt=media&token=6f105f99-0251-4a48-99ea-73f334e28fdf&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=200 200w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Ffcea7cbdcd44467588318d2bbde1120e?alt=media&token=6f105f99-0251-4a48-99ea-73f334e28fdf&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=400 400w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Ffcea7cbdcd44467588318d2bbde1120e?alt=media&token=6f105f99-0251-4a48-99ea-73f334e28fdf&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=800 800w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Ffcea7cbdcd44467588318d2bbde1120e?alt=media&token=6f105f99-0251-4a48-99ea-73f334e28fdf&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=1200 1200w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Ffcea7cbdcd44467588318d2bbde1120e?alt=media&token=6f105f99-0251-4a48-99ea-73f334e28fdf&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=1600 1600w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Ffcea7cbdcd44467588318d2bbde1120e?alt=media&token=6f105f99-0251-4a48-99ea-73f334e28fdf&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=2000 2000w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2Ffcea7cbdcd44467588318d2bbde1120e?alt=media&token=6f105f99-0251-4a48-99ea-73f334e28fdf&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1"
+          style={{
+            aspectRatio: "1.78",
+            objectFit: "cover",
+            objectPosition: "center",
+            width: "100%",
+            marginTop: "20px",
+            minHeight: "20px",
+            minWidth: "20px",
+            overflow: "hidden",
+          }}
+        />
       </div>
     </div>
   );
