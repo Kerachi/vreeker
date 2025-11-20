@@ -41,7 +41,7 @@ export default function ProdistAlerts() {
 
   return (
     <div className="relative">
-      <div 
+      <div
         className="bg-white rounded-lg border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-5 relative"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -58,10 +58,12 @@ export default function ProdistAlerts() {
             }
           `}</style>
           <button
-            onClick={() => navigate('/documenten')}
+            onClick={() => navigate("/documenten")}
             className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-100 rounded-full border border-green-300 hover:bg-green-200 transition-colors cursor-pointer blink-light"
           >
-            <span className="text-xs font-medium text-green-800">Ga naar de oplossing</span>
+            <span className="text-xs font-medium text-green-800">
+              Ga naar de oplossing
+            </span>
           </button>
         </div>
 
@@ -76,7 +78,9 @@ export default function ProdistAlerts() {
                 ⚠️ Voorraadwaarschuwing
               </h3>
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-green-50 rounded-full border border-green-200">
-                <span className="text-xs font-medium text-green-700">Blueprint - Visueel voorbeeld voltooid (live)</span>
+                <span className="text-xs font-medium text-green-700">
+                  Blueprint - Visueel voorbeeld voltooid (live)
+                </span>
               </div>
             </div>
 
