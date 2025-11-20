@@ -145,11 +145,12 @@ export default function TeamUpdates() {
             Teamupdates
           </h2>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
-            <span className="text-xs font-medium text-blue-700">Blueprint – Visueel voorbeeld</span>
+            <span className="text-xs font-medium text-blue-700">
+              Blueprint – Visueel voorbeeld
+            </span>
           </div>
         </div>
       </div>
-
 
       {/* Updates List */}
       <div className="overflow-y-auto space-y-1 mb-2 max-h-[280px]">
@@ -171,7 +172,9 @@ export default function TeamUpdates() {
               >
                 <div className="flex items-start gap-2">
                   {update.icon && (
-                    <span className="text-base flex-shrink-0">{update.icon}</span>
+                    <span className="text-base flex-shrink-0">
+                      {update.icon}
+                    </span>
                   )}
                   {priorityIcon && (
                     <span
