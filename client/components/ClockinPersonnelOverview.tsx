@@ -303,7 +303,7 @@ export default function ClockinPersonnelOverview() {
                                     year: "numeric",
                                     month: "short",
                                     day: "numeric",
-                                  }
+                                  },
                                 )}
                               </p>
                               <p className="text-sm text-gray-600">
