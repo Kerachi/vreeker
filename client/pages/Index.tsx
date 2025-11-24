@@ -54,20 +54,12 @@ export default function Index() {
   const handleSendPlanning = async () => {
     setIsSending(true);
     try {
-      const response = await fetch(
-        "https://hooks.zapier.com/hooks/catch/25351155/uzqd6y9/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            triggeredBy: "dashboard",
-            source: "Vreeker planning button",
-            timestamp: new Date().toISOString(),
-          }),
-        }
-      );
+      const response = await fetch("/api/send-planning", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.ok) {
         toast({
