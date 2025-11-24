@@ -44,9 +44,52 @@ const projects = [
 ];
 
 export default function Index() {
+  const { toast } = useToast();
+  const [isSending, setIsSending] = useState(false);
+
   useEffect(() => {
     document.title = "Blueprint - Vreeker BV";
   }, []);
+
+  const handleSendPlanning = async () => {
+    setIsSending(true);
+    try {
+      const response = await fetch(
+        "https://hooks.zapier.com/hooks/catch/25351155/uzqd6y9/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            triggeredBy: "dashboard",
+            source: "Vreeker planning button",
+            timestamp: new Date().toISOString(),
+          }),
+        }
+      );
+
+      if (response.ok) {
+        toast({
+          title: "Succes",
+          description:
+            "De planning wordt nu automatisch via e-mail en WhatsApp verstuurd.",
+          variant: "default",
+        });
+      } else {
+        throw new Error("Request failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Fout",
+        description:
+          "Er ging iets mis bij het versturen van de planning. Probeer het later opnieuw.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <DashboardLayout>
