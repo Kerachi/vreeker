@@ -5,6 +5,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 import HoursRegistration from "@/components/HoursRegistration";
 import AttendanceStatus from "@/components/AttendanceStatus";
 import HoursBreakdown from "@/components/HoursBreakdown";
+import ClockinPersonnelOverview from "@/components/ClockinPersonnelOverview";
 
 type Role = "medewerker" | "manager";
 
