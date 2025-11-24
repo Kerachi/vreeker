@@ -82,39 +82,6 @@ export default function Automatiseringen() {
             />
           </div>
         </div>
-
-        {/* Watermark */}
-        <div
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-[30px] lg:right-[30px] pointer-events-none"
-          style={{
-            zIndex: 9999,
-            animation: "floatWave 4s ease-in-out infinite",
-          }}
-        >
-          <span
-            className="font-semibold text-2xl sm:text-5xl lg:text-9xl"
-            style={{
-              color: "#ff69b4",
-              opacity: 0.3,
-            }}
-          >
-            Prototype 2 – Functioneel
-          </span>
-        </div>
-        <img
-          loading="lazy"
-          srcSet="https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F464b07478bdd419d9ad6ccd256075347?alt=media&token=3dd8b449-8705-49a9-a085-26405b1800c6&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=100 100w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F464b07478bdd419d9ad6ccd256075347?alt=media&token=3dd8b449-8705-49a9-a085-26405b1800c6&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=200 200w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F464b07478bdd419d9ad6ccd256075347?alt=media&token=3dd8b449-8705-49a9-a085-26405b1800c6&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=400 400w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F464b07478bdd419d9ad6ccd256075347?alt=media&token=3dd8b449-8705-49a9-a085-26405b1800c6&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=800 800w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F464b07478bdd419d9ad6ccd256075347?alt=media&token=3dd8b449-8705-49a9-a085-26405b1800c6&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=1200 1200w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F464b07478bdd419d9ad6ccd256075347?alt=media&token=3dd8b449-8705-49a9-a085-26405b1800c6&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=1600 1600w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F464b07478bdd419d9ad6ccd256075347?alt=media&token=3dd8b449-8705-49a9-a085-26405b1800c6&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1&width=2000 2000w, https://cdn.builder.io/o/assets%2Fe1fa1463634b42c9a84ff3fd4e4382b1%2F464b07478bdd419d9ad6ccd256075347?alt=media&token=3dd8b449-8705-49a9-a085-26405b1800c6&apiKey=e1fa1463634b42c9a84ff3fd4e4382b1"
-          style={{
-            aspectRatio: "2.63",
-            objectFit: "contain",
-            objectPosition: "center",
-            width: "100%",
-            marginTop: "20px",
-            minHeight: "20px",
-            minWidth: "20px",
-            overflow: "hidden",
-          }}
-        />
       </div>
     </DashboardLayout>
   );
