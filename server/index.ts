@@ -24,6 +24,8 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
   app.post("/api/send-planning", handleSendPlanning);
+  app.get("/api/clockin/hours", handleGetClockInHours);
+  app.get("/api/clockin/hours/:employeeId", handleGetClockInEmployeeDetail);
 
   return app;
 }
