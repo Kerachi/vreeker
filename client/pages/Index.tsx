@@ -1,4 +1,5 @@
 import DashboardLayout from "@/components/DashboardLayout";
+import ClockinOverview from "@/components/ClockinOverview";
 import { useEffect, useState } from "react";
 import { Layout, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
