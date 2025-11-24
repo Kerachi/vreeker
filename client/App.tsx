@@ -23,6 +23,7 @@ import AdminProjecten from "./pages/AdminProjecten";
 import AdminMedewerkers from "./pages/AdminMedewerkers";
 import AdminFeedback from "./pages/AdminFeedback";
 import AdminInstellingen from "./pages/AdminInstellingen";
+import ClockinDetail from "./pages/ClockinDetail";
 
 const queryClient = new QueryClient();
 
