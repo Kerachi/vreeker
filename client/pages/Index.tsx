@@ -129,7 +129,19 @@ export default function Index() {
 
             <ProdistAlerts />
 
-            <TodayPlanner />
+            <div>
+              <TodayPlanner />
+              <div className="mt-4">
+                <button
+                  onClick={handleSendPlanning}
+                  disabled={isSending}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg border border-blue-700 transition-colors cursor-pointer"
+                >
+                  <Send className="w-4 h-4" />
+                  {isSending ? "Verzenden..." : "Verstuur planning"}
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="lg:col-span-1 space-y-8">
