@@ -59,47 +59,15 @@ export default function Index() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <h2 className="text-xl font-semibold text-gray-900">
-                  Actieve Projecten
-                </h2>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 rounded-full border border-blue-200">
-                  <span className="text-xs font-medium text-blue-700">
-                    Blueprint – Visueel voorbeeld
-                  </span>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {projects.map((project) => (
-                  <ProjectCard key={project.id} {...project} />
-                ))}
-              </div>
-            </div>
-
-            <ProdistAlerts />
-
-            <div>
-              <TodayPlanner />
-              <div className="mt-4">
-                <button
-                  onClick={handleSendPlanning}
-                  disabled={isSending}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg border border-blue-700 transition-colors cursor-pointer"
-                >
-                  <Send className="w-4 h-4" />
-                  {isSending ? "Verzenden..." : "Verstuur planning"}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-1 space-y-8">
-            <TeamUpdates />
-            <DocumentManagementPreview />
-          </div>
+        <div className="max-w-md">
+          <button
+            onClick={handleSendPlanning}
+            disabled={isSending}
+            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg border border-blue-700 transition-colors cursor-pointer"
+          >
+            <Send className="w-4 h-4" />
+            {isSending ? "Verzenden..." : "Verstuur planning"}
+          </button>
         </div>
 
         {/* Watermark */}
