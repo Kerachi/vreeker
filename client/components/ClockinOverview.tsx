@@ -48,6 +48,10 @@ export default function ClockinOverview() {
         }
       } catch (error) {
         console.error("Error fetching Clockin data:", error);
+        console.error("Full error details:", {
+          error,
+          message: error instanceof Error ? error.message : String(error),
+        });
         setHasError(true);
         toast({
           title: "Fout",
