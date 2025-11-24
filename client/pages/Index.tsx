@@ -1,47 +1,7 @@
 import DashboardLayout from "@/components/DashboardLayout";
-import ProjectCard from "@/components/ProjectCard";
-import ProdistAlerts from "@/components/ProdistAlerts";
-import TodayPlanner from "@/components/TodayPlanner";
-import TeamUpdates from "@/components/TeamUpdates";
-import DocumentManagementPreview from "@/components/DocumentManagementPreview";
 import { useEffect, useState } from "react";
 import { Layout, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-const projects = [
-  {
-    id: "1",
-    name: "Achtertuin Renovatie",
-    client: "Fam. de Boer",
-    status: "in-progress" as const,
-    responsible: "Peter van Dijk",
-    progress: 65,
-  },
-  {
-    id: "2",
-    name: "Gazon Aanleg",
-    client: "Hotel de Ambiance",
-    status: "in-progress" as const,
-    responsible: "Maria Garcia",
-    progress: 45,
-  },
-  {
-    id: "3",
-    name: "Boomverzorging",
-    client: "Gemeente Utrecht",
-    status: "pending" as const,
-    responsible: "Jan Pieterse",
-    progress: 0,
-  },
-  {
-    id: "4",
-    name: "Terras Aanleg",
-    client: "Restaurant de Tuin",
-    status: "completed" as const,
-    responsible: "Anna Kowalski",
-    progress: 100,
-  },
-];
 
 export default function Index() {
   const { toast } = useToast();
