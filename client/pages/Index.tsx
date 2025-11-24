@@ -60,7 +60,7 @@ export default function Index() {
           </p>
         </div>
 
-        <div className="max-w-md">
+        <div className="max-w-md mb-8">
           <button
             onClick={handleSendPlanning}
             disabled={isSending}
@@ -69,6 +69,10 @@ export default function Index() {
             <Send className="w-4 h-4" />
             {isSending ? "Verzenden..." : "Verstuur planning"}
           </button>
+        </div>
+
+        <div className="mt-12">
+          <ClockinOverview />
         </div>
       </div>
     </DashboardLayout>
