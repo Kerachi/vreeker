@@ -34,16 +34,17 @@ export const handleGetClockInHours: RequestHandler = async (req, res) => {
     }
 
     const data = await response.json();
-    
+
     // Transform the data into the format our frontend expects
-    const employees: Employee[] = data.employees?.map((emp: any) => ({
-      id: emp.id,
-      name: emp.name,
-      status: emp.clocked_in ? "clocked_in" : "clocked_out",
-      todayHours: emp.hours_today || 0,
-      weekHours: emp.hours_this_week || 0,
-      projects: emp.projects || [],
-    })) || [];
+    const employees: Employee[] =
+      data.employees?.map((emp: any) => ({
+        id: emp.id,
+        name: emp.name,
+        status: emp.clocked_in ? "clocked_in" : "clocked_out",
+        todayHours: emp.hours_today || 0,
+        weekHours: emp.hours_this_week || 0,
+        projects: emp.projects || [],
+      })) || [];
 
     res.status(200).json({
       success: true,
@@ -60,7 +61,7 @@ export const handleGetClockInHours: RequestHandler = async (req, res) => {
 
 export const handleGetClockInEmployeeDetail: RequestHandler = async (
   req,
-  res
+  res,
 ) => {
   try {
     const { employeeId } = req.params;

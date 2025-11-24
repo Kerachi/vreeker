@@ -119,7 +119,10 @@ export default function ClockinDetail() {
                 </h1>
               </div>
               <p className="text-gray-600">
-                Uren deze week: <span className="font-semibold">{employee.totalWeekHours.toFixed(1)}h</span>
+                Uren deze week:{" "}
+                <span className="font-semibold">
+                  {employee.totalWeekHours.toFixed(1)}h
+                </span>
               </p>
             </div>
 
