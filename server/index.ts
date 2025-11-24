@@ -3,6 +3,10 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleSendPlanning } from "./routes/zapier";
+import {
+  handleGetClockInHours,
+  handleGetClockInEmployeeDetail,
+} from "./routes/clockin";
 
 export function createServer() {
   const app = express();
