@@ -4,8 +4,9 @@ import ProdistAlerts from "@/components/ProdistAlerts";
 import TodayPlanner from "@/components/TodayPlanner";
 import TeamUpdates from "@/components/TeamUpdates";
 import DocumentManagementPreview from "@/components/DocumentManagementPreview";
-import { useEffect } from "react";
-import { Layout } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Layout, Send } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const projects = [
   {
