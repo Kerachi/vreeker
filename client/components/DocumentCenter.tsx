@@ -438,23 +438,6 @@ export default function DocumentCenter() {
 
   return (
     <div className="space-y-8">
-      <div className="space-y-4">
-        <div className="bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all p-6">
-          <iframe
-            className="airtable-embed"
-            src="https://airtable.com/embed/appHSB36SlsZqJkAi/shrLMiWPAicxPzSdM"
-            frameBorder="0"
-            width="100%"
-            height="533"
-            style={{
-              background: "white",
-              borderRadius: "12px",
-              border: "1px solid #eee",
-            }}
-          />
-        </div>
-      </div>
-
       {airtableDocuments.length > 0 && (
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-900">
