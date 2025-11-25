@@ -1,13 +1,5 @@
 import {
   Layout,
-  Calendar,
-  Briefcase,
-  FileText,
-  Users,
-  MessageSquare,
-  Package,
-  Settings,
-  Zap,
   FlaskConical,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
