@@ -31,7 +31,7 @@ const navItems: NavItem[] = [
   },
   {
     id: "leeg2",
-    label: "Leeg 2",
+    label: "Klokin",
     icon: <FlaskConical className="w-5 h-5" />,
     href: "/leeg2",
   },
