@@ -17,6 +17,7 @@ import Instellingen from "./pages/Instellingen";
 import Automatiseringen from "./pages/Automatiseringen";
 import Innovatie from "./pages/Innovatie";
 import Leeg2 from "./pages/Leeg2";
+import Leeg3 from "./pages/Leeg3";
 import CustomerPortal from "./pages/CustomerPortal";
 import Feedback from "./pages/Feedback";
 import AdminDashboard from "./pages/AdminDashboard";
