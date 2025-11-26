@@ -50,13 +50,9 @@ export default function Index() {
           <div className="flex items-center gap-2">
             <Layout className="w-8 h-8 text-blue-600" />
             <h1 className="text-3xl font-bold text-gray-900">
-              Blueprint{" "}
-              <span className="text-gray-500 font-normal">(Dashboard)</span>
+              Portaal
             </h1>
           </div>
-          <p className="text-gray-600 mt-2">
-            Welkom terug! Hier is uw overzicht van actieve projecten.
-          </p>
         </div>
 
         <div className="max-w-md">
