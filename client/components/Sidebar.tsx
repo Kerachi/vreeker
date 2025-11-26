@@ -19,7 +19,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     id: "dashboard",
-    label: "Blueprint",
+    label: "Portaal",
     icon: <Layout className="w-5 h-5" />,
     href: "/",
   },
