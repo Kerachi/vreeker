@@ -47,6 +47,7 @@ export const App = () => (
           <Route path="/innovatie" element={<Innovatie />} />
           <Route path="/leeg2" element={<Leeg2 />} />
           <Route path="/leeg3" element={<Leeg3 />} />
+          <Route path="/medewerkers" element={<Medewerkers />} />
           <Route path="/instellingen" element={<Instellingen />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/customer" element={<CustomerPortal />} />
