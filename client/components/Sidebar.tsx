@@ -24,12 +24,6 @@ const navItems: NavItem[] = [
     href: "/",
   },
   {
-    id: "innovatie",
-    label: "Leeg",
-    icon: <FlaskConical className="w-5 h-5" />,
-    href: "/innovatie",
-  },
-  {
     id: "leeg2",
     label: "Klokin",
     icon: <FlaskConical className="w-5 h-5" />,
