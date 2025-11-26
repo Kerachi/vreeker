@@ -25,7 +25,7 @@ const navItems: NavItem[] = [
   },
   {
     id: "innovatie",
-    label: "Innovatie",
+    label: "Dashboard Cheyenne",
     icon: <FlaskConical className="w-5 h-5" />,
     href: "/innovatie",
   },
