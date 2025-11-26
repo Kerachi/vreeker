@@ -29,6 +29,12 @@ const navItems: NavItem[] = [
     icon: <FlaskConical className="w-5 h-5" />,
     href: "/innovatie",
   },
+  {
+    id: "leeg2",
+    label: "Leeg 2",
+    icon: <FlaskConical className="w-5 h-5" />,
+    href: "/leeg2",
+  },
 ];
 
 export default function Sidebar() {
