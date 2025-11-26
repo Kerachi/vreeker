@@ -46,15 +46,6 @@ export default function Index() {
   return (
     <DashboardLayout>
       <div className="p-4 sm:p-6 lg:p-8 w-full max-w-full">
-        <div className="mb-8">
-          <div className="flex items-center gap-2">
-            <Layout className="w-8 h-8 text-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900">
-              Portaal
-            </h1>
-          </div>
-        </div>
-
         <div className="max-w-md">
           <button
             onClick={handleSendPlanning}
