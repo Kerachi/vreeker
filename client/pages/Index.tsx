@@ -8,7 +8,7 @@ export default function Index() {
   const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
-    document.title = "Blueprint - Vreeker BV";
+    document.title = "Portaal - Vreeker BV";
   }, []);
 
   const handleSendPlanning = async () => {
