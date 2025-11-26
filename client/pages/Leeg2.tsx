@@ -7,7 +7,7 @@ export default function Leeg2() {
         <div className="bg-white rounded-lg border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all p-6">
           <iframe
             className="airtable-embed"
-            src="https://airtable.com/embed/appHSB36SlsZqJkAi/pagH4C31yGXpJyj6w"
+            src="https://airtable.com/embed/appHSB36SlsZqJkAi/shrFaHO9FoZNdTPtZ"
             frameBorder="0"
             width="100%"
             height="533"
