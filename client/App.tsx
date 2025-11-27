@@ -26,6 +26,7 @@ import AdminProjecten from "./pages/AdminProjecten";
 import AdminMedewerkers from "./pages/AdminMedewerkers";
 import AdminFeedback from "./pages/AdminFeedback";
 import AdminInstellingen from "./pages/AdminInstellingen";
+import ClockinDetail from "./pages/ClockinDetail";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ export const App = () => (
           <Route path="/admin/medewerkers" element={<AdminMedewerkers />} />
           <Route path="/admin/feedback" element={<AdminFeedback />} />
           <Route path="/admin/instellingen" element={<AdminInstellingen />} />
+          <Route path="/clockin/:employeeId" element={<ClockinDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

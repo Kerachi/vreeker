@@ -3,6 +3,10 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleSendPlanning } from "./routes/zapier";
+import {
+  handleGetClockInHours,
+  handleGetClockInEmployeeDetail,
+} from "./routes/clockin";
 
 export function createServer() {
   const app = express();
@@ -20,6 +24,8 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
   app.post("/api/send-planning", handleSendPlanning);
+  app.get("/api/clockin/hours", handleGetClockInHours);
+  app.get("/api/clockin/hours/:employeeId", handleGetClockInEmployeeDetail);
 
   return app;
 }
