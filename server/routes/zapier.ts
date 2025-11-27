@@ -3,7 +3,7 @@ import { RequestHandler } from "express";
 export const handleSendPlanning: RequestHandler = async (req, res) => {
   try {
     const response = await fetch(
-      "https://hooks.zapier.com/hooks/catch/25351155/uzqd6y9/",
+      "https://hook.eu2.make.com/ilbdvxd8mo2myervxvpdl9u7pt3mm8bv",
       {
         method: "POST",
         headers: {
