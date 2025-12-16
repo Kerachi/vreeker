@@ -1,6 +1,8 @@
 import {
   Layout,
-  FlaskConical,
+  Clock,
+  FolderOpen,
+  User,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -19,26 +21,26 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     id: "dashboard",
-    label: "Portaal",
+    label: "Planning",
     icon: <Layout className="w-5 h-5" />,
     href: "/",
   },
   {
     id: "leeg2",
     label: "Klokin",
-    icon: <FlaskConical className="w-5 h-5" />,
+    icon: <Clock className="w-5 h-5" />,
     href: "/leeg2",
   },
   {
     id: "leeg3",
     label: "Projecten",
-    icon: <FlaskConical className="w-5 h-5" />,
+    icon: <FolderOpen className="w-5 h-5" />,
     href: "/leeg3",
   },
   {
     id: "medewerkers",
     label: "Medewerkers",
-    icon: <FlaskConical className="w-5 h-5" />,
+    icon: <User className="w-5 h-5" />,
     href: "/medewerkers",
   },
 ];
