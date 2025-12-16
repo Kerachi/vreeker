@@ -7,6 +7,7 @@ import {
   handleGetClockInHours,
   handleGetClockInEmployeeDetail,
 } from "./routes/clockin";
+import { handleAirtable } from "./routes/airtable";
 
 export function createServer() {
   const app = express();
@@ -26,6 +27,9 @@ export function createServer() {
   app.post("/api/send-planning", handleSendPlanning);
   app.get("/api/clockin/hours", handleGetClockInHours);
   app.get("/api/clockin/hours/:employeeId", handleGetClockInEmployeeDetail);
+
+  // Add handlers for Netlify functions proxy (for local development)
+  app.get("/.netlify/functions/airtable", handleAirtable);
 
   return app;
 }
