@@ -24,15 +24,18 @@ export function createServer() {
   });
 
   // Support both /api/path (local) and /path (Netlify redirects)
-  const apiRouter = express.Router();
+  // We define routes on the app directly to avoid any router-stripping issues
+  const routes = [
+    { path: "/demo", handler: handleDemo, method: "get" },
+    { path: "/send-planning", handler: handleSendPlanning, method: "post" },
+    { path: "/clockin/hours", handler: handleGetClockInHours, method: "get" },
+    { path: "/clockin/hours/:employeeId", handler: handleGetClockInEmployeeDetail, method: "get" },
+  ];
 
-  apiRouter.get("/demo", handleDemo);
-  apiRouter.post("/send-planning", handleSendPlanning);
-  apiRouter.get("/clockin/hours", handleGetClockInHours);
-  apiRouter.get("/clockin/hours/:employeeId", handleGetClockInEmployeeDetail);
-
-  app.use("/api", apiRouter);
-  app.use("/", apiRouter);
+  routes.forEach(({ path, handler, method }) => {
+    (app as any)[method](path, handler);
+    (app as any)[method]("/api" + path, handler);
+  });
 
   // Add handlers for Netlify functions proxy (for local development)
   app.get("/.netlify/functions/airtable", handleAirtable);
