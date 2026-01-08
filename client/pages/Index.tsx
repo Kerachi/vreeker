@@ -16,14 +16,20 @@ export default function Index() {
   const handleSendPlanning = async () => {
     setIsSending(true);
     try {
+      console.log("Sending planning...");
       const response = await fetch("/api/send-planning", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+      }).catch(err => {
+        console.error("Fetch error:", err);
+        throw new Error(`Network error: ${err.message}`);
       });
 
+      console.log("Response status:", response.status);
       const data = await response.json().catch(() => ({}));
+      console.log("Response data:", data);
       
       if (response.ok) {
         toast({
@@ -33,13 +39,14 @@ export default function Index() {
           variant: "default",
         });
       } else {
-        throw new Error(data.message || data.error || `Error ${response.status}`);
+        const errorMsg = data.message || data.error || data.detail || `Server returned ${response.status}`;
+        throw new Error(errorMsg);
       }
-    } catch (error) {
+    } catch (error: any) {
+      console.error("HandleSendPlanning Error:", error);
       toast({
-        title: "Fout",
-        description:
-          error instanceof Error ? error.message : "Er ging iets mis bij het versturen van de planning.",
+        title: "Versturen mislukt",
+        description: error.message || "Onbekende fout bij het versturen.",
         variant: "destructive",
       });
     } finally {
