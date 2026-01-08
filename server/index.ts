@@ -24,18 +24,17 @@ export function createServer() {
   });
 
   // Support both /api/path (local) and /path (Netlify redirects)
-  // We define routes on the app directly to avoid any router-stripping issues
-  const routes = [
-    { path: "/demo", handler: handleDemo, method: "get" },
-    { path: "/send-planning", handler: handleSendPlanning, method: "post" },
-    { path: "/clockin/hours", handler: handleGetClockInHours, method: "get" },
-    { path: "/clockin/hours/:employeeId", handler: handleGetClockInEmployeeDetail, method: "get" },
-  ];
-
-  routes.forEach(({ path, handler, method }) => {
+  // Register routes with various prefixes to ensure they are caught on Netlify
+  const registerRoute = (path: string, handler: any, method: 'get' | 'post') => {
     (app as any)[method](path, handler);
-    (app as any)[method]("/api" + path, handler);
-  });
+    (app as any)[method](`/api${path}`, handler);
+    (app as any)[method](`/.netlify/functions/api${path}`, handler);
+  };
+
+  registerRoute("/demo", handleDemo, "get");
+  registerRoute("/send-planning", handleSendPlanning, "post");
+  registerRoute("/clockin/hours", handleGetClockInHours, "get");
+  registerRoute("/clockin/hours/:employeeId", handleGetClockInEmployeeDetail, "get");
 
   // Add handlers for Netlify functions proxy (for local development)
   app.get("/.netlify/functions/airtable", handleAirtable);
