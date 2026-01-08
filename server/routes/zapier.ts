@@ -17,22 +17,31 @@ export const handleSendPlanning: RequestHandler = async (req, res) => {
       }
     );
 
+    // Log response for debugging on Netlify
+    console.log("Make.com response status:", response.status);
+
     if (response.ok) {
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: "Planning sent successfully",
       });
     } else {
-      res.status(response.status).json({
+      // Get error detail if possible
+      const text = await response.text();
+      console.error("Make.com error body:", text);
+
+      return res.status(response.status).json({
         success: false,
-        message: "Failed to send planning",
+        message: `Failed to send planning: ${response.status}`,
+        detail: text
       });
     }
   } catch (error) {
-    console.error("Error sending planning to Zapier:", error);
-    res.status(500).json({
+    console.error("Error sending planning to Make.com:", error);
+    return res.status(500).json({
       success: false,
       message: "Server error while sending planning",
+      error: error instanceof Error ? error.message : String(error)
     });
   }
 };
