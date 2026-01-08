@@ -23,10 +23,16 @@ export function createServer() {
     res.json({ message: ping });
   });
 
-  app.get("/api/demo", handleDemo);
-  app.post("/api/send-planning", handleSendPlanning);
-  app.get("/api/clockin/hours", handleGetClockInHours);
-  app.get("/api/clockin/hours/:employeeId", handleGetClockInEmployeeDetail);
+  // Support both /api/path (local) and /path (Netlify redirects)
+  const apiRouter = express.Router();
+
+  apiRouter.get("/demo", handleDemo);
+  apiRouter.post("/send-planning", handleSendPlanning);
+  apiRouter.get("/clockin/hours", handleGetClockInHours);
+  apiRouter.get("/clockin/hours/:employeeId", handleGetClockInEmployeeDetail);
+
+  app.use("/api", apiRouter);
+  app.use("/", apiRouter);
 
   // Add handlers for Netlify functions proxy (for local development)
   app.get("/.netlify/functions/airtable", handleAirtable);
