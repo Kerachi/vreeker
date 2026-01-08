@@ -23,6 +23,8 @@ export default function Index() {
         },
       });
 
+      const data = await response.json().catch(() => ({}));
+      
       if (response.ok) {
         toast({
           title: "Succes",
@@ -31,13 +33,13 @@ export default function Index() {
           variant: "default",
         });
       } else {
-        throw new Error("Request failed");
+        throw new Error(data.message || data.error || `Error ${response.status}`);
       }
     } catch (error) {
       toast({
         title: "Fout",
         description:
-          "Er ging iets mis bij het versturen van de planning. Probeer het later opnieuw.",
+          error instanceof Error ? error.message : "Er ging iets mis bij het versturen van de planning.",
         variant: "destructive",
       });
     } finally {
@@ -63,10 +65,6 @@ export default function Index() {
 
         <div className="mt-8 flex flex-col items-center justify-center">
           {isOneDriveLoading ? (
-
-                   ///tijdelijk///{/* Debug info - remove later if needed */} enter {oneDriveLink && ( enter <div className="mb-2 p-2 bg-yellow-50 border border-yellow-200 rounded text-xs text-yellow-700 w-full text-center"> enter  Converted Embed Link: <a href={oneDriveLink} target="_blank" rel="noreferrer" className="underline">{oneDriveLink}</a>   enter    </div> enter  )}//
-
-
             <div className="flex flex-col items-center justify-center h-[500px] w-full bg-gray-50 rounded-lg border border-gray-200">
               <Loader2 className="w-8 h-8 text-blue-500 animate-spin mb-2" />
               <p className="text-gray-500">OneDrive rooster laden...</p>
