@@ -38,6 +38,7 @@ export function createServer() {
 
   // Add handlers for Netlify functions proxy (for local development)
   app.get("/.netlify/functions/airtable", handleAirtable);
+  app.post("/.netlify/functions/send-planning", handleSendPlanning);
 
   return app;
 }
