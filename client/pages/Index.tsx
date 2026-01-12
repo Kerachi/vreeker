@@ -17,7 +17,8 @@ export default function Index() {
     setIsSending(true);
     try {
       console.log("Sending planning...");
-      const response = await fetch("/api/send-planning", {
+      // Try calling the direct Netlify function path
+      const response = await fetch("/.netlify/functions/send-planning", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
