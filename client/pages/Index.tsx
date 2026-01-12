@@ -1,39 +1,93 @@
-import "dotenv/config";
-import express from "express";
-import cors from "cors";
-import { handleDemo } from "./routes/demo";
-import { handleSendPlanning } from "./routes/zapier";
-import {
-  handleGetClockInHours,
-  handleGetClockInEmployeeDetail,
-} from "./routes/clockin";
-import { handleAirtable } from "./routes/airtable";
+import DashboardLayout from "@/components/DashboardLayout";
+import { useEffect, useState } from "react";
+import { Send, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useOneDriveLink } from "@/hooks/useOneDriveLink";
 
-export function createServer() {
-  const app = express();
+export default function Index() {
+  const { link: oneDriveLink, isLoading: isOneDriveLoading, error: oneDriveError } = useOneDriveLink();
+  const { toast } = useToast();
+  const [isSending, setIsSending] = useState(false);
 
-  // Middleware
-  app.use(cors());
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
+  useEffect(() => {
+    document.title = "Planning - Vreeker BV";
+  }, []);
 
-  // Example API routes
-  app.get("/api/ping", (_req, res) => {
-    const ping = process.env.PING_MESSAGE ?? "ping";
-    res.json({ message: ping });
-  });
+  const handleSendPlanning = async () => {
+    setIsSending(true);
+    try {
+      const response = await fetch("/.netlify/functions/send-planning", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-  // Support both /api/path (local) and /path (Netlify redirects)
-  app.get("/api/demo", handleDemo);
-  app.post("/api/send-planning", handleSendPlanning);
-  app.get("/api/clockin/hours", handleGetClockInHours);
-  app.get("/api/clockin/hours/:employeeId", handleGetClockInEmployeeDetail);
+      if (response.ok) {
+        toast({
+          title: "Succes",
+          description:
+            "De planning wordt nu automatisch via e-mail en WhatsApp verstuurd.",
+          variant: "default",
+        });
+      } else {
+        throw new Error("Er ging iets mis bij het versturen van de planning.");
+      }
+    } catch (error) {
+      toast({
+        title: "Fout",
+        description: "Kon de planning niet versturen. Probeer het later opnieuw.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
+  };
 
-  // Add handlers for Netlify functions proxy (for local development)
-  app.get("/.netlify/functions/airtable", handleAirtable);
-  
-  // Make the direct function path work locally too
-  app.post("/.netlify/functions/send-planning", handleSendPlanning);
+  return (
+    <DashboardLayout>
+      <div className="p-4 sm:p-6 lg:p-8 w-full max-w-full">
+        <div>
+          <button
+            onClick={handleSendPlanning}
+            disabled={isSending}
+            className="inline-flex flex-row items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg border border-blue-700 transition-colors cursor-pointer px-6 py-3"
+          >
+            <Send className="w-5 h-5" />
+            <span className="text-sm font-medium">
+              {isSending ? "Verzenden..." : "Verstuur planning"}
+            </span>
+          </button>
+        </div>
 
-  return app;
+        <div className="mt-8 flex flex-col items-center justify-center">
+          {isOneDriveLoading ? (
+            <div className="flex flex-col items-center justify-center h-[500px] w-full bg-gray-50 rounded-lg border border-gray-200">
+              <Loader2 className="w-8 h-8 text-blue-500 animate-spin mb-2" />
+              <p className="text-gray-500">OneDrive rooster laden...</p>
+            </div>
+          ) : oneDriveLink ? (
+            <iframe
+              src={oneDriveLink}
+              width="1206"
+              height="692"
+              frameBorder="0"
+              scrolling="no"
+              className="w-full max-w-full rounded-lg shadow-sm border border-gray-200"
+              title="OneDrive Rooster"
+            />
+          ) : (
+            <div className="flex flex-col items-center justify-center h-[300px] w-full bg-gray-50 rounded-lg border border-gray-200">
+              <p className="text-gray-500 mb-2">
+                {oneDriveError || "Geen OneDrive link gevonden."}
+              </p>
+              <p className="text-sm text-gray-400">
+                Controleer de 'sharliink' tabel in Airtable.
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </DashboardLayout>
+  );
 }
