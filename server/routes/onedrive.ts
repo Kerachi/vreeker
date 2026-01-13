@@ -61,41 +61,10 @@ export const handleDownloadPlanning: RequestHandler = async (req, res) => {
     const separator = extractedLink.includes("?") ? "&" : "?";
     const downloadLink = `${extractedLink}${separator}download=1`;
 
-    console.log("Fetching binary data from OneDrive...");
-
-    // Fetch the actual file from OneDrive
-    console.log("Fetching from:", downloadLink);
-    const fileResponse = await fetch(downloadLink, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-      }
-    });
+    console.log("Redirecting to direct download:", downloadLink);
     
-    if (!fileResponse.ok) {
-      const errorText = await fileResponse.text().catch(() => "No error body");
-      console.error("OneDrive fetch failed:", fileResponse.status, errorText);
-      return res.status(fileResponse.status).json({ 
-        error: "Failed to download file from OneDrive",
-        status: fileResponse.status,
-        detail: errorText.substring(0, 200)
-      });
-    }
-
-    // Get the binary content
-    const arrayBuffer = await fileResponse.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
-    console.log(`Successfully proxied file. Size: ${buffer.length} bytes`);
-
-    // Return the binary file directly with correct headers for WhatsApp
-    res.set({
-      "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "Content-Disposition": 'attachment; filename="planning.xlsx"',
-      "Content-Length": buffer.length.toString(),
-      "Cache-Control": "no-cache",
-    });
-
-    return res.send(buffer);
+    // Perform the redirect
+    return res.redirect(downloadLink);
 
   } catch (error) {
     console.error("Download redirect error:", error);
