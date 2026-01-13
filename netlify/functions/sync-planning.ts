@@ -65,7 +65,8 @@ export const handler: Handler = async (event) => {
     const folder = "planning";
     
     // Create signature for secure upload
-    const signatureStr = `folder=${folder}&invalidate=true&public_id=${public_id}&timestamp=${timestamp}${cloudinarySecret}`;
+    // MUST be in alphabetical order: folder, invalidate, overwrite, public_id, timestamp
+    const signatureStr = `folder=${folder}&invalidate=true&overwrite=true&public_id=${public_id}&timestamp=${timestamp}${cloudinarySecret}`;
     const signature = crypto.createHash("sha1").update(signatureStr).digest("hex");
 
     const formData = new URLSearchParams();
