@@ -64,10 +64,21 @@ export const handleDownloadPlanning: RequestHandler = async (req, res) => {
     console.log("Fetching binary data from OneDrive...");
 
     // Fetch the actual file from OneDrive
-    const fileResponse = await fetch(downloadLink);
+    console.log("Fetching from:", downloadLink);
+    const fileResponse = await fetch(downloadLink, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      }
+    });
     
     if (!fileResponse.ok) {
-      return res.status(fileResponse.status).json({ error: "Failed to download file from OneDrive" });
+      const errorText = await fileResponse.text().catch(() => "No error body");
+      console.error("OneDrive fetch failed:", fileResponse.status, errorText);
+      return res.status(fileResponse.status).json({ 
+        error: "Failed to download file from OneDrive",
+        status: fileResponse.status,
+        detail: errorText.substring(0, 200)
+      });
     }
 
     // Get the binary content
