@@ -61,7 +61,7 @@ export const handler: Handler = async (event) => {
 
     // 2. Upload to Cloudinary using their REST API
     const timestamp = Math.round(new Date().getTime() / 1000);
-    const public_id = "planning_vreeker";
+    const public_id = "planning_vreeker.xlsx";
     const folder = "planning";
     
     // Create signature for secure upload
