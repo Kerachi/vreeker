@@ -9,6 +9,12 @@
   
 [[redirects]]
   force = true
+  from = "/api/sync-planning"
+  status = 200
+  to = "/.netlify/functions/sync-planning"
+
+[[redirects]]
+  force = true
   from = "/api/download-planning"
   status = 200
   to = "/.netlify/functions/download-planning"
