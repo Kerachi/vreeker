@@ -5,9 +5,14 @@
 
 
 [functions]
-  external_node_modules = ["express"]
   node_bundler = "esbuild"
   
+[[redirects]]
+  force = true
+  from = "/api/download-planning"
+  status = 200
+  to = "/.netlify/functions/download-planning"
+
 [[redirects]]
   force = true
   from = "/api/*"
