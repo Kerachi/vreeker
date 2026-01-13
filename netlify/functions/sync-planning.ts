@@ -81,9 +81,9 @@ export const handler: Handler = async (event) => {
     formData.append("signature", signature);
 
     console.log("Triggering Cloudinary Sync...");
-    const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`;
+    const cloudinaryApiUrl = `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`;
     
-    const cloudResponse = await fetch(cloudinaryUrl, {
+    const cloudResponse = await fetch(cloudinaryApiUrl, {
       method: "POST",
       body: formData,
     });
@@ -98,12 +98,44 @@ export const handler: Handler = async (event) => {
       };
     }
 
+    const cloudinaryUrl = cloudData.secure_url;
+
+    // 3. Update the Second Airtable Table with the new Cloudinary URL
+    const destTableId = "tbluVXB5ytSdtpIFa";
+    const destRecordId = "rec4X9YMSpxzyxQWW";
+    const airtableUpdateUrl = `https://api.airtable.com/v0/${baseId}/${destTableId}/${destRecordId}`;
+
+    const airtableUpdateResponse = await fetch(airtableUpdateUrl, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fields: {
+          "De link van planning": cloudinaryUrl,
+        },
+      }),
+    });
+
+    if (!airtableUpdateResponse.ok) {
+      const updateError = await airtableUpdateResponse.json();
+      console.error("Airtable update failed:", updateError);
+      return {
+        statusCode: airtableUpdateResponse.status,
+        body: JSON.stringify({ 
+          error: "Cloudinary sync worked, but failed to update Airtable", 
+          detail: updateError 
+        }),
+      };
+    }
+
     return {
       statusCode: 200,
       body: JSON.stringify({
         success: true,
-        message: "Successfully synced planning to Cloudinary",
-        url: cloudData.secure_url,
+        message: "Successfully synced planning to Cloudinary and updated Airtable",
+        url: cloudinaryUrl,
       }),
     };
 
