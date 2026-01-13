@@ -8,6 +8,7 @@ import {
   handleGetClockInEmployeeDetail,
 } from "./routes/clockin";
 import { handleAirtable } from "./routes/airtable";
+import { handleDownloadPlanning } from "./routes/onedrive";
 
 export function createServer() {
   const app = express();
@@ -26,8 +27,12 @@ export function createServer() {
   // Support both /api/path (local) and /path (Netlify redirects)
   app.get("/api/demo", handleDemo);
   app.post("/api/send-planning", handleSendPlanning);
+  app.get("/api/download-planning", handleDownloadPlanning);
   app.get("/api/clockin/hours", handleGetClockInHours);
   app.get("/api/clockin/hours/:employeeId", handleGetClockInEmployeeDetail);
+
+  // Direct paths for Netlify compatibility
+  app.get("/download-planning", handleDownloadPlanning);
 
   // Add handlers for Netlify functions proxy (for local development)
   app.get("/.netlify/functions/airtable", handleAirtable);
