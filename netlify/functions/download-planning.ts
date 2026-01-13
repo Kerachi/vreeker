@@ -1,5 +1,4 @@
 import { Handler } from "@netlify/functions";
-import { Buffer } from "buffer";
 
 export const handler: Handler = async (event) => {
   try {
@@ -14,23 +13,23 @@ export const handler: Handler = async (event) => {
       };
     }
 
-    // 1. Fetch the record from Airtable to get the OneDrive link
-    const airtableUrl = `https://api.airtable.com/v0/${baseId}/${tableId}`;
-    const airtableResponse = await fetch(airtableUrl, {
+    // Fetch the record from Airtable
+    const url = `https://api.airtable.com/v0/${baseId}/${tableId}`;
+    const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
     });
 
-    if (!airtableResponse.ok) {
+    if (!response.ok) {
       return {
-        statusCode: airtableResponse.status,
+        statusCode: response.status,
         body: JSON.stringify({ error: "Airtable connection failed" }),
       };
     }
 
-    const data: any = await airtableResponse.json();
+    const data: any = await response.json();
     
     if (!data.records || data.records.length === 0) {
       return {
@@ -49,7 +48,7 @@ export const handler: Handler = async (event) => {
 
     let extractedLink = "";
 
-    // Parse JSON logic to get the webUrl
+    // Parse JSON logic
     if (rawValue.trim().startsWith("{")) {
       try {
         const parsed = JSON.parse(rawValue);
@@ -77,49 +76,16 @@ export const handler: Handler = async (event) => {
     const separator = extractedLink.includes("?") ? "&" : "?";
     const downloadLink = `${extractedLink}${separator}download=1`;
 
-    console.log("Fetching binary data from OneDrive...");
-
-    // 2. Fetch the actual file from OneDrive (the Proxy step)
-    const fileResponse = await fetch(downloadLink, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-      }
-    });
-    
-    if (!fileResponse.ok) {
-      const errorText = await fileResponse.text().catch(() => "No error body");
-      return {
-        statusCode: fileResponse.status,
-        body: JSON.stringify({ 
-          error: "Failed to download file from OneDrive",
-          status: fileResponse.status,
-          detail: errorText.substring(0, 200)
-        }),
-      };
-    }
-
-    // Get the binary content
-    const arrayBuffer = await fileResponse.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const base64Content = buffer.toString("base64");
-
-    console.log(`Successfully proxied file. Size: ${buffer.length} bytes`);
-
-    // 3. Return the binary file directly with correct headers for WhatsApp
+    // Perform the redirect
     return {
-      statusCode: 200,
-      isBase64Encoded: true,
+      statusCode: 302,
       headers: {
-        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        "Content-Disposition": 'attachment; filename="planning.xlsx"',
-        "Content-Length": buffer.length.toString(),
-        "Cache-Control": "no-cache",
+        Location: downloadLink,
       },
-      body: base64Content,
+      body: "",
     };
 
   } catch (error) {
-    console.error("Proxy error:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Internal server error" }),
